@@ -11,7 +11,6 @@ public class Foo {
 	
 	public String doFoo() {
                 //Hice un cambio (Mauro)
-				//Probando Cambios (Martin)
 		return "Foo";
 	}
 
