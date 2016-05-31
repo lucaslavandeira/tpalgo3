@@ -37,7 +37,6 @@ public class AlgoFormerTest {
 
     @Test
     public void testMoverAlgoFormerEnAmbasDirecciones() {
-
         AlgoFormer optimus = new AlgoFormer(casillero1_1);
 
         optimus.avanzar(1, 1);
@@ -53,11 +52,21 @@ public class AlgoFormerTest {
 
     @Test(expected = SobrepasaSuVelocidadException.class)
     public void test02QueElAlgoFormerSobrepaseSuVelocidad(){
-
         Tablero tablero = new Tablero(10);
         Casillero unCasillero = tablero.obtenerCasillero(1, 1);
         AlgoFormer optimus = new AlgoFormer(unCasillero);
         optimus.avanzar(2, 1);
+    }
 
+    @Test
+    public void testAlgoFormerCambiaEstado() {
+        Estado estadoInicial = new Estado(2, 100, 1);
+        Estado estadoAlternativo = new Estado(1, 200, 2);
+
+        AlgoFormer optimus = new AlgoFormer(casillero1_1, estadoInicial, estadoAlternativo);
+
+        Assert.assertTrue(optimus.estadoActual == estadoInicial);
+        optimus.cambiarEstado();
+        Assert.assertTrue(optimus.estadoActual == estadoAlternativo);
     }
 }

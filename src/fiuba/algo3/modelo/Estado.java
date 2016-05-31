@@ -13,4 +13,10 @@ public class Estado {
         this.vida = 1;
         this.distanciaDeAtaque = 1;
     }
+
+    public Estado(int velocidad, int vida, int dist_ataque) {
+        this.velocidad = velocidad;
+        this.vida = vida;
+        this.distanciaDeAtaque = dist_ataque;
+    }
 }

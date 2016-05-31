@@ -8,7 +8,13 @@ public class AlgoFormer {
     Estado estadoAlternativo;
     Casillero posicion;
 
-    public AlgoFormer(Casillero unCasillero){
+    public AlgoFormer(Casillero unCasillero, Estado estadoInicial, Estado estadoAlternativo){
+        this.estadoActual = estadoInicial;
+        this.estadoAlternativo = estadoAlternativo;
+        this.posicion = unCasillero;
+    }
+
+    public AlgoFormer(Casillero unCasillero) {
         this.estadoActual = new Estado();
         this.estadoAlternativo = new Estado();
         this.posicion = unCasillero;
