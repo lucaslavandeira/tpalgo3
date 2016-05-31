@@ -25,13 +25,13 @@ public class AlgoFormerTest {
     }
 
     @Test
-    public void testCrearUnAlgoFormer() {
+    public void test00CrearUnAlgoFormer() {
         optimus = new AlgoFormer(casillero1_1);
         Assert.assertTrue(optimus.posicion == casillero1_1);
     }
 
     @Test
-    public void testMoverAlgoFormerEnUnaDireccion(){
+    public void test01MoverAlgoFormerEnUnaDireccion(){
         AlgoFormer optimus = new AlgoFormer(casillero1_1);
 
         optimus.avanzar(1, 0);
@@ -40,7 +40,7 @@ public class AlgoFormerTest {
     }
 
     @Test
-    public void testMoverAlgoFormerEnAmbasDirecciones() {
+    public void test02MoverAlgoFormerEnAmbasDirecciones() {
         AlgoFormer optimus = new AlgoFormer(casillero1_1);
 
         optimus.avanzar(1, 1);
@@ -48,14 +48,14 @@ public class AlgoFormerTest {
     }
 
     @Test
-    public void testMoverAlgoFormerParaAtras() {
+    public void test03MoverAlgoFormerParaAtras() {
         AlgoFormer optimus = new AlgoFormer(casillero2_2);
         optimus.avanzar(-1, -1);
         Assert.assertTrue(optimus.posicion == casillero1_1);
     }
 
     @Test(expected = SobrepasaSuVelocidadException.class)
-    public void test02QueElAlgoFormerSobrepaseSuVelocidad(){
+    public void test04QueElAlgoFormerSobrepaseSuVelocidad(){
         Tablero tablero = new Tablero(10);
         Casillero unCasillero = tablero.obtenerCasillero(1, 1);
         AlgoFormer optimus = new AlgoFormer(unCasillero);
@@ -63,7 +63,7 @@ public class AlgoFormerTest {
     }
 
     @Test
-    public void testAlgoFormerCambiaEstado() {
+    public void test05AlgoFormerCambiaEstado() {
         AlgoFormer optimus = new AlgoFormer(casillero1_1, estadoTierra, estadoAire);
 
         Assert.assertTrue(optimus.estadoActual == estadoTierra);
@@ -72,18 +72,26 @@ public class AlgoFormerTest {
     }
 
     @Test
-    public void testAlgoFormerCambiarEstadoDosVeces() {
+    public void test06AlgoFormerCambiarEstadoDosVeces() {
         AlgoFormer optimus = new AlgoFormer(casillero1_1, estadoTierra, estadoAire);
         optimus.cambiarEstado();
         optimus.cambiarEstado();
         Assert.assertTrue(optimus.estadoActual == estadoTierra);
     }
 
-    @Test public void testAlgoFormerMoverseEnEstadoAlterno() {
+    @Test public void test07AlgoFormerMoverseEnEstadoAlterno() {
         AlgoFormer optimus = new AlgoFormer(casillero1_1, estadoTierra, estadoAire);
         optimus.cambiarEstado();
 
         optimus.avanzar(4, 4);
         Assert.assertTrue(optimus.posicion == tablero.obtenerCasillero(5, 5));
+    }
+	
+	@Test(expected = SobrepasaDistanciaDeAtaqueException.class)
+    public void test08SiAlgoFormerSobrepasaSuDistanciaDeAtaqueLanzaException(){
+
+        AlgoFormer optimus = new AlgoFormer(casillero1_1, estadoTierra, estadoAire);
+
+        optimus.atacar(3,3);
     }
 }

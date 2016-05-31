@@ -29,9 +29,7 @@ public class AlgoFormer {
         this.posicion = this.posicion.buscarCasillero(direccionX, direccionY);
     }
 
-    public void atacar(AlgoFormer otroRobot){
-
-    }
+    
 
     public void cambiarEstado(){
         Estado estadoTemporal;
@@ -39,5 +37,11 @@ public class AlgoFormer {
         estadoTemporal = this.estadoAlternativo;
         this.estadoAlternativo = this.estadoActual;
         this.estadoActual = estadoTemporal;
+    }
+	
+	public void atacar(int direccionX,int direccionY){
+        if (Math.abs(direccionX) > this.estadoActual.distanciaDeAtaque || Math.abs(direccionY) > this.estadoActual.distanciaDeAtaque){
+            throw new SobrepasaDistanciaDeAtaqueException();
+        }
     }
 }
