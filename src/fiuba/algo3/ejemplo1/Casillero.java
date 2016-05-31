@@ -9,9 +9,10 @@ public class Casillero {
     int posicionX;
     int posixionY;
 
-    public Casillero(int posicionX, int posicionY) {
+    public Casillero(int posicionX, int posicionY, Tablero unTablero) {
         this.posicionX = posicionX;
         this.posixionY = posicionY;
+        this.elTablero = unTablero;
     }
 
     public Casillero buscarCasillero(int direccionX, int direccionY){
