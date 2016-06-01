@@ -5,7 +5,7 @@ package fiuba.algo3.modelo;
  */
 public class Casillero {
     Tablero elTablero;
-    boolean tieneChispa = false;
+    UnidadJuego enteContenido;
     int posicionX;
     int posixionY;
 
@@ -16,9 +16,14 @@ public class Casillero {
     }
 
     public Casillero buscarCasillero(int direccionX, int direccionY){
-
         return this.elTablero.buscarCasillero(this.posicionX, this.posixionY, direccionX, direccionY);
-
     }
 
+    public void colocarEnte(UnidadJuego ente) {
+        this.enteContenido = ente;
+    }
+
+    public void destruirUnidad() {
+        this.enteContenido = null;
+    }
 }

@@ -5,21 +5,18 @@ package fiuba.algo3.modelo;
  */
 public class Estado {
 
-    int vida;
     int danioAtaque;
     int distanciaDeAtaque;
     int velocidad;
 
 
     public Estado(){
-        this.vida = 1;
         this.danioAtaque = 1;
         this.distanciaDeAtaque = 1;
         this.velocidad = 1;
     }
 
-    public Estado(int vida, int danio, int velocidad, int rango) {
-        this.vida = vida;
+    public Estado(int danio, int velocidad, int rango) {
         this.danioAtaque = danio;
         this.velocidad = velocidad;
         this.distanciaDeAtaque = rango;
