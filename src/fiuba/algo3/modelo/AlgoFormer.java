@@ -7,8 +7,10 @@ public class AlgoFormer implements UnidadJuego {
     Estado estadoActual;
     Estado estadoAlternativo;
     Casillero posicion;
+	int vida;
 
-    int vida;
+
+
     public AlgoFormer(Casillero unCasillero, Estado estadoInicial, Estado estadoAlternativo, int vida){
         this.estadoActual = estadoInicial;
         this.estadoAlternativo = estadoAlternativo;
@@ -46,12 +48,10 @@ public class AlgoFormer implements UnidadJuego {
             throw new SobrepasaDistanciaDeAtaqueException();
         }
 
-        Casillero casilleroAAtacar = posicion.buscarCasillero(direccionX, direccionY);
-        AlgoFormer enemigo = (AlgoFormer)casilleroAAtacar.enteContenido;
-        if(enemigo == null || !enemigo.esAlgoFormer() || enemigo.equals(this)) {
-            throw new CasilleroInvalidoException();
-        }
-        enemigo.procesarAtaque(this.estadoActual.danioAtaque);
+        Casillero casilleroAtacado = posicion.buscarCasillero(direccionX, direccionY);
+		casilleroAtacado.propiciarAtaque(this);
+		
+		
     }
 
     public void procesarAtaque(int danio) {

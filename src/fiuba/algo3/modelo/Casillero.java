@@ -18,6 +18,20 @@ public class Casillero {
     public Casillero buscarCasillero(int direccionX, int direccionY){
         return this.elTablero.buscarCasillero(this.posicionX, this.posixionY, direccionX, direccionY);
     }
+	
+	
+	public void propiciarAtaque(AlgoFormer atacante){
+
+		AlgoFormer victimaAtacada = (AlgoFormer)enteContenido;
+		if(    victimaAtacada == null   ||  !victimaAtacada.esAlgoFormer()    ||  victimaAtacada.equals(atacante) )
+            throw new CasilleroInvalidoException();
+
+        victimaAtacada.procesarAtaque(atacante.estadoActual.danioAtaque);
+
+
+	}
+	
+	
 
     public void colocarEnte(UnidadJuego ente) {
         this.enteContenido = ente;
