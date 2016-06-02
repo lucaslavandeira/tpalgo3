@@ -33,4 +33,31 @@ public class BonusTest {
         Assert.assertTrue(elbonus.ataqueAdicional()==2);
 
     }
+
+    @Test
+    public void test02BonusNoEsChispaSuprema(){
+        new Bonus(tablero.obtenerCasillero(1,1));
+        Casillero casillero=tablero.obtenerCasillero(1,1);
+
+        Bonus elbonus =(Bonus)casillero.enteContenido;
+        Assert.assertTrue(elbonus.esChispaSuprema()==false);
+    }
+
+    @Test
+    public void test03BonusNoEsAutobot(){
+        new Bonus(tablero.obtenerCasillero(1,1));
+        Casillero casillero=tablero.obtenerCasillero(1,1);
+
+        Bonus elbonus =(Bonus)casillero.enteContenido;
+        Assert.assertTrue(elbonus.esAutobot()==false);
+    }
+
+    @Test
+    public void test04BonusNoEsDesepticon(){
+        new Bonus(tablero.obtenerCasillero(1,1));
+        Casillero casillero=tablero.obtenerCasillero(1,1);
+
+        Bonus elbonus =(Bonus)casillero.enteContenido;
+        Assert.assertTrue(elbonus.esDecepticon()==false);
+    }
 }
