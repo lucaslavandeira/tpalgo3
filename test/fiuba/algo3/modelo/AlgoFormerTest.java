@@ -160,7 +160,7 @@ public class AlgoFormerTest {
         Decepticon megatron = new Decepticon(casillero2_2, estadoHumanoideMegatron, estadoAlternoMegatron, 50);
         
         optimus.atacar(1, 1);
-        Assert.assertTrue(casillero2_2.algoFormerContenido == null);
+        Assert.assertTrue(casillero2_2.enteContenido == null);
     }
 
     @Test(expected = CasilleroInvalidoException.class)
