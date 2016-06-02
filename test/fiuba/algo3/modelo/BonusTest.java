@@ -60,4 +60,17 @@ public class BonusTest {
         Bonus elbonus =(Bonus)casillero.enteContenido;
         Assert.assertTrue(elbonus.esDecepticon()==false);
     }
+
+    @Test
+    public void test05TransformerPuedeMoverseAUnCasilleroConBonus(){
+        EquipoAutobots autobots =new EquipoAutobots(tablero);
+        new DobleCanion(casillero= tablero.obtenerCasillero(1,7));
+        //optimus inicia en la posicion (1,6)
+        //en la posicion 1,7 esta el bonus
+
+        autobots.optimus.avanzar(0,1);
+        Bonus elbonus= (Bonus)autobots.optimus.posicion.enteContenido;
+        Assert.assertTrue(elbonus.esBonus() == true);
+
+    }
 }
