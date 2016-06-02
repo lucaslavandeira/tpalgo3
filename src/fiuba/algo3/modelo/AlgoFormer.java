@@ -1,5 +1,6 @@
 package fiuba.algo3.modelo;
 
+
 /**
  * Created by sickness on 30/05/16.
  */
@@ -7,6 +8,7 @@ public class AlgoFormer implements UnidadJuego {
     Estado estadoActual;
     Estado estadoAlternativo;
     Casillero posicion;
+
 	int vida;
 
     public AlgoFormer(Casillero unCasillero, Estado estadoInicial, Estado estadoAlternativo, int vida){
@@ -14,8 +16,8 @@ public class AlgoFormer implements UnidadJuego {
         this.estadoAlternativo = estadoAlternativo;
         this.posicion = unCasillero;
         this.vida = vida;
-        if (unCasillero.enteContenido != null) throw new CasilleroInvalidoException();
-        unCasillero.colocarEnte(this);
+        if (unCasillero.algoFormerContenido != null) throw new CasilleroInvalidoException();
+        unCasillero.colocarAlgoformer(this);
     }
 
     // constructor simple usado en tests
@@ -26,13 +28,13 @@ public class AlgoFormer implements UnidadJuego {
         this.vida = 500;
     }
 
-    public void avanzar(int direccionX, int direccionY){
-        if (Math.abs(direccionX) > this.estadoActual.velocidad || Math.abs(direccionY) > this.estadoActual.velocidad){
+    public void avanzar(int direccionX, int direccionY) {
+        if (Math.abs(direccionX) > this.estadoActual.velocidad || Math.abs(direccionY) > this.estadoActual.velocidad) {
             throw new SobrepasaSuVelocidadException();
         }
 
-        if (this.posicion.buscarCasillero(direccionX, direccionY).enteContenido != null) // casillero destino ya ocupado
-        	throw new CasilleroInvalidoException();
+        if (this.posicion.buscarCasillero(direccionX, direccionY).algoFormerContenido != null) // casillero destino ya ocupado
+            throw new CasilleroInvalidoException();
 
         this.posicion = this.posicion.buscarCasillero(direccionX, direccionY);
     }
@@ -44,19 +46,16 @@ public class AlgoFormer implements UnidadJuego {
         this.estadoAlternativo = this.estadoActual;
         this.estadoActual = estadoTemporal;
     }
-	
+
+
 	public void atacar(int direccionX,int direccionY) {
         if (Math.abs(direccionX) > this.estadoActual.distanciaDeAtaque || Math.abs(direccionY) > this.estadoActual.distanciaDeAtaque){
             throw new SobrepasaDistanciaDeAtaqueException();
         }
-
         Casillero casilleroAtacado = posicion.buscarCasillero(direccionX, direccionY);
-
-
-		casilleroAtacado.propiciarAtaque(this);
-		
-		
+        casilleroAtacado.propiciarAtaque(this);
     }
+
 
     public void procesarAtaque(int danio) {
         this.vida -= danio;

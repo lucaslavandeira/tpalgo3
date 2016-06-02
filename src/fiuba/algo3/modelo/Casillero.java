@@ -5,6 +5,7 @@ package fiuba.algo3.modelo;
  */
 public class Casillero {
     Tablero elTablero;
+    UnidadJuego algoFormerContenido;
     UnidadJuego enteContenido;
     int posicionX;
     int posicionY;
@@ -22,7 +23,7 @@ public class Casillero {
 	
 	public void propiciarAtaque(AlgoFormer atacante){
 
-		AlgoFormer victimaAtacada = (AlgoFormer)enteContenido;
+		AlgoFormer victimaAtacada = (AlgoFormer) algoFormerContenido;
 		if(    victimaAtacada == null   ||  !victimaAtacada.esAlgoFormer()    ||  victimaAtacada.equals(atacante) )
             throw new CasilleroInvalidoException();
 
@@ -36,11 +37,15 @@ public class Casillero {
 	
 	
 
-    public void colocarEnte(UnidadJuego ente) {
-        this.enteContenido = ente;
+    public void colocarAlgoformer(UnidadJuego ente) {
+        this.algoFormerContenido = ente;
     }
 
     public void destruirUnidad() {
-        this.enteContenido = null;
+        this.algoFormerContenido = null;
     }
+
+
+    public void colocarEnte(UnidadJuego ente) { this.enteContenido = ente;}
+
 }

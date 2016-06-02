@@ -71,16 +71,16 @@ public class CasilleroTest {
 	    Autobot optimus = new Autobot(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, 500);
         Decepticon megatron = new Decepticon(casillero2_2, estadoHumanoideOptimus, estadoAlternoOptimus, 550);
         
-        casillero1_1.colocarEnte(optimus);
-        casillero2_2.colocarEnte(megatron);
+        casillero1_1.colocarAlgoformer(optimus);
+        casillero2_2.colocarAlgoformer(megatron);
         
-        Assert.assertTrue(casillero1_1.enteContenido == optimus);
-        Assert.assertTrue(casillero2_2.enteContenido == megatron);
+        Assert.assertTrue(casillero1_1.algoFormerContenido == optimus);
+        Assert.assertTrue(casillero2_2.algoFormerContenido == megatron);
         
-        Assert.assertFalse(casillero1_1.enteContenido == megatron);
-        Assert.assertFalse(casillero1_1.enteContenido == null);
-        Assert.assertFalse(casillero2_2.enteContenido == optimus);
-        Assert.assertFalse(casillero2_2.enteContenido == null);
+        Assert.assertFalse(casillero1_1.algoFormerContenido == megatron);
+        Assert.assertFalse(casillero1_1.algoFormerContenido == null);
+        Assert.assertFalse(casillero2_2.algoFormerContenido == optimus);
+        Assert.assertFalse(casillero2_2.algoFormerContenido == null);
         
 	    
     }
