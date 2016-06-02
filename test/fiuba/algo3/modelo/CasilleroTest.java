@@ -47,8 +47,8 @@ public class CasilleroTest {
 	    Estado estadoHumanoideMegatron = new Estado( 10, 3, 1);
 	    Estado estadoAlternoMegatron = new Estado( 55, 2, 8);
 	    
-	    AlgoFormerAutobot optimus = new AlgoFormerAutobot(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, 500);
-        AlgoFormerDesepticon megatron = new AlgoFormerDesepticon(casillero2_2, estadoHumanoideOptimus, estadoAlternoOptimus, 550);
+	    Autobot optimus = new Autobot(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, 500);
+        Decepticon megatron = new Decepticon(casillero2_2, estadoHumanoideOptimus, estadoAlternoOptimus, 550);
         int vidaMegatronAnteriorAlAtaque = megatron.vida;
         
         casillero2_2.propiciarAtaque(optimus);
@@ -68,8 +68,8 @@ public class CasilleroTest {
 	    Estado estadoHumanoideMegatron = new Estado( 10, 3, 1);
 	    Estado estadoAlternoMegatron = new Estado( 55, 2, 8);
 	    
-	    AlgoFormerAutobot optimus = new AlgoFormerAutobot(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, 500);
-        AlgoFormerDesepticon megatron = new AlgoFormerDesepticon(casillero2_2, estadoHumanoideOptimus, estadoAlternoOptimus, 550);
+	    Autobot optimus = new Autobot(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, 500);
+        Decepticon megatron = new Decepticon(casillero2_2, estadoHumanoideOptimus, estadoAlternoOptimus, 550);
         
         casillero1_1.colocarEnte(optimus);
         casillero2_2.colocarEnte(megatron);
