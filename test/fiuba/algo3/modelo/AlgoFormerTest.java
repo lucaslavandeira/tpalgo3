@@ -215,5 +215,16 @@ public class AlgoFormerTest {
         optimus.atacar(1,1);
         Assert.assertTrue(megatron.vida == vidaMegatron - optimus.estadoActual.danioAtaque);
     }
-    
+
+    @Test
+    public void test24CambiarEstadoPreservaVida() {
+        Autobot optimus = new Autobot(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
+        Decepticon megatron = new Decepticon(casillero2_2, estadoHumanoideMegatron, estadoAlternoMegatron, vidaMegatron);
+
+        megatron.atacar(-1, -1);
+        int vidaAntes = optimus.vida;
+        optimus.cambiarEstado();
+        int vidaDespues = optimus.vida;
+        Assert.assertTrue(vidaAntes == vidaDespues);
+    }
 }
