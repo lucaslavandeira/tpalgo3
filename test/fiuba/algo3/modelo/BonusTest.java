@@ -18,7 +18,7 @@ public class BonusTest {
 
     @Test
     public void test00CrearCorrectamenteUnBonus(){
-        Bonus bonus=new Bonus(tablero.obtenerCasillero(1,1));
+        new Bonus(tablero.obtenerCasillero(1,1));
         Casillero casillero=tablero.obtenerCasillero(1,1);
         Assert.assertTrue(casillero.enteContenido.esBonus()== true);
 
@@ -26,10 +26,10 @@ public class BonusTest {
 
     @Test
     public void test01CrearBonusDeDobleCanion(){
-        Bonus bonus= new DobleCanion(tablero.obtenerCasillero(1,1));
+        new DobleCanion(tablero.obtenerCasillero(1,1));
         Casillero casillero=tablero.obtenerCasillero(1,1);
 
-        Bonus elbonus=(Bonus)casillero.enteContenido;
+        Bonus elbonus =(Bonus)casillero.enteContenido;
         Assert.assertTrue(elbonus.ataqueAdicional()==2);
 
     }

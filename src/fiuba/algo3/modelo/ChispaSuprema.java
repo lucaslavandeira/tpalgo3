@@ -17,6 +17,6 @@ public class ChispaSuprema implements UnidadJuego{
     }
     public boolean esBonus(){return false;}
     public boolean esAutobot(){return false;}
-    public boolean esDesepticon(){return false;}
+    public boolean esDecepticon(){return false;}
 
 }

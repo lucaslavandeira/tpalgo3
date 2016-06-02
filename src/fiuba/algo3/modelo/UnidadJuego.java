@@ -10,6 +10,6 @@ public interface UnidadJuego {
     boolean esBonus();
 
     boolean esAutobot();
-    boolean esDesepticon();
+    boolean esDecepticon();
 
 }

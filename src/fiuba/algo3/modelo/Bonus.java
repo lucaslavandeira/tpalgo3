@@ -3,7 +3,7 @@ package fiuba.algo3.modelo;
 /**
  * Created by Diego on 02/06/2016.
  */
-public class Bonus implements UnidadJuego{
+public class Bonus implements UnidadJuego {
 
     int ataqueespecial;
     boolean escudoInmortal;
@@ -33,7 +33,7 @@ public class Bonus implements UnidadJuego{
     }
     public boolean esBonus(){return true;}
     public boolean esAutobot(){return false;}
-    public boolean esDesepticon(){return false;}
+    public boolean esDecepticon(){return false;}
 
     public int ataqueAdicional(){
         return this.ataqueespecial;

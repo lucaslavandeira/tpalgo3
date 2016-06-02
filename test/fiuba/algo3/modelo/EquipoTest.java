@@ -28,25 +28,24 @@ public class EquipoTest {
     public void test01crearEquipoDecepticons(){
             EquipoDecepticons decepticons=new EquipoDecepticons(tablero);
             Assert.assertTrue( decepticons.megatron.posicion  ==  tablero.obtenerCasillero(9,6));
-
     }
 
     @Test
     public void test02moverUnMiembroDeAutobots(){
-        EquipoAutobots autobots=new EquipoAutobots(tablero);
+        EquipoAutobots autobots = new EquipoAutobots(tablero);
         autobots.optimus.avanzar(1,1);
         Assert.assertTrue(autobots.optimus.posicion == tablero.obtenerCasillero(2,7));
     }
 
     @Test(expected = PosicionFueraDelMapaException.class)
     public void test03moverUnRobotFueraDelTablero(){
-        EquipoAutobots autobots=new EquipoAutobots(tablero);
+        EquipoAutobots autobots = new EquipoAutobots(tablero);
         autobots.optimus.avanzar(-2,0);
     }
 
     @Test(expected = SobrepasaSuVelocidadException.class)
     public void test04moverUnRobotSuperandoVelocidad(){
-        EquipoAutobots autobots=new EquipoAutobots(tablero);
+        EquipoAutobots autobots = new EquipoAutobots(tablero);
         autobots.bumblebee.avanzar(0,3);
     }
 

@@ -9,8 +9,6 @@ public class AlgoFormer implements UnidadJuego {
     Casillero posicion;
 	int vida;
 
-
-
     public AlgoFormer(Casillero unCasillero, Estado estadoInicial, Estado estadoAlternativo, int vida){
         this.estadoActual = estadoInicial;
         this.estadoAlternativo = estadoAlternativo;
@@ -20,6 +18,7 @@ public class AlgoFormer implements UnidadJuego {
         unCasillero.colocarEnte(this);
     }
 
+    // constructor simple usado en tests
     public AlgoFormer(Casillero unCasillero) {
         this.estadoActual = new Estado();
         this.estadoAlternativo = new Estado();
@@ -31,8 +30,10 @@ public class AlgoFormer implements UnidadJuego {
         if (Math.abs(direccionX) > this.estadoActual.velocidad || Math.abs(direccionY) > this.estadoActual.velocidad){
             throw new SobrepasaSuVelocidadException();
         }
-        if (this.posicion.buscarCasillero(direccionX, direccionY).enteContenido != null)
+
+        if (this.posicion.buscarCasillero(direccionX, direccionY).enteContenido != null) // casillero destino ya ocupado
         	throw new CasilleroInvalidoException();
+
         this.posicion = this.posicion.buscarCasillero(direccionX, direccionY);
     }
 
@@ -76,7 +77,7 @@ public class AlgoFormer implements UnidadJuego {
 
     public boolean esAutobot(){return true;}
 
-    public boolean esDesepticon(){return true;}
+    public boolean esDecepticon(){return true;}
 
 
 }
