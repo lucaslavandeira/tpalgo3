@@ -50,6 +50,8 @@ public class AlgoFormer implements UnidadJuego {
         }
 
         Casillero casilleroAtacado = posicion.buscarCasillero(direccionX, direccionY);
+
+
 		casilleroAtacado.propiciarAtaque(this);
 		
 		
@@ -68,6 +70,14 @@ public class AlgoFormer implements UnidadJuego {
 
     public boolean esChispaSuprema() {
         return false;
+    }
+
+    public boolean esAutobot(){
+        return true;
+    }
+
+    public boolean esDesepticon(){
+        return true;
     }
 
 

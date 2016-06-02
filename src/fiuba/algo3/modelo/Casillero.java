@@ -6,6 +6,7 @@ package fiuba.algo3.modelo;
 public class Casillero {
     Tablero elTablero;
     UnidadJuego enteContenido;
+    Bonus bonus;
     int posicionX;
     int posixionY;
 
@@ -25,6 +26,9 @@ public class Casillero {
 		AlgoFormer victimaAtacada = (AlgoFormer)enteContenido;
 		if(    victimaAtacada == null   ||  !victimaAtacada.esAlgoFormer()    ||  victimaAtacada.equals(atacante) )
             throw new CasilleroInvalidoException();
+
+        if(  victimaAtacada.esAutobot()==atacante.esAutobot()  ||  victimaAtacada.esDesepticon() == atacante.esDesepticon())
+            throw new FuegoAmigoException();
 
         victimaAtacada.procesarAtaque(atacante.estadoActual.danioAtaque);
 

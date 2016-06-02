@@ -106,8 +106,8 @@ public class AlgoFormerTest {
 
     @Test
     public void test09AlgoFormerAtacaOtroAlgoFormer() {
-        AlgoFormer optimus = new AlgoFormer(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
-        AlgoFormer megatron = new AlgoFormer(casillero2_2, estadoHumanoideOptimus, estadoAlternoOptimus, vidaMegatron);
+        AlgoFormerAutobot optimus = new AlgoFormerAutobot(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
+        AlgoFormerDesepticon megatron = new AlgoFormerDesepticon(casillero2_2, estadoHumanoideOptimus, estadoAlternoOptimus, vidaMegatron);
 
         optimus.atacar(1, 1);
         Assert.assertTrue(megatron.vida == vidaMegatron - optimus.estadoActual.danioAtaque);
@@ -127,8 +127,8 @@ public class AlgoFormerTest {
 
     @Test
     public void test12AlgoFormerAtacaHaciaAtras() {
-        AlgoFormer optimus = new AlgoFormer(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
-        AlgoFormer megatron = new AlgoFormer(casillero2_2, estadoHumanoideOptimus, estadoAlternoOptimus, vidaMegatron);
+        AlgoFormerAutobot optimus = new AlgoFormerAutobot(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
+        AlgoFormerDesepticon megatron = new AlgoFormerDesepticon(casillero2_2, estadoHumanoideOptimus, estadoAlternoOptimus, vidaMegatron);
 
         megatron.atacar(-1, -1);
         Assert.assertTrue(optimus.vida == vidaOptimus - megatron.estadoActual.danioAtaque);
@@ -136,8 +136,8 @@ public class AlgoFormerTest {
 
     @Test
     public void test13AlgoFormerAtacaEnEstadoAlterno() {
-        AlgoFormer optimus = new AlgoFormer(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
-        AlgoFormer megatron = new AlgoFormer(casillero2_2, estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
+        AlgoFormerAutobot optimus = new AlgoFormerAutobot(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
+        AlgoFormerDesepticon megatron = new AlgoFormerDesepticon(casillero2_2, estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
 
         optimus.cambiarEstado();
         optimus.atacar(1, 1);
@@ -146,8 +146,8 @@ public class AlgoFormerTest {
 
     @Test
     public void test14AlgoFormerEnEstadoAlternoTieneMasRango() {
-        AlgoFormer optimus = new AlgoFormer(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
-        AlgoFormer megatron = new AlgoFormer(tablero.obtenerCasillero(4, 4), estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
+        AlgoFormerAutobot optimus = new AlgoFormerAutobot(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
+        AlgoFormerDesepticon megatron = new AlgoFormerDesepticon(tablero.obtenerCasillero(4, 4), estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
 
         optimus.cambiarEstado();
         optimus.atacar(3, 3);
@@ -156,8 +156,8 @@ public class AlgoFormerTest {
 
     @Test
     public void test15DestruirAlgoFormer() {
-        AlgoFormer optimus = new AlgoFormer(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
-        new AlgoFormer(casillero2_2, estadoHumanoideOptimus, estadoAlternoOptimus, 50);
+        AlgoFormerAutobot optimus = new AlgoFormerAutobot(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
+        AlgoFormerDesepticon megatron = new AlgoFormerDesepticon(casillero2_2, estadoHumanoideMegatron, estadoAlternoMegatron, 50);
         
         optimus.atacar(1, 1);
         Assert.assertTrue(casillero2_2.enteContenido == null);
@@ -173,6 +173,47 @@ public class AlgoFormerTest {
     	AlgoFormer optimus = new AlgoFormer(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
 		AlgoFormer megatron = new AlgoFormer(casillero2_2, estadoHumanoideMegatron, estadoAlternoMegatron,vidaMegatron);
 		optimus.avanzar(1, 1);
+    }
+
+    @Test
+    public void test19AlformerEsUnAutobot(){
+        AlgoFormerAutobot optimus= new AlgoFormerAutobot(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
+
+        Assert.assertTrue(optimus.esAutobot()==true);
+    }
+
+    @Test
+    public void test20AlgoFormerEsDesepticon(){
+        AlgoFormerDesepticon megatron= new AlgoFormerDesepticon(casillero1_1, estadoHumanoideMegatron, estadoAlternoMegatron, vidaMegatron);
+        Assert.assertTrue(megatron.esDesepticon()==true);
+    }
+
+    @Test (expected = FuegoAmigoException.class)
+    public void test21NoSePermiteAtaqueAmigoAutobot(){
+
+        AlgoFormerAutobot optimus=new AlgoFormerAutobot(casillero1_1,estadoHumanoideOptimus,estadoAlternoOptimus,vidaOptimus);
+        AlgoFormerAutobot otroAutobot =new AlgoFormerAutobot(casillero2_2,estadoHumanoideOptimus,estadoAlternoOptimus,vidaOptimus);
+
+        optimus.atacar(1,1);
+
+    }
+
+    @Test (expected = FuegoAmigoException.class)
+    public void test22NoSePermiteAtaqueAmigoDesepticon(){
+
+        AlgoFormerDesepticon megatron=new AlgoFormerDesepticon(casillero1_1,estadoHumanoideOptimus,estadoAlternoOptimus,vidaOptimus);
+        AlgoFormerDesepticon otroDesepticon =new AlgoFormerDesepticon(casillero2_2,estadoHumanoideOptimus,estadoAlternoOptimus,vidaOptimus);
+
+        megatron.atacar(1,1);
+
+    }
+
+    @Test
+    public void test23SePermiteAtaqueAdiferenteAlgoformer(){
+        AlgoFormerAutobot optimus=new AlgoFormerAutobot(casillero1_1,estadoHumanoideOptimus,estadoAlternoOptimus,vidaOptimus);
+        AlgoFormerDesepticon megatron=new AlgoFormerDesepticon(casillero2_2,estadoHumanoideMegatron,estadoAlternoMegatron,vidaMegatron);
+        optimus.atacar(1,1);
+        Assert.assertTrue(megatron.vida == vidaMegatron - optimus.estadoActual.danioAtaque);
     }
     
 }

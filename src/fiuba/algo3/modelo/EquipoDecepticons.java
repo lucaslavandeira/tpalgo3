@@ -12,12 +12,12 @@ public class EquipoDecepticons extends Equipo {
 
     public EquipoDecepticons(Tablero tablero){
         super();
-        this.megatron = new AlgoFormer(tablero.obtenerCasillero(9, 6),new Estado(50,2,2),
+        this.megatron = new AlgoFormerDesepticon(tablero.obtenerCasillero(9, 6),new Estado(50,2,2),
                 new Estado(15,5,4),500);
-        this.bonecrusher = new AlgoFormer(tablero.obtenerCasillero(10, 5),new Estado(50,2,2),
+        this.bonecrusher = new AlgoFormerDesepticon(tablero.obtenerCasillero(10, 5),new Estado(50,2,2),
                 new Estado(15,5,4),500);
 
-        this.frenzy = new AlgoFormer(tablero.obtenerCasillero(10, 7), new Estado(50,2,2),
+        this.frenzy = new AlgoFormerDesepticon(tablero.obtenerCasillero(10, 7), new Estado(50,2,2),
                 new Estado(15,5,4),500);
 
     }

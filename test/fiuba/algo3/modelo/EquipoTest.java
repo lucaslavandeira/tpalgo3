@@ -15,22 +15,20 @@ public class EquipoTest {
     public void setUp() {
         tablero = new Tablero(11);
     }
-    /*se asignan lugares iniciales especificos para cada robot en el tablero al comenzar el juego*/
+    //se asignan lugares iniciales especificos para cada robot en el tablero al comenzar el juego
+    //lugares especificos para tablero de 11
     @Test
     public void test00crearEquipoAutoBots(){
             EquipoAutobots autobots=new EquipoAutobots(tablero);
-
             Assert.assertTrue( autobots.optimus.posicion  ==  tablero.obtenerCasillero(1,6));
-            Assert.assertTrue( autobots.bumblebee.posicion  ==  tablero.obtenerCasillero(0,5));
-            Assert.assertTrue( autobots.ratchet.posicion  ==  tablero.obtenerCasillero(0,7));
+
     }
 
     @Test
     public void test01crearEquipoDecepticons(){
             EquipoDecepticons decepticons=new EquipoDecepticons(tablero);
             Assert.assertTrue( decepticons.megatron.posicion  ==  tablero.obtenerCasillero(9,6));
-            Assert.assertTrue( decepticons.bonecrusher.posicion  ==  tablero.obtenerCasillero(10,5));
-            Assert.assertTrue( decepticons.frenzy.posicion  ==  tablero.obtenerCasillero(10,7));
+
     }
 
     @Test
@@ -51,5 +49,7 @@ public class EquipoTest {
         EquipoAutobots autobots=new EquipoAutobots(tablero);
         autobots.bumblebee.avanzar(0,3);
     }
+
+
 
 }

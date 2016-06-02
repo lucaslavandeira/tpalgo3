@@ -5,21 +5,23 @@ package fiuba.algo3.modelo;
  */
 public class EquipoAutobots extends Equipo {
 
-         AlgoFormer optimus;
-         AlgoFormer bumblebee;
-         AlgoFormer ratchet;
+         AlgoFormerAutobot optimus;
+         AlgoFormerAutobot bumblebee;
+         AlgoFormerAutobot ratchet;
 
 
     public EquipoAutobots(Tablero tablero){
         super();
-        this.optimus = new AlgoFormer(tablero.obtenerCasillero(1, 6),new Estado(50,2,2),
+        this.optimus = new AlgoFormerAutobot(tablero.obtenerCasillero(1, 6),new Estado(50,2,2),
                 new Estado(15,5,4),500);
-        this.bumblebee = new AlgoFormer(tablero.obtenerCasillero(0, 5),new Estado(50,2,2),
+        this.bumblebee = new AlgoFormerAutobot(tablero.obtenerCasillero(0, 5),new Estado(50,2,2),
                 new Estado(15,5,4),500);
 
-        this.ratchet = new AlgoFormer(tablero.obtenerCasillero(0, 7), new Estado(50,2,2),
+        this.ratchet = new AlgoFormerAutobot(tablero.obtenerCasillero(0, 7), new Estado(50,2,2),
                 new Estado(15,5,4),500);
 
     }
+
+
 
 }
