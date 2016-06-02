@@ -26,7 +26,7 @@ public class Casillero {
 		if(    victimaAtacada == null   ||  !victimaAtacada.esAlgoFormer()    ||  victimaAtacada.equals(atacante) )
             throw new CasilleroInvalidoException();
 
-        if(  victimaAtacada.esAutobot()==atacante.esAutobot()  ||  victimaAtacada.esDesepticon() == atacante.esDesepticon())
+        if(  victimaAtacada.esAutobot()==atacante.esAutobot()  ||  victimaAtacada.esDecepticon() == atacante.esDecepticon())
             throw new FuegoAmigoException();
 
         victimaAtacada.procesarAtaque(atacante.estadoActual.danioAtaque);
