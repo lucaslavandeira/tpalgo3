@@ -49,6 +49,20 @@ public class EquipoTest {
         autobots.bumblebee.avanzar(0,3);
     }
 
+    @Test
+    public void test05CrearUnJuegoConAmbosEquiposCompletos(){
+        EquipoAutobots autobots = new EquipoAutobots(tablero);
+        EquipoDecepticons decepticons = new EquipoDecepticons(tablero);
 
+        Casillero casilleroConChispa = tablero.obtenerCasillero(5,5);
+        ChispaSuprema chispa = new ChispaSuprema(casilleroConChispa);
+
+        autobots.optimus.avanzar(1,1);
+        decepticons.megatron.avanzar(1,0);
+
+        Assert.assertTrue(autobots.optimus.posicion == tablero.obtenerCasillero(2,7));
+        Assert.assertTrue(decepticons.megatron.posicion == tablero.obtenerCasillero(10,6));
+        Assert.assertTrue(casilleroConChispa.enteContenido == chispa);
+    }
 
 }
