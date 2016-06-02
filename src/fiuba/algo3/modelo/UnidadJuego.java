@@ -7,5 +7,9 @@ public interface UnidadJuego {
 
     boolean esAlgoFormer();
     boolean esChispaSuprema();
+    boolean esBonus();
+
+    boolean esAutobot();
+    boolean esDesepticon();
 
 }

@@ -72,13 +72,11 @@ public class AlgoFormer implements UnidadJuego {
         return false;
     }
 
-    public boolean esAutobot(){
-        return true;
-    }
+    public boolean esBonus(){return false;}
 
-    public boolean esDesepticon(){
-        return true;
-    }
+    public boolean esAutobot(){return true;}
+
+    public boolean esDesepticon(){return true;}
 
 
 }

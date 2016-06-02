@@ -6,7 +6,6 @@ package fiuba.algo3.modelo;
 public class Casillero {
     Tablero elTablero;
     UnidadJuego enteContenido;
-    Bonus bonus;
     int posicionX;
     int posixionY;
 
