@@ -204,4 +204,18 @@ public class AlgoFormerTest {
 		Assert.assertTrue(casillero10_10.enteContenido == megatron);
 		Assert.assertTrue(casillero5_5.enteContenido == chispaSuprema);
 	}
+    @Test(expected = CasilleroInvalidoException.class)
+    public void test17AlgoFormerSuperpuestos(){
+    	AlgoFormer optimus = new AlgoFormer(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
+		AlgoFormer Bumblebee = new AlgoFormer(casillero1_1, estadoHumanoideBumblebee, estadoAlternoBumblebee,vida);
+    }
+    @Test (expected = CasilleroInvalidoException.class)
+    public void test18AlgoFormerSeMueveEnPosicionDeOtroAlgoFormer(){
+    	AlgoFormer optimus = new AlgoFormer(casillero1_1, estadoHumanoideOptimus, estadoAlternoOptimus, vidaOptimus);
+		AlgoFormer Bumblebee = new AlgoFormer(casillero2_2, estadoHumanoideBumblebee, estadoAlternoBumblebee,vida);
+		Assert.assertTrue(casillero1_1.enteContenido == optimus);
+		Assert.assertTrue(casillero2_2.enteContenido == Bumblebee);
+		optimus.avanzar(1, 1);
+    }
+    
 }
