@@ -5,43 +5,30 @@ package fiuba.algo3.modelo;
  */
 public class Casillero {
     Tablero elTablero;
-    UnidadJuego enteContenido;
+    AlgoFormer ocupante;
     int posicionX;
     int posicionY;
 
-    public Casillero(int posicionX, int posicionY, Tablero unTablero) {
+    public Casillero(int posicionX, int posicionY) {
         this.posicionX = posicionX;
         this.posicionY = posicionY;
-        this.elTablero = unTablero;
     }
 
-    public Casillero buscarCasillero(int direccionX, int direccionY){
-        return this.elTablero.buscarCasillero(this.posicionX, this.posicionY, direccionX, direccionY);
-    }
 	
-	
-	public void propiciarAtaque(AlgoFormer atacante){
-
-		AlgoFormer victimaAtacada = (AlgoFormer) enteContenido;
-		if(    victimaAtacada == null   ||  !victimaAtacada.esAlgoFormer()    ||  victimaAtacada.equals(atacante) )
-            throw new CasilleroInvalidoException();
-
-        if(  victimaAtacada.esAutobot()==atacante.esAutobot()  ||  victimaAtacada.esDecepticon() == atacante.esDecepticon())
-            throw new FuegoAmigoException();
-
-        victimaAtacada.procesarAtaque(atacante.estadoActual.danioAtaque);
-
-
-	}
-	
-	
-
-    public void colocarEnte(UnidadJuego ente) {
-        this.enteContenido = ente;
+    public void colocarRobot(AlgoFormer algoFormer) {
+        ocupante = algoFormer;
     }
 
-    public void destruirUnidad() {
-        this.enteContenido = null;
+    public int getPosicionY() {
+        return posicionY;
+    }
+
+    public int getPosicionX() {
+        return posicionX;
+    }
+
+    public boolean estaOcupado() {
+        return (ocupante != null);
     }
 
 

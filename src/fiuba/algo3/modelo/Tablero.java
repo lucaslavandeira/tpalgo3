@@ -13,7 +13,7 @@ public class Tablero {
 
         for (int i=0; i < tamanio; i++){
             for (int j=0; j < tamanio; j++) {
-                casilleros[i][j] = new Casillero(i, j, this);
+                casilleros[i][j] = new Casillero(i, j);
             }
         }
 
