@@ -14,9 +14,6 @@ public class AlgoFormerTest {
     Casillero casillero1_1;
     Casillero casillero2_2;
 
-//    int vidaOptimus = 500;
-//    int vidaMegatron = 550;
-//    int vida = 50;
     @Before
     public void setUp() {
         tablero = new Tablero(11);

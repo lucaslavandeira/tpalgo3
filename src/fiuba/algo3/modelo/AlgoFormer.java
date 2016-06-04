@@ -6,13 +6,14 @@ package fiuba.algo3.modelo;
  */
 public abstract class AlgoFormer {
     private Casillero posicion;
-
 	protected int vida;
-
     protected int danio;
     protected int velocidad;
     protected int rangoAtaque;
-
+    protected Estado estado;
+    protected Equipo equipo;
+    protected boolean estaVolando;
+    
     public Casillero getPosicion() {
         return posicion;
     }
@@ -22,9 +23,7 @@ public abstract class AlgoFormer {
     }
 
 
-    protected Estado estado;
-    protected Equipo equipo;
-    protected boolean estaVolando;
+
 
 
     // constructor simple usado en tests

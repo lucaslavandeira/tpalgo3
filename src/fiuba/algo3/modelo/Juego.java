@@ -7,19 +7,25 @@ import java.util.HashMap;
  */
 public class Juego {
 
-    Tablero tablero;
-    Equipo equipoConTurno;
+    private Tablero tablero;
+    private Equipo equipoConTurno;
 
-    HashMap<Robots, AlgoFormer> robots;
+    private HashMap<Robots, AlgoFormer> robots;
 
     public Juego(int tamanioTablero) {
         tablero = new Tablero(tamanioTablero);
         robots = new HashMap<Robots, AlgoFormer>();
         equipoConTurno = Equipo.AUTOBOTS;
         crearRobots();
+        colocarChispaSuprema();
     }
 
-    public void crearRobots() {
+    private void colocarChispaSuprema() {
+		Casillero posicionChispaSuprema = tablero.obtenerCasillero(5, 5);
+		posicionChispaSuprema.colocarChispaSuprema();
+	}
+
+	private void crearRobots() {
         robots.put(Robots.OPTIMUS, new Optimus(tablero.obtenerCasillero(1, 1)));
         robots.put(Robots.BUMBLEBLEE, new Bumblebee(tablero.obtenerCasillero(1, 3)));
         robots.put(Robots.RATCHET, new Ratchet(tablero.obtenerCasillero(1, 5)));
@@ -40,6 +46,9 @@ public class Juego {
         }
 
         robot.avanzar(destino);
+        if (destino.tieneChispaSuprema()){
+        	 throw new JugadorGanoException();
+        }
         actualizarEquipoConTurno();
     }
 
