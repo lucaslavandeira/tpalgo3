@@ -4,10 +4,9 @@ package fiuba.algo3.modelo;
  * Created by sickness on 30/05/16.
  */
 public class Casillero {
-    Tablero elTablero;
-    AlgoFormer ocupante;
-    int posicionX;
-    int posicionY;
+    private AlgoFormer ocupante;
+    private int posicionX;
+    private int posicionY;
 
     public Casillero(int posicionX, int posicionY) {
         this.posicionX = posicionX;

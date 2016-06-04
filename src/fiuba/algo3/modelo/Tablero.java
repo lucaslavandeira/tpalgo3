@@ -19,15 +19,7 @@ public class Tablero {
 
         this.tamanio = tamanio;
     }
-    public Casillero buscarCasillero(int xInicial, int yInicial, int direccionX, int direccionY){
-        if  (xInicial + direccionX >= tamanio || yInicial + direccionY >= tamanio
-                                    || xInicial+direccionX < 0 ||  yInicial+direccionY <0)
-            throw new PosicionFueraDelMapaException();
 
-        return casilleros[xInicial + direccionX][yInicial + direccionY];
-    }
-
-    //Este metodo solo se utiliza para realizar Tests
     public Casillero obtenerCasillero(int posicionX, int posicionY) {
         return (casilleros[posicionX][posicionY]);
     }

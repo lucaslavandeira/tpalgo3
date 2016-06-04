@@ -14,15 +14,9 @@ public class AlgoFormerTest {
     Casillero casillero1_1;
     Casillero casillero2_2;
 
-
-    Estado estadoHumanoideOptimus;
-    Estado estadoAlternoOptimus;
-    Estado estadoHumanoideMegatron;
-    Estado estadoAlternoMegatron;
-
-    int vidaOptimus = 500;
-    int vidaMegatron = 550;
-    int vida = 50;
+//    int vidaOptimus = 500;
+//    int vidaMegatron = 550;
+//    int vida = 50;
     @Before
     public void setUp() {
         tablero = new Tablero(11);
@@ -33,7 +27,7 @@ public class AlgoFormerTest {
     @Test
     public void crearUnAlgoFormer() {
         optimus = new Optimus(casillero1_1);
-        Assert.assertTrue(optimus.posicion == casillero1_1);
+        Assert.assertTrue(optimus.getPosicion() == casillero1_1);
     }
 
     @Test

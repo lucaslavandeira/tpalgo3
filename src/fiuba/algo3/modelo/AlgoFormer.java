@@ -5,15 +5,13 @@ package fiuba.algo3.modelo;
  * Created by sickness on 30/05/16.
  */
 public abstract class AlgoFormer {
-    Estado estadoActual;
-    Estado estadoAlternativo;
-    Casillero posicion;
+    private Casillero posicion;
 
-	int vida;
+	protected int vida;
 
-    int danio;
-    int velocidad;
-    int rangoAtaque;
+    protected int danio;
+    protected int velocidad;
+    protected int rangoAtaque;
 
     public Casillero getPosicion() {
         return posicion;
@@ -24,9 +22,9 @@ public abstract class AlgoFormer {
     }
 
 
-    Estado estado;
-    Equipo equipo;
-    boolean estaVolando;
+    protected Estado estado;
+    protected Equipo equipo;
+    protected boolean estaVolando;
 
 
     // constructor simple usado en tests
@@ -68,8 +66,8 @@ public abstract class AlgoFormer {
         if (equipo == enemigo.getEquipo())
             throw new FuegoAmigoException();
 
-        int distanciaX = Math.abs(posicion.posicionX - enemigo.getPosicion().getPosicionX());
-        int distanciaY = Math.abs(posicion.posicionY - enemigo.getPosicion().getPosicionY());
+        int distanciaX = Math.abs(posicion.getPosicionX() - enemigo.getPosicion().getPosicionX());
+        int distanciaY = Math.abs(posicion.getPosicionY() - enemigo.getPosicion().getPosicionY());
 
         if (distanciaX > rangoAtaque || distanciaY > rangoAtaque)
             throw new SobrepasaDistanciaDeAtaqueException();

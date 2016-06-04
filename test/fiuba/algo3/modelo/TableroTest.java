@@ -21,19 +21,5 @@ public class TableroTest {
         }
     }
 
-    @Test
-    public void testBuscarCasillero() {
-        Tablero tablero = new Tablero(tablero_size);
-        Casillero casillero2_2 = tablero.obtenerCasillero(2, 2);
-        Casillero casilleroEncontrado = tablero.buscarCasillero(1, 1, 1, 1);
-        Assert.assertTrue(casillero2_2 == casilleroEncontrado);
-    }
-
-    @Test(expected = PosicionFueraDelMapaException.class)
-    public void testMoverAfueraDelMapa() {
-        Tablero tablero = new Tablero(tablero_size);
-        tablero.buscarCasillero(1, 1, tablero_size, 0);
-    }
-
 }
 
