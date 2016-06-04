@@ -22,4 +22,10 @@ public class CasilleroTest {
         optimus.avanzar(casillero);
         Assert.assertTrue(casillero.estaOcupado());
     }
+    @Test
+    public void tieneChispaSuprema(){
+    	Casillero casilleroConChispaSuprema = new Casillero(5, 5);
+    	casilleroConChispaSuprema.colocarChispaSuprema();
+    	Assert.assertTrue(casilleroConChispaSuprema.tieneChispaSuprema());
+    }
 }
