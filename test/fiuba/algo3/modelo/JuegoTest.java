@@ -79,4 +79,22 @@ public class JuegoTest {
     	juego.moverRobot(Robots.MEGATRON, c6_3);
     	juego.moverRobot(Robots.OPTIMUS, c5_5);
     }
+    @Test
+    public void crearJuegoConTodasLasPiezasEnElTablero(){
+    	Tablero tablero = juego.getTablero();
+    	Casillero posicionOptimus = tablero.obtenerCasillero(1, 1);
+    	Casillero posicionBumbleblee = tablero.obtenerCasillero(1, 3);
+    	Casillero posicionRatchet = tablero.obtenerCasillero(1, 5);
+    	Casillero posicionMegatron = tablero.obtenerCasillero(9, 2);
+    	Casillero posicionBonechusher = tablero.obtenerCasillero(9,4);
+    	Casillero posicionFrenzy = tablero.obtenerCasillero(9, 6);
+    	Casillero posicionChispaSuprema = tablero.obtenerCasillero(5, 5);
+    	Assert.assertTrue(juego.getPosicion(Robots.OPTIMUS) == posicionOptimus);
+    	Assert.assertTrue(juego.getPosicion(Robots.BUMBLEBLEE) == posicionBumbleblee);
+    	Assert.assertTrue(juego.getPosicion(Robots.RATCHET) == posicionRatchet);
+    	Assert.assertTrue(juego.getPosicion(Robots.MEGATRON) == posicionMegatron);
+    	Assert.assertTrue(juego.getPosicion(Robots.BONECRUSHER) == posicionBonechusher);
+    	Assert.assertTrue(juego.getPosicion(Robots.FRENZY) == posicionFrenzy);
+    	Assert.assertTrue(posicionChispaSuprema.tieneChispaSuprema());
+    }
 }
