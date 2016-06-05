@@ -32,7 +32,8 @@ public abstract class AlgoFormer {
             throw new CasilleroInvalidoException();
 
         this.posicion = unCasillero;
-        unCasillero.colocarRobot(this);
+        unCasillero.ocupar();
+
         this.vida = 500;
     }
 
@@ -48,7 +49,8 @@ public abstract class AlgoFormer {
         if (destino.estaOcupado())
             throw new CasilleroInvalidoException();
 
-        destino.colocarRobot(this);
+        posicion.desocupar();
+        destino.ocupar();
         this.posicion = destino;
     }
 

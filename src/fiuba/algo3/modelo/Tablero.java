@@ -21,6 +21,10 @@ public class Tablero {
     }
 
     public Casillero obtenerCasillero(int posicionX, int posicionY) {
+        if(posicionX < 0 || posicionY < 0 || posicionX >= tamanio || posicionY >= tamanio) {
+            throw new CasilleroInvalidoException();
+        }
+
         return (casilleros[posicionX][posicionY]);
     }
 }

@@ -10,33 +10,21 @@ import org.junit.Test;
 public class JuegoTest {
 
     Juego juego;
-    Tablero tablero;
-    Casillero c2_2;
-    Casillero c3_3;
-    Casillero c4_4;
-    Casillero c5_5;
-    
-    Casillero c8_3;
-    Casillero c7_3;
-    Casillero c6_3;
+
+    static int X = 0;
+    static int Y = 1;
+
     @Before
     public void setUp() {
         juego = new Juego(10);
-        tablero = juego.getTablero();
-        c2_2 = tablero.obtenerCasillero(2, 2);
-        c3_3 = tablero.obtenerCasillero(3, 3);
-        c4_4 = tablero.obtenerCasillero(4, 4);
-        c5_5 = tablero.obtenerCasillero(5, 5);
-        c8_3 = tablero.obtenerCasillero(8, 3);
-        c7_3 = tablero.obtenerCasillero(7, 3);
-        c6_3 = tablero.obtenerCasillero(6, 3);
     }
 
 
     @Test
     public void moverRobot() {
-        juego.moverRobot(Robots.OPTIMUS, c2_2);
-        Assert.assertTrue(juego.getPosicion(Robots.OPTIMUS) == c2_2);
+        juego.moverRobot(Robots.OPTIMUS, 2, 2);
+        int[] posicion = juego.getPosicion(Robots.OPTIMUS);
+        Assert.assertTrue(posicion[X] == 2 && posicion[Y] == 2);
     }
 
     @Test
@@ -47,7 +35,7 @@ public class JuegoTest {
 
     @Test(expected = TurnoInvalidoException.class)
     public void moverFueraDeTurnoLanzaExcepcion() {
-        juego.moverRobot(Robots.MEGATRON, c2_2);
+        juego.moverRobot(Robots.MEGATRON, 9, 2);
     }
 
     @Test(expected = TurnoInvalidoException.class)
@@ -62,39 +50,42 @@ public class JuegoTest {
 
     @Test
     public void procesarAtaqueEntreRobots() {
-        juego.moverRobot(Robots.OPTIMUS, c2_2);
+        juego.moverRobot(Robots.OPTIMUS, 2, 2);
         juego.cambiarEstado(Robots.BONECRUSHER);
-        juego.moverRobot(Robots.BONECRUSHER, tablero.obtenerCasillero(2, 3));
+        juego.moverRobot(Robots.BONECRUSHER, 2, 3);
         juego.procesarAtaque(Robots.OPTIMUS, Robots.BONECRUSHER);
         int vida = juego.getVida(Robots.BONECRUSHER);
         Assert.assertTrue(vida == 150);
     }
+
     @Test (expected = JugadorGanoException.class)
     public void jugadorGano() {
-    	juego.moverRobot(Robots.OPTIMUS, c2_2);
-    	juego.moverRobot(Robots.MEGATRON, c8_3);
-    	juego.moverRobot(Robots.OPTIMUS, c3_3);
-    	juego.moverRobot(Robots.MEGATRON, c7_3);
-    	juego.moverRobot(Robots.OPTIMUS, c4_4);
-    	juego.moverRobot(Robots.MEGATRON, c6_3);
-    	juego.moverRobot(Robots.OPTIMUS, c5_5);
+        // posición de la chispa en 5, 5. Cuando Optimus llega, se lanza la excepción
+    	juego.moverRobot(Robots.OPTIMUS, 2, 2);
+    	juego.moverRobot(Robots.MEGATRON, 9, 1);
+    	juego.moverRobot(Robots.OPTIMUS, 3, 3);
+    	juego.moverRobot(Robots.MEGATRON, 9, 2);
+    	juego.moverRobot(Robots.OPTIMUS, 4, 4);
+    	juego.moverRobot(Robots.MEGATRON, 9, 1);
+    	juego.moverRobot(Robots.OPTIMUS, 5, 5);
     }
+
     @Test
     public void crearJuegoConTodasLasPiezasEnElTablero(){
-    	Tablero tablero = juego.getTablero();
-    	Casillero posicionOptimus = tablero.obtenerCasillero(1, 1);
-    	Casillero posicionBumbleblee = tablero.obtenerCasillero(1, 3);
-    	Casillero posicionRatchet = tablero.obtenerCasillero(1, 5);
-    	Casillero posicionMegatron = tablero.obtenerCasillero(9, 2);
-    	Casillero posicionBonechusher = tablero.obtenerCasillero(9,4);
-    	Casillero posicionFrenzy = tablero.obtenerCasillero(9, 6);
-    	Casillero posicionChispaSuprema = tablero.obtenerCasillero(5, 5);
-    	Assert.assertTrue(juego.getPosicion(Robots.OPTIMUS) == posicionOptimus);
-    	Assert.assertTrue(juego.getPosicion(Robots.BUMBLEBLEE) == posicionBumbleblee);
-    	Assert.assertTrue(juego.getPosicion(Robots.RATCHET) == posicionRatchet);
-    	Assert.assertTrue(juego.getPosicion(Robots.MEGATRON) == posicionMegatron);
-    	Assert.assertTrue(juego.getPosicion(Robots.BONECRUSHER) == posicionBonechusher);
-    	Assert.assertTrue(juego.getPosicion(Robots.FRENZY) == posicionFrenzy);
-    	Assert.assertTrue(posicionChispaSuprema.tieneChispaSuprema());
+        int[] posicionOptimus = juego.getPosicion(Robots.OPTIMUS);
+        int[] posicionBumblebee = juego.getPosicion(Robots.BUMBLEBLEE);
+        int[] posicionRatchet = juego.getPosicion(Robots.RATCHET);
+        int[] posicionMegatron = juego.getPosicion(Robots.MEGATRON);
+        int[] posicionBonechusher = juego.getPosicion(Robots.BONECRUSHER);
+        int[] posicionFrenzy = juego.getPosicion(Robots.FRENZY);
+
+        int[] posicionChispa = juego.getPosicionDeChispaSuprema();
+        Assert.assertTrue(posicionOptimus[X] == 1 && posicionOptimus[Y] == 1);
+        Assert.assertTrue(posicionBumblebee[X] == 1 && posicionBumblebee[Y] == 3);
+        Assert.assertTrue(posicionRatchet[X] == 1 && posicionRatchet[Y] == 5);
+        Assert.assertTrue(posicionMegatron[X] == 9 && posicionMegatron[Y] == 2);
+        Assert.assertTrue(posicionBonechusher[X] == 9 && posicionBonechusher[Y] == 4);
+        Assert.assertTrue(posicionFrenzy[X] == 9 && posicionFrenzy[Y] == 6);
+        Assert.assertTrue(posicionChispa[X] == 5 && posicionChispa[Y] == 5);
     }
 }

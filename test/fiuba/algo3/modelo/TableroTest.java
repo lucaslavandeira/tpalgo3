@@ -21,5 +21,10 @@ public class TableroTest {
         }
     }
 
+    @Test(expected = CasilleroInvalidoException.class)
+    public void obtenerCasilleroInvalidoLanzaExcepcion() {
+        Tablero tablero = new Tablero(tablero_size);
+        tablero.obtenerCasillero(-1, 0);
+    }
 }
 

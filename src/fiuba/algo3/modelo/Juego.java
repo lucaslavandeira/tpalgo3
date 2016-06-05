@@ -12,6 +12,7 @@ public class Juego {
 
     private HashMap<Robots, AlgoFormer> robots;
 
+    private Casillero posicionChispaSuprema;
     public Juego(int tamanioTablero) {
         tablero = new Tablero(tamanioTablero);
         robots = new HashMap<Robots, AlgoFormer>();
@@ -21,9 +22,10 @@ public class Juego {
     }
 
     private void colocarChispaSuprema() {
-		Casillero posicionChispaSuprema = tablero.obtenerCasillero(5, 5);
+		posicionChispaSuprema = tablero.obtenerCasillero(5, 5);
 		posicionChispaSuprema.colocarChispaSuprema();
 	}
+
 
 	private void crearRobots() {
         robots.put(Robots.OPTIMUS, new Optimus(tablero.obtenerCasillero(1, 1)));
@@ -34,18 +36,16 @@ public class Juego {
         robots.put(Robots.FRENZY, new Frenzy(tablero.obtenerCasillero(9, 6)));
     }
 
-    public Tablero getTablero() {
-        return tablero;
-    }
+    public void moverRobot(Robots identificador, int posicionX, int posicionY) {
 
-
-    public void moverRobot(Robots identificador, Casillero destino) {
         AlgoFormer robot = robots.get(identificador);
         if (equipoConTurno != robot.getEquipo()) {
             throw new TurnoInvalidoException();
         }
 
+        Casillero destino = tablero.obtenerCasillero(posicionX, posicionY);
         robot.avanzar(destino);
+
         if (destino.tieneChispaSuprema()){
         	 throw new JugadorGanoException();
         }
@@ -74,10 +74,18 @@ public class Juego {
         return robots.get(identificador).getEstado();
     }
 
-    public Casillero getPosicion(Robots identificador) {
-        return robots.get(identificador).getPosicion();
+    public int[] getPosicion(Robots identificador) {
+        Casillero casillero = robots.get(identificador).getPosicion();
+        int posiciones[] = new int[2];
+        posiciones[0] = casillero.getPosicionX();
+        posiciones[1] = casillero.getPosicionY();
+        return posiciones;
     }
 
+    public int[] getPosicionDeChispaSuprema() {
+        int[] posicion = {posicionChispaSuprema.getPosicionX(), posicionChispaSuprema.getPosicionY()};
+        return posicion;
+    }
     public int getVida(Robots identificador) {
         return robots.get(identificador).getVida();
     }

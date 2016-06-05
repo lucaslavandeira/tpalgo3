@@ -74,8 +74,6 @@ public class AlgoFormerTest {
     }
 
 
-
-
     @Test
     public void algoFormerAtacaOtroAlgoFormer() {
         Optimus optimus = new Optimus(casillero1_1);

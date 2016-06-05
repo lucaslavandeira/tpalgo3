@@ -4,7 +4,7 @@ package fiuba.algo3.modelo;
  * Created by sickness on 30/05/16.
  */
 public class Casillero {
-    private AlgoFormer ocupante;
+    private boolean estaOcupado;
     private int posicionX;
     private int posicionY;
     private boolean tieneChispaSuprema;
@@ -19,10 +19,11 @@ public class Casillero {
 		tieneChispaSuprema = true;
 	}
 	public boolean tieneChispaSuprema(){
-		return this.tieneChispaSuprema;
+		return tieneChispaSuprema;
 	}
-    public void colocarRobot(AlgoFormer algoFormer) {
-        ocupante = algoFormer;
+
+    public void ocupar() {
+        estaOcupado = true;
     }
 
     public int getPosicionY() {
@@ -34,8 +35,11 @@ public class Casillero {
     }
 
     public boolean estaOcupado() {
-        return (ocupante != null);
+        return estaOcupado;
     }
 
 
+    public void desocupar() {
+        estaOcupado = false;
+    }
 }
