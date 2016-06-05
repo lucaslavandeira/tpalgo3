@@ -13,12 +13,16 @@ public class AlgoFormerTest {
     AlgoFormer optimus;
     Casillero casillero1_1;
     Casillero casillero2_2;
+    Casillero casillero3_3;
+    Casillero casillero4_4;
 
     @Before
     public void setUp() {
         tablero = new Tablero(11);
         casillero1_1 = tablero.obtenerCasillero(1, 1);
         casillero2_2 = tablero.obtenerCasillero(2, 2);
+        casillero3_3 = tablero.obtenerCasillero(3, 3);
+        casillero4_4 = tablero.obtenerCasillero(4, 4);
     }
 
     @Test
@@ -48,6 +52,21 @@ public class AlgoFormerTest {
         AlgoFormer optimus = new Optimus(casillero1_1);
         optimus.cambiarEstado();
         Assert.assertTrue(optimus.getEstado() == Estado.ALTERNATIVO);
+
+        AlgoFormer bumbleblee = new Bumblebee(casillero2_2);
+        bumbleblee.cambiarEstado();
+        Assert.assertTrue(bumbleblee.getEstado() == Estado.ALTERNATIVO);
+        Assert.assertFalse(bumbleblee.getEstado() == Estado.HUMANOIDE);
+
+        AlgoFormer frenzy = new Frenzy(casillero3_3);
+        frenzy.cambiarEstado();
+        Assert.assertTrue(frenzy.getEstado() == Estado.ALTERNATIVO);
+        Assert.assertFalse(frenzy.getEstado() == Estado.HUMANOIDE);
+
+        AlgoFormer ratchet = new Ratchet(casillero4_4);
+        ratchet.cambiarEstado();
+        Assert.assertTrue(ratchet.getEstado() == Estado.ALTERNATIVO);
+        Assert.assertFalse(ratchet.getEstado() == Estado.HUMANOIDE);
     }
 
     @Test
