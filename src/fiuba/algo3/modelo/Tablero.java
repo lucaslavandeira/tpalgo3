@@ -5,8 +5,8 @@ package fiuba.algo3.modelo;
  * Created by sickness on 30/05/16.
  */
 public class Tablero {
-    Casillero[][] casilleros;
-    int tamanio;
+    private Casillero[][] casilleros;
+    private int tamanio;
 
     public Tablero(int tamanio){
         casilleros = new Casillero[tamanio][tamanio];
