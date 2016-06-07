@@ -11,7 +11,7 @@ public class Frenzy extends AlgoFormer {
         super(unCasillero);
         this.vida = 400;
         this.setEstadoHumanoide();
-        equipo = Equipo.DECEPTICONS;
+        this.equipo = Equipo.DECEPTICONS;
 
     }
 

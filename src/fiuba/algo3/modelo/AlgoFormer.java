@@ -13,17 +13,16 @@ public abstract class AlgoFormer {
     protected Estado estado;
     protected Equipo equipo;
     protected boolean estaVolando;
-    
+
+
     public Casillero getPosicion() {
-        return posicion;
+        return this.posicion;
     }
+
 
     public Equipo getEquipo() {
-        return equipo;
+        return this.equipo;
     }
-
-
-
 
 
     // constructor simple usado en tests
@@ -37,25 +36,24 @@ public abstract class AlgoFormer {
         this.vida = 500;
     }
 
+
     public void avanzar(Casillero destino) {
-        int destinoPosicionX = destino.getPosicionX();
-        int destinoPosicionY = destino.getPosicionY();
 
-
-        if (Math.abs(posicion.getPosicionX() - destinoPosicionX) > this.velocidad || Math.abs(posicion.getPosicionY() - destinoPosicionY) > this.velocidad) {
+        if (this.velocidad < this.posicion.calcularDistancia(destino)){
             throw new SobrepasaSuVelocidadException();
         }
 
         if (destino.estaOcupado())
             throw new CasilleroInvalidoException();
 
-        posicion.desocupar();
+        this.posicion.desocupar();
         destino.ocupar();
         this.posicion = destino;
     }
 
+
     public void cambiarEstado(){
-        if(estado == Estado.HUMANOIDE) {
+        if(this.estado == Estado.HUMANOIDE) {
             setEstadoAlternativo();
         } else {
             setEstadoHumanoide();
@@ -67,10 +65,7 @@ public abstract class AlgoFormer {
         if (equipo == enemigo.getEquipo())
             throw new FuegoAmigoException();
 
-        int distanciaX = Math.abs(posicion.getPosicionX() - enemigo.getPosicion().getPosicionX());
-        int distanciaY = Math.abs(posicion.getPosicionY() - enemigo.getPosicion().getPosicionY());
-
-        if (distanciaX > rangoAtaque || distanciaY > rangoAtaque)
+        if (posicion.calcularDistancia(enemigo.posicion) > this.rangoAtaque)
             throw new SobrepasaDistanciaDeAtaqueException();
 
         enemigo.recibirAtaque(danio);
@@ -85,6 +80,7 @@ public abstract class AlgoFormer {
     public Estado getEstado() {
         return estado;
     };
+
 
     public abstract void setEstadoHumanoide();
     public abstract void setEstadoAlternativo();

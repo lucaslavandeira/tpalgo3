@@ -10,7 +10,7 @@ public class Ratchet extends AlgoFormer{
         super(unCasillero);
         this.vida=150;
         this.setEstadoHumanoide();
-        equipo = Equipo.AUTOBOTS;
+        this.equipo = Equipo.AUTOBOTS;
 
     }
 

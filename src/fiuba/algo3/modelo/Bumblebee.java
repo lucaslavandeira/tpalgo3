@@ -10,7 +10,7 @@ public class Bumblebee extends AlgoFormer{
         super(unCasillero);
         this.vida = 350;
         this.setEstadoHumanoide();
-        equipo = Equipo.AUTOBOTS;
+        this.equipo = Equipo.AUTOBOTS;
 
     }
 

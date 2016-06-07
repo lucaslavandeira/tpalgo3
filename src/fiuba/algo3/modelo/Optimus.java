@@ -10,7 +10,7 @@ public class Optimus extends AlgoFormer {
         super(unCasillero);
         this.vida=500;
         this.setEstadoHumanoide();
-        equipo = Equipo.AUTOBOTS;
+        this.equipo = Equipo.AUTOBOTS;
 
     }
 

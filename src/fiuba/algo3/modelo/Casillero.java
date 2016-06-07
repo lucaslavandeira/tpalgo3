@@ -23,23 +23,36 @@ public class Casillero {
 	}
 
     public void ocupar() {
-        estaOcupado = true;
+        this.estaOcupado = true;
     }
 
     public int getPosicionY() {
-        return posicionY;
+        return this.posicionY;
     }
 
     public int getPosicionX() {
-        return posicionX;
+        return this.posicionX;
     }
 
     public boolean estaOcupado() {
-        return estaOcupado;
+        return this.estaOcupado;
     }
 
 
     public void desocupar() {
-        estaOcupado = false;
+        this.estaOcupado = false;
+    }
+
+    public int calcularDistancia(Casillero otroCasillero) {
+
+        int distanciaX = Math.abs(this.posicionX - otroCasillero.posicionX);
+        int distanciaY = Math.abs(this.posicionY - otroCasillero.posicionY);
+
+        if (distanciaX > distanciaY){
+            return distanciaX;
+        }else{
+            return distanciaY;
+        }
+
     }
 }

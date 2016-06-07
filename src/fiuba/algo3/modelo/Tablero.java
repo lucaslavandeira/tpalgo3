@@ -9,11 +9,11 @@ public class Tablero {
     private int tamanio;
 
     public Tablero(int tamanio){
-        casilleros = new Casillero[tamanio][tamanio];
+        this.casilleros = new Casillero[tamanio][tamanio];
 
         for (int i=0; i < tamanio; i++){
             for (int j=0; j < tamanio; j++) {
-                casilleros[i][j] = new Casillero(i, j);
+                this.casilleros[i][j] = new Casillero(i, j);
             }
         }
 
@@ -21,10 +21,10 @@ public class Tablero {
     }
 
     public Casillero obtenerCasillero(int posicionX, int posicionY) {
-        if(posicionX < 0 || posicionY < 0 || posicionX >= tamanio || posicionY >= tamanio) {
+        if(posicionX < 0 || posicionY < 0 || posicionX >= this.tamanio || posicionY >= this.tamanio) {
             throw new CasilleroInvalidoException();
         }
 
-        return (casilleros[posicionX][posicionY]);
+        return (this.casilleros[posicionX][posicionY]);
     }
 }

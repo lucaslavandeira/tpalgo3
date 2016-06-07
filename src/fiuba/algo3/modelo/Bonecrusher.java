@@ -9,7 +9,7 @@ public class Bonecrusher extends AlgoFormer {
         super(unCasillero);
         this.vida=200;
         this.setEstadoHumanoide();
-        equipo = Equipo.DECEPTICONS;
+        this.equipo = Equipo.DECEPTICONS;
     }
 
     public void setEstadoAlternativo(){
