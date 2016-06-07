@@ -26,13 +26,6 @@ public class Casillero {
         this.estaOcupado = true;
     }
 
-    public int getPosicionY() {
-        return this.posicionY;
-    }
-
-    public int getPosicionX() {
-        return this.posicionX;
-    }
 
     public boolean estaOcupado() {
         return this.estaOcupado;

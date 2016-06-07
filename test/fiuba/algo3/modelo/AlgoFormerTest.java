@@ -15,6 +15,7 @@ public class AlgoFormerTest {
     Casillero casillero2_2;
     Casillero casillero3_3;
     Casillero casillero4_4;
+    Casillero casillero5_5;
 
     @Before
     public void setUp() {
@@ -23,6 +24,7 @@ public class AlgoFormerTest {
         casillero2_2 = tablero.obtenerCasillero(2, 2);
         casillero3_3 = tablero.obtenerCasillero(3, 3);
         casillero4_4 = tablero.obtenerCasillero(4, 4);
+        casillero5_5 = tablero.obtenerCasillero(5, 5);
     }
 
     @Test
@@ -67,6 +69,11 @@ public class AlgoFormerTest {
         ratchet.cambiarEstado();
         Assert.assertTrue(ratchet.getEstado() == Estado.ALTERNATIVO);
         Assert.assertFalse(ratchet.getEstado() == Estado.HUMANOIDE);
+
+        AlgoFormer megatron = new Megatron(casillero5_5);
+        megatron.cambiarEstado();
+        Assert.assertTrue(megatron.getEstado() == Estado.ALTERNATIVO);
+        Assert.assertFalse(megatron.getEstado() == Estado.HUMANOIDE);
     }
 
     @Test
@@ -88,7 +95,7 @@ public class AlgoFormerTest {
 	@Test(expected = SobrepasaDistanciaDeAtaqueException.class)
     public void siAlgoFormerSobrepasaSuDistanciaDeAtaqueLanzaException(){
         AlgoFormer optimus = new Optimus(casillero1_1);
-        AlgoFormer megatron = new Megatron(tablero.obtenerCasillero(5, 5));
+        AlgoFormer megatron = new Megatron(tablero.obtenerCasillero(6, 5));
         optimus.atacar(megatron);
     }
 
@@ -145,6 +152,16 @@ public class AlgoFormerTest {
         optimus.atacar(bumblebee);
     }
 
+
+    @Test (expected = FuegoAmigoException.class)
+    public void noSePermiteFuegoAmigoAunqueCambieDeEstado(){
+        Megatron megatron = new Megatron(casillero1_1);
+        Bonecrusher bonecrusher = new Bonecrusher(casillero2_2);
+
+        bonecrusher.cambiarEstado();
+
+        megatron.atacar(bonecrusher);
+    }
 
     @Test
     public void cambiarEstadoPreservaVida() {
