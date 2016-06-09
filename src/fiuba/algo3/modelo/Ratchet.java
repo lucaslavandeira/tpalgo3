@@ -4,7 +4,7 @@ package fiuba.algo3.modelo;
 /**
  * Created by Diego on 03/06/2016.
  */
-public class Ratchet extends AlgoFormerVuela{
+public class Ratchet extends AlgoFormer{
 
     public Ratchet(Casillero unCasillero){
         super(unCasillero);
