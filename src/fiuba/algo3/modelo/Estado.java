@@ -5,7 +5,7 @@ package fiuba.algo3.modelo;
  */
 public class Estado {
     //Aca posiblemente pondriamos poner la logica para los turnos o algo que necesiten las clases hijas
-	public void aplicarEfecto(Casillero posicion) {
+	public void aplicarEfectoDelCasillero(Casillero posicion) {
 		
 		
 	}

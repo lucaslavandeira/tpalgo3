@@ -16,6 +16,8 @@ public class Frenzy extends AlgoFormer {
     }
 
     public void setEstadoAlternativo(){
+
+
         this.danio=25;
         this.velocidad=6;
         this.rangoAtaque=2;

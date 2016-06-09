@@ -28,15 +28,14 @@ public abstract class AlgoFormer {
     }
 
 
-    // constructor simple usado en tests
+
     public AlgoFormer(Casillero unCasillero) {
         if(unCasillero.estaOcupado())
             throw new CasilleroInvalidoException();
-        
+
         this.posicion = unCasillero;
         unCasillero.ocupar();
 
-        this.vida = 500;
     }
 
 
@@ -52,7 +51,7 @@ public abstract class AlgoFormer {
         this.posicion.desocupar();
         destino.ocupar();
         this.posicion = destino;
-        estado.aplicarEfecto(this.posicion);
+        estado.aplicarEfectoDelCasillero(this.posicion);
     }
 
 
@@ -60,11 +59,11 @@ public abstract class AlgoFormer {
         setEstadoAlternativo();
     }
     public void cambiarEstadoHumanoide(){
-    	setEstadoHumanoide();
+        setEstadoHumanoide();
     }
 
     public void atacar(AlgoFormer enemigo) {
-        if (equipo == enemigo.getEquipo())
+        if (this.equipo==enemigo.equipo)
             throw new FuegoAmigoException();
 
         if (posicion.calcularDistancia(enemigo.posicion) > this.rangoAtaque)
@@ -73,10 +72,13 @@ public abstract class AlgoFormer {
         enemigo.recibirAtaque(danio);
     }
 
+    public boolean estaMuerto() {
+        return this.vida<=0;
+    }
+
 
     public void recibirAtaque(int danio) {
         this.vida -= danio;
-
     }
 
 

@@ -4,20 +4,6 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
-import fiuba.algo3.modelo.AlgoFormer;
-import fiuba.algo3.modelo.Bonecrusher;
-import fiuba.algo3.modelo.Bumblebee;
-import fiuba.algo3.modelo.Casillero;
-import fiuba.algo3.modelo.CasilleroInvalidoException;
-import fiuba.algo3.modelo.Frenzy;
-import fiuba.algo3.modelo.FuegoAmigoException;
-import fiuba.algo3.modelo.Megatron;
-import fiuba.algo3.modelo.Optimus;
-import fiuba.algo3.modelo.Ratchet;
-import fiuba.algo3.modelo.SobrepasaDistanciaDeAtaqueException;
-import fiuba.algo3.modelo.Tablero;
-import fiuba.algo3.modelo.SobrepasaSuVelocidadException;
-
 
 /**
  * Created by sickness on 30/05/16.
@@ -103,8 +89,11 @@ public class AlgoFormerTest {
         Optimus optimus = new Optimus(casillero1_1);
         Megatron megatron = new Megatron(casillero2_2);
 
-        optimus.atacar(megatron);
-        Assert.assertTrue(megatron.getVida() == 500);
+       for(int i=0;i<11;i++) {
+           optimus.atacar(megatron);
+       }
+
+        Assert.assertTrue(megatron.estaMuerto());/////++++++++++++++++
     }
 
 
@@ -119,8 +108,10 @@ public class AlgoFormerTest {
         Optimus optimus = new Optimus(casillero1_1);
         Megatron megatron = new Megatron(casillero2_2);
         optimus.cambiarEstadoAlternativo();
-        optimus.atacar(megatron);
-        Assert.assertTrue(megatron.getVida() == 535);
+        for(int i=0;i<37;i++) {
+            optimus.atacar(megatron);
+        }
+        Assert.assertTrue(megatron.estaMuerto());//*****************
     }
 
 
@@ -128,8 +119,8 @@ public class AlgoFormerTest {
 
     @Test(expected = CasilleroInvalidoException.class)
     public void crearRobotEnEspacioOcupadoLanzaExcepcion(){
-    	AlgoFormer optimus = new Optimus(casillero1_1);
-		AlgoFormer megatron = new Megatron(casillero1_1);
+            AlgoFormer optimus = new Optimus(casillero1_1);
+            AlgoFormer megatron = new Megatron(casillero1_1);
     }
 
     @Test (expected = CasilleroInvalidoException.class)
@@ -161,14 +152,7 @@ public class AlgoFormerTest {
         megatron.atacar(bonecrusher);
     }
 
-    @Test
-    public void cambiarEstadoPreservaVida() {
-        Optimus optimus = new Optimus(casillero1_1);
-        Megatron megatron = new Megatron(casillero2_2);
-        megatron.atacar(optimus);
-        int vidaAntes = optimus.getVida();
-        optimus.cambiarEstadoAlternativo();
-        int vidaDespues = optimus.getVida();
-        Assert.assertTrue(vidaAntes == vidaDespues);
-    }
+
+
+
 }
