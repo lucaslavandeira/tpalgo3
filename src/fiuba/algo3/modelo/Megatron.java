@@ -3,7 +3,7 @@ package fiuba.algo3.modelo;
 /**
  * Created by Diego on 03/06/2016.
  */
-public class Megatron extends AlgoFormer {
+public class Megatron extends AlgoFormerVuela {
 
     public Megatron(Casillero unCasillero){
         super(unCasillero);
@@ -17,15 +17,15 @@ public class Megatron extends AlgoFormer {
         this.danio=55;
         this.velocidad=8;
         this.rangoAtaque=2;
-        this.estado = Estado.ALTERNATIVO;
-        this.estaVolando = true;
+        this.estado = this.estadoHumanoide;
+       
     }
 
     public void setEstadoHumanoide(){
         this.danio=10;
         this.velocidad=1;
         this.rangoAtaque=3;
-        this.estado = Estado.HUMANOIDE;
-        this.estaVolando = false;
+        this.estado = this.estadoAlternativoVuela;
+        
     }
 }

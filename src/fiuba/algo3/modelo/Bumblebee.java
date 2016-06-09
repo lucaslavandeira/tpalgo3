@@ -19,7 +19,7 @@ public class Bumblebee extends AlgoFormer{
         this.velocidad=5;
         this.rangoAtaque=3;
         this.estaVolando = false;
-        this.estado = Estado.ALTERNATIVO;
+        this.estado = this.estadoAlternativo;
     }
 
     public void setEstadoHumanoide(){
@@ -27,6 +27,6 @@ public class Bumblebee extends AlgoFormer{
         this.velocidad=2;
         this.rangoAtaque=1;
         this.estaVolando = false;
-        this.estado = Estado.HUMANOIDE;
+        this.estado = this.estadoHumanoide;
     }
 }

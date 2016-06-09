@@ -4,7 +4,7 @@ package fiuba.algo3.modelo;
 /**
  * Created by Diego on 03/06/2016.
  */
-public class Ratchet extends AlgoFormer{
+public class Ratchet extends AlgoFormerVuela{
 
     public Ratchet(Casillero unCasillero){
         super(unCasillero);
@@ -18,7 +18,7 @@ public class Ratchet extends AlgoFormer{
         this.danio=35;
         this.velocidad=8;
         this.rangoAtaque=2;
-        this.estado = Estado.ALTERNATIVO;
+        this.estado = this.estadoAlternativoVuela;
         this.estaVolando = true;
     }
 
@@ -26,7 +26,7 @@ public class Ratchet extends AlgoFormer{
         this.danio=5;
         this.velocidad=1;
         this.rangoAtaque=5;
-        this.estado = Estado.HUMANOIDE;
+        this.estado = this.estadoHumanoide;
         this.estaVolando = false;
     }
 }

@@ -48,4 +48,14 @@ public class Casillero {
         }
 
     }
+
+	public void efectoTerrestre(Estado estado) {
+		
+		
+	}
+
+	public void efectoAereo(Estado estado) {
+		
+		
+	}
 }

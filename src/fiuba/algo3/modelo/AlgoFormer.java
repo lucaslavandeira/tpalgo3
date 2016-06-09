@@ -5,12 +5,15 @@ package fiuba.algo3.modelo;
  * Created by sickness on 30/05/16.
  */
 public abstract class AlgoFormer {
-    private Casillero posicion;
+    protected Casillero posicion;
 	protected int vida;
     protected int danio;
     protected int velocidad;
     protected int rangoAtaque;
-    protected Estado estado;
+    protected Estado estado = new Estado();
+    protected EstadoHumanoide estadoHumanoide = new EstadoHumanoide();
+    protected EstadoAlternativo estadoAlternativo = new EstadoAlternativo();
+    protected EstadoAlternativoVuela estadoAlternativoVuela;
     protected Equipo equipo;
     protected boolean estaVolando;
 
@@ -29,7 +32,7 @@ public abstract class AlgoFormer {
     public AlgoFormer(Casillero unCasillero) {
         if(unCasillero.estaOcupado())
             throw new CasilleroInvalidoException();
-
+        
         this.posicion = unCasillero;
         unCasillero.ocupar();
 
@@ -49,17 +52,16 @@ public abstract class AlgoFormer {
         this.posicion.desocupar();
         destino.ocupar();
         this.posicion = destino;
+        estado.aplicarEfecto(this.posicion);
     }
 
 
-    public void cambiarEstado(){
-        if(this.estado == Estado.HUMANOIDE) {
-            setEstadoAlternativo();
-        } else {
-            setEstadoHumanoide();
-        }
+    public void cambiarEstadoAlternativo(){
+        setEstadoAlternativo();
     }
-
+    public void cambiarEstadoHumanoide(){
+    	setEstadoHumanoide();
+    }
 
     public void atacar(AlgoFormer enemigo) {
         if (equipo == enemigo.getEquipo())
@@ -77,9 +79,7 @@ public abstract class AlgoFormer {
 
     }
 
-    public Estado getEstado() {
-        return estado;
-    };
+
 
 
     public abstract void setEstadoHumanoide();

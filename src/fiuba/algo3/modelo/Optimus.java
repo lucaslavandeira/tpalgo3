@@ -18,7 +18,7 @@ public class Optimus extends AlgoFormer {
         this.danio=15;
         this.velocidad=5;
         this.rangoAtaque=4;
-        this.estado = Estado.ALTERNATIVO;
+        this.estado = this.estadoAlternativo;
         this.estaVolando = false;
     }
 
@@ -26,7 +26,7 @@ public class Optimus extends AlgoFormer {
         this.danio=50;
         this.velocidad=2;
         this.rangoAtaque=2;
-        this.estado = Estado.HUMANOIDE;
+        this.estado = this.estadoHumanoide;
         this.estaVolando = false;
     }
 }

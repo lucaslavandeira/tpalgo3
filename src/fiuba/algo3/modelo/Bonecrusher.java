@@ -16,7 +16,7 @@ public class Bonecrusher extends AlgoFormer {
         this.danio=30;
         this.velocidad=8;
         this.rangoAtaque=3;
-        this.estado = Estado.ALTERNATIVO;
+        this.estado = this.estadoAlternativo;
         this.estaVolando = false;
     }
 
@@ -24,7 +24,7 @@ public class Bonecrusher extends AlgoFormer {
         this.danio=30;
         this.velocidad=1;
         this.rangoAtaque=3;
-        this.estado = Estado.HUMANOIDE;
+        this.estado = this.estadoHumanoide;
         this.estaVolando = false;
     }
 

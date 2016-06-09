@@ -19,7 +19,7 @@ public class Frenzy extends AlgoFormer {
         this.danio=25;
         this.velocidad=6;
         this.rangoAtaque=2;
-        this.estado = Estado.ALTERNATIVO;
+        this.estado = this.estadoAlternativo;
         this.estaVolando = false;
     }
 
@@ -27,7 +27,7 @@ public class Frenzy extends AlgoFormer {
         this.danio=10;
         this.velocidad=2;
         this.rangoAtaque=5;
-        this.estado = Estado.HUMANOIDE;
+        this.estado = this.estadoHumanoide;
         this.estaVolando = false;
     }
 }

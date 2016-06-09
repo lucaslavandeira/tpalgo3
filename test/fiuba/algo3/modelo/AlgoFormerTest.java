@@ -4,6 +4,21 @@ import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
 
+import fiuba.algo3.modelo.AlgoFormer;
+import fiuba.algo3.modelo.Bonecrusher;
+import fiuba.algo3.modelo.Bumblebee;
+import fiuba.algo3.modelo.Casillero;
+import fiuba.algo3.modelo.CasilleroInvalidoException;
+import fiuba.algo3.modelo.Frenzy;
+import fiuba.algo3.modelo.FuegoAmigoException;
+import fiuba.algo3.modelo.Megatron;
+import fiuba.algo3.modelo.Optimus;
+import fiuba.algo3.modelo.Ratchet;
+import fiuba.algo3.modelo.SobrepasaDistanciaDeAtaqueException;
+import fiuba.algo3.modelo.Tablero;
+import fiuba.algo3.modelo.SobrepasaSuVelocidadException;
+
+
 /**
  * Created by sickness on 30/05/16.
  */
@@ -52,41 +67,24 @@ public class AlgoFormerTest {
     @Test
     public void cambiarEstado() {
         AlgoFormer optimus = new Optimus(casillero1_1);
-        optimus.cambiarEstado();
-        Assert.assertTrue(optimus.getEstado() == Estado.ALTERNATIVO);
+        optimus.cambiarEstadoAlternativo();
+        optimus.avanzar(casillero4_4);
+        Assert.assertTrue( casillero4_4 == optimus.getPosicion() );
+        }
 
-        AlgoFormer bumbleblee = new Bumblebee(casillero2_2);
-        bumbleblee.cambiarEstado();
-        Assert.assertTrue(bumbleblee.getEstado() == Estado.ALTERNATIVO);
-        Assert.assertFalse(bumbleblee.getEstado() == Estado.HUMANOIDE);
-
-        AlgoFormer frenzy = new Frenzy(casillero3_3);
-        frenzy.cambiarEstado();
-        Assert.assertTrue(frenzy.getEstado() == Estado.ALTERNATIVO);
-        Assert.assertFalse(frenzy.getEstado() == Estado.HUMANOIDE);
-
-        AlgoFormer ratchet = new Ratchet(casillero4_4);
-        ratchet.cambiarEstado();
-        Assert.assertTrue(ratchet.getEstado() == Estado.ALTERNATIVO);
-        Assert.assertFalse(ratchet.getEstado() == Estado.HUMANOIDE);
-
-        AlgoFormer megatron = new Megatron(casillero5_5);
-        megatron.cambiarEstado();
-        Assert.assertTrue(megatron.getEstado() == Estado.ALTERNATIVO);
-        Assert.assertFalse(megatron.getEstado() == Estado.HUMANOIDE);
-    }
-
-    @Test
+   @Test(expected =  SobrepasaSuVelocidadException.class)
     public void cambiarEstadoDosVeces() {
         AlgoFormer optimus = new Optimus(casillero1_1);
-        optimus.cambiarEstado();
-        optimus.cambiarEstado();
-        Assert.assertTrue(optimus.getEstado() == Estado.HUMANOIDE);
+        optimus.cambiarEstadoAlternativo();
+        optimus.avanzar(casillero4_4);
+        Assert.assertTrue( casillero4_4 == optimus.getPosicion() );
+        optimus.cambiarEstadoHumanoide();
+        optimus.avanzar(casillero1_1);
     }
 
     @Test public void moverseEnEstadoAlterno() {
         AlgoFormer optimus = new Optimus(casillero1_1);
-        optimus.cambiarEstado();
+        optimus.cambiarEstadoAlternativo();
 
         optimus.avanzar(casillero2_2);
         Assert.assertTrue(optimus.getPosicion() == casillero2_2);
@@ -120,9 +118,9 @@ public class AlgoFormerTest {
     public void algoFormerAtacaEnEstadoAlterno() {
         Optimus optimus = new Optimus(casillero1_1);
         Megatron megatron = new Megatron(casillero2_2);
-        optimus.cambiarEstado();
+        optimus.cambiarEstadoAlternativo();
         optimus.atacar(megatron);
-        Assert.assertTrue(megatron.vida == 535);
+        Assert.assertTrue(megatron.getVida() == 535);
     }
 
 
@@ -158,7 +156,7 @@ public class AlgoFormerTest {
         Megatron megatron = new Megatron(casillero1_1);
         Bonecrusher bonecrusher = new Bonecrusher(casillero2_2);
 
-        bonecrusher.cambiarEstado();
+        bonecrusher.cambiarEstadoAlternativo();
 
         megatron.atacar(bonecrusher);
     }
@@ -167,10 +165,9 @@ public class AlgoFormerTest {
     public void cambiarEstadoPreservaVida() {
         Optimus optimus = new Optimus(casillero1_1);
         Megatron megatron = new Megatron(casillero2_2);
-
         megatron.atacar(optimus);
         int vidaAntes = optimus.getVida();
-        optimus.cambiarEstado();
+        optimus.cambiarEstadoAlternativo();
         int vidaDespues = optimus.getVida();
         Assert.assertTrue(vidaAntes == vidaDespues);
     }
