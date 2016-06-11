@@ -8,25 +8,17 @@ public class Bonecrusher extends AlgoFormer {
     public Bonecrusher(Casillero unCasillero){
         super(unCasillero);
         this.vida=200;
-        this.setEstadoHumanoide();
-        this.equipo = Equipo.DECEPTICONS;
+		this.equipo=Equipo.DECEPTICONS;
+        this.estadoAlternativo=new EstadoAlternativoTerrestre();
+		this.estadoHumanoide=new EstadoHumanoideTerrestre();
+
+        this.estadoAlternativo.modificarStatsEstado(30,8,3);
+        this.estadoHumanoide.modificarStatsEstado(30,1,3);
+        this.estadoActual=this.estadoHumanoide;
+        this.estadoActual.modificarStatsFormer(this);
     }
 
-    public void setEstadoAlternativo(){
-        this.danio=30;
-        this.velocidad=8;
-        this.rangoAtaque=3;
-        this.estado = this.estadoAlternativo;
-        this.estaVolando = false;
-    }
 
-    public void setEstadoHumanoide(){
-        this.danio=30;
-        this.velocidad=1;
-        this.rangoAtaque=3;
-        this.estado = this.estadoHumanoide;
-        this.estaVolando = false;
-    }
 
 
 

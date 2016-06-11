@@ -9,24 +9,16 @@ public class Bumblebee extends AlgoFormer{
     public Bumblebee(Casillero unCasillero){
         super(unCasillero);
         this.vida = 350;
-        this.setEstadoHumanoide();
         this.equipo = Equipo.AUTOBOTS;
+		this.estadoAlternativo=new EstadoAlternativoTerrestre();
+		this.estadoHumanoide=new EstadoHumanoideTerrestre();
+
+        this.estadoAlternativo.modificarStatsEstado(20,5,3);
+        this.estadoHumanoide.modificarStatsEstado(40,2,1);
+        this.estadoActual=this.estadoHumanoide;
+        this.estadoActual.modificarStatsFormer(this);
 
     }
 
-    public void setEstadoAlternativo(){
-        this.danio=20;
-        this.velocidad=5;
-        this.rangoAtaque=3;
-        this.estaVolando = false;
-        this.estado = this.estadoAlternativo;
-    }
 
-    public void setEstadoHumanoide(){
-        this.danio=40;
-        this.velocidad=2;
-        this.rangoAtaque=1;
-        this.estaVolando = false;
-        this.estado = this.estadoHumanoide;
-    }
 }

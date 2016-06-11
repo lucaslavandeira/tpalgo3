@@ -26,5 +26,7 @@ public class TableroTest {
         Tablero tablero = new Tablero(tablero_size);
         tablero.obtenerCasillero(-1, 0);
     }
+	
+
 }
 

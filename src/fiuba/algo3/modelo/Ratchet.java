@@ -9,25 +9,17 @@ public class Ratchet extends AlgoFormer{
     public Ratchet(Casillero unCasillero){
         super(unCasillero);
         this.vida=150;
-        this.setEstadoHumanoide();
         this.equipo = Equipo.AUTOBOTS;
+		this.estadoAlternativo=new EstadoAlternativoAereo();
+		this.estadoHumanoide=new EstadoHumanoideAereo();
+
+        this.estadoAlternativo.modificarStatsEstado(35,8,2);
+        this.estadoHumanoide.modificarStatsEstado(5,1,5);
+        this.estadoActual=this.estadoHumanoide;
+        this.estadoActual.modificarStatsFormer(this);
 
     }
 
-    public void setEstadoAlternativo(){
-        this.danio=35;
-        this.velocidad=8;
-        this.rangoAtaque=2;
-        this.estado = this.estadoAlternativoVuela;
-        this.estaVolando = true;
-    }
 
-    public void setEstadoHumanoide(){
-        this.danio=5;
-        this.velocidad=1;
-        this.rangoAtaque=5;
-        this.estado = this.estadoHumanoide;
-        this.estaVolando = false;
-    }
 }
 

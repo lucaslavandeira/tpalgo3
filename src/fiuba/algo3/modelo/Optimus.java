@@ -9,24 +9,16 @@ public class Optimus extends AlgoFormer {
     public Optimus(Casillero unCasillero){
         super(unCasillero);
         this.vida=500;
-        this.setEstadoHumanoide();
         this.equipo = Equipo.AUTOBOTS;
+		this.estadoAlternativo=new EstadoAlternativoTerrestre();
+		this.estadoHumanoide=new EstadoHumanoideTerrestre();
+
+        this.estadoAlternativo.modificarStatsEstado(15,5,4);
+        this.estadoHumanoide.modificarStatsEstado(50,2,2);
+        this.estadoActual=this.estadoHumanoide;
+        this.estadoActual.modificarStatsFormer(this);
 
     }
 
-    public void setEstadoAlternativo(){
-        this.danio=15;
-        this.velocidad=5;
-        this.rangoAtaque=4;
-        this.estado = this.estadoAlternativo;
-        this.estaVolando = false;
-    }
 
-    public void setEstadoHumanoide(){
-        this.danio=50;
-        this.velocidad=2;
-        this.rangoAtaque=2;
-        this.estado = this.estadoHumanoide;
-        this.estaVolando = false;
-    }
 }

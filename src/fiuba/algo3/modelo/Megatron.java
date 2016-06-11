@@ -8,24 +8,16 @@ public class Megatron extends AlgoFormer {
     public Megatron(Casillero unCasillero){
         super(unCasillero);
         this.vida=550;
-        this.setEstadoHumanoide();
-        equipo = Equipo.DECEPTICONS;
+        this.equipo=Equipo.DECEPTICONS;
+        this.estadoAlternativo=new EstadoAlternativoAereo();
+		this.estadoHumanoide=new EstadoHumanoideAereo();
+
+        this.estadoAlternativo.modificarStatsEstado(55,8,2);
+        this.estadoHumanoide.modificarStatsEstado(10,1,3);
+        this.estadoActual=this.estadoHumanoide;
+        this.estadoActual.modificarStatsFormer(this);
 
     }
 
-    public void setEstadoAlternativo(){
-        this.danio=55;
-        this.velocidad=8;
-        this.rangoAtaque=2;
-        this.estado = this.estadoHumanoide;
-       
-    }
 
-    public void setEstadoHumanoide(){
-        this.danio=10;
-        this.velocidad=1;
-        this.rangoAtaque=3;
-        this.estado = this.estadoAlternativoVuela;
-        
-    }
 }

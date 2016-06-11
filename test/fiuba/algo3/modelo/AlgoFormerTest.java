@@ -32,51 +32,63 @@ public class AlgoFormerTest {
     public void crearUnAlgoFormer() {
         optimus = new Optimus(casillero1_1);
         Assert.assertTrue(optimus.getPosicion() == casillero1_1);
+
     }
 
     @Test
     public void moverAlgoFormer(){
         AlgoFormer optimus = new Optimus(casillero1_1);
-
+        casillero2_2.asignarEfecto(new Roca());
         optimus.avanzar(casillero2_2);
         Assert.assertTrue(optimus.getPosicion() == casillero2_2);
     }
 
-    @Test(expected = SobrepasaSuVelocidadException.class)
+    @Test(expected = SobrepasaRangosException.class)
     public void sobrepasarVelocidadLanzaExcepcion(){
-        Tablero tablero = new Tablero(10);
-        Casillero unCasillero = tablero.obtenerCasillero(1, 1);
-        AlgoFormer optimus = new Optimus(unCasillero);
-        optimus.avanzar(tablero.obtenerCasillero(4, 4));
+
+        casillero1_1.asignarEfecto(new Roca());
+        casillero5_5.asignarEfecto(new Roca());
+
+        AlgoFormer optimus = new Optimus(casillero1_1);
+
+        optimus.avanzar(casillero5_5);
     }
 
     @Test
-    public void cambiarEstado() {
+    public void cambiarEstadoYMover() {
+        casillero1_1.asignarEfecto(new Roca());
+        casillero4_4.asignarEfecto(new Roca());
         AlgoFormer optimus = new Optimus(casillero1_1);
         optimus.cambiarEstadoAlternativo();
         optimus.avanzar(casillero4_4);
         Assert.assertTrue( casillero4_4 == optimus.getPosicion() );
         }
 
-   @Test(expected =  SobrepasaSuVelocidadException.class)
-    public void cambiarEstadoDosVeces() {
-        AlgoFormer optimus = new Optimus(casillero1_1);
-        optimus.cambiarEstadoAlternativo();
-        optimus.avanzar(casillero4_4);
-        Assert.assertTrue( casillero4_4 == optimus.getPosicion() );
-        optimus.cambiarEstadoHumanoide();
-        optimus.avanzar(casillero1_1);
+   @Test(expected =  SobrepasaRangosException.class)
+    public void avanzoEnModoAlternoUnaDistanciaPeroNoPuedoVolverLaMismaEnModoHumanoide() {
+       casillero1_1.asignarEfecto(new Roca());
+       casillero4_4.asignarEfecto(new Roca());
+       AlgoFormer optimus = new Optimus(casillero1_1);
+
+       optimus.cambiarEstadoAlternativo();
+       optimus.avanzar(casillero4_4);
+
+       optimus.cambiarEstadoHumanoide();
+       optimus.avanzar(casillero1_1);
     }
 
     @Test public void moverseEnEstadoAlterno() {
+        casillero1_1.asignarEfecto(new Roca());
+        casillero2_2.asignarEfecto(new Roca());
         AlgoFormer optimus = new Optimus(casillero1_1);
         optimus.cambiarEstadoAlternativo();
 
         optimus.avanzar(casillero2_2);
         Assert.assertTrue(optimus.getPosicion() == casillero2_2);
     }
-	
-	@Test(expected = SobrepasaDistanciaDeAtaqueException.class)
+
+
+	@Test(expected = SobrepasaRangosException.class)
     public void siAlgoFormerSobrepasaSuDistanciaDeAtaqueLanzaException(){
         AlgoFormer optimus = new Optimus(casillero1_1);
         AlgoFormer megatron = new Megatron(tablero.obtenerCasillero(6, 5));
@@ -148,11 +160,203 @@ public class AlgoFormerTest {
         Bonecrusher bonecrusher = new Bonecrusher(casillero2_2);
 
         bonecrusher.cambiarEstadoAlternativo();
-
         megatron.atacar(bonecrusher);
     }
 
+    @Test (expected = ImposibleAtravesarPantanoException.class)
+    public void noSePuedeAtravesarPantanoEnModoHumanoide(){
+        casillero1_1.asignarEfecto(new Roca());
+        casillero2_2.asignarEfecto(new Pantano());
+        Optimus optimus=new Optimus(casillero1_1);
+        optimus.avanzar(casillero2_2);
+
+    }
+
+    @Test(expected = SobrepasaRangosException.class)
+    public void atravesarPantanoReduceVelocidadEnModoAlternoDeUnidadTerrestre(){
+        casillero1_1.asignarEfecto(new Roca());
+        casillero2_2.asignarEfecto(new Pantano());
+        Casillero casilleroLejano =tablero.obtenerCasillero(6,6);
+        casilleroLejano.asignarEfecto(new Roca());
+        Optimus optimus=new Optimus(casillero1_1);
+        optimus.cambiarEstadoAlternativo();
+        optimus.avanzar(casillero2_2);
+        optimus.avanzar(casilleroLejano);
+    }
+
+    @Test
+    public void atravesarPantanoNoReduceVelocidadEnModoAlternoDeUnidadAerea(){
+        casillero1_1.asignarEfecto(new Pantano());
+        casillero2_2.asignarEfecto(new Pantano());
+        Casillero casilleroLejano =tablero.obtenerCasillero(8,8);
+        casilleroLejano.asignarEfecto(new Pantano());
+        Megatron megatron=new Megatron(casillero1_1);
+        megatron.cambiarEstadoAlternativo();
+        megatron.avanzar(casillero2_2);
+        megatron.avanzar(casilleroLejano);
+        Assert.assertTrue(megatron.getPosicion()==casilleroLejano);
+    }
+
+    @Test
+    public void atravesarRocaNoReduceVelocidadEnModoAlterno(){
+        casillero1_1.asignarEfecto(new Roca());
+        casillero2_2.asignarEfecto(new Roca());
+        Casillero casilleroLejano =tablero.obtenerCasillero(6,6);
+        casilleroLejano.asignarEfecto(new Roca());
+        Optimus optimus=new Optimus(casillero1_1);
+        optimus.cambiarEstadoAlternativo();
+        optimus.avanzar(casillero2_2);
+        optimus.avanzar(casilleroLejano);
+    }
+
+    @Test
+    public void atravesarEspinasReduceVidaUnidadTerrestre(){
+        casillero1_1.asignarEfecto(new Roca());
+        casillero2_2.asignarEfecto(new Espinas());
+        casillero3_3.asignarEfecto(new Espinas());
+        Optimus optimus=new Optimus(casillero1_1);
+        for(int i=0;i<38;i++){
+            optimus.avanzar(casillero2_2);
+            optimus.avanzar(casillero3_3);
+
+        }
+
+        Assert.assertTrue(optimus.estaMuerto());
+    }
+	
+	@Test
+    public void atravesarEspinasReduceVidaUnidadTerrestreEnModoAlterno(){
+        casillero1_1.asignarEfecto(new Roca());
+        casillero2_2.asignarEfecto(new Espinas());
+        casillero3_3.asignarEfecto(new Espinas());
+        Optimus optimus=new Optimus(casillero1_1);
+        optimus.cambiarEstadoAlternativo();
+        for(int i=0;i<38;i++){
+            optimus.avanzar(casillero2_2);
+            optimus.avanzar(casillero3_3);
+
+        }
+
+        Assert.assertTrue(optimus.estaMuerto());
+    }
+	
+	 @Test
+    public void atravesarEspinasReduceVidaUnidadAerea(){
+        casillero1_1.asignarEfecto(new Roca());
+        casillero2_2.asignarEfecto(new Espinas());
+        casillero3_3.asignarEfecto(new Espinas());
+        Ratchet ratched=new Ratchet(casillero1_1);
+        for(int i=0;i<38;i++){
+            ratched.avanzar(casillero2_2);
+            ratched.avanzar(casillero3_3);
+
+        }
+
+        Assert.assertTrue(ratched.estaMuerto());
+    }
+	
+	@Test
+    public void atravesarEspinasReduceVidaUnidadAereaEnModoAlterno(){
+        casillero1_1.asignarEfecto(new Roca());
+        casillero2_2.asignarEfecto(new Espinas());
+        casillero3_3.asignarEfecto(new Espinas());
+        Ratchet ratched=new Ratchet(casillero1_1);
+        ratched.cambiarEstadoAlternativo();
+        for(int i=0;i<38;i++){
+            ratched.avanzar(casillero2_2);
+            ratched.avanzar(casillero3_3);
+
+        }
+
+        Assert.assertTrue(ratched.estaMuerto());
+    }
+
+	@Test(expected = UnidadTerrestreNoAtraviesaNubeException.class)
+	public void unidadTerrestreNoAtraviesaNubeEnModoHumanoide(){
+        casillero1_1.asignarEfecto(new Roca());
+        casillero2_2.asignarEfecto(new Nube());
+        Frenzy frenzy=new Frenzy(casillero1_1);
+        frenzy.avanzar(casillero2_2);
+    }
+
+    @Test(expected = UnidadTerrestreNoAtraviesaNubeException.class)
+    public void unidadTerrestreNoAtraviesaNubeEnModoAlterno(){
+        casillero1_1.asignarEfecto(new Roca());
+        casillero2_2.asignarEfecto(new Nube());
+        Frenzy frenzy=new Frenzy(casillero1_1);
+        frenzy.cambiarEstadoAlternativo();
+        frenzy.avanzar(casillero2_2);
+    }
+
+    @Test
+    public void unidadAereaAtraviesaNubeEnModoAlterno(){
+        casillero1_1.asignarEfecto(new Roca());
+        casillero2_2.asignarEfecto(new Nube());
+        Megatron megatron=new Megatron(casillero1_1);
+        megatron.cambiarEstadoAlternativo();
+        megatron.avanzar(casillero2_2);
+        Assert.assertTrue(casillero2_2==megatron.getPosicion());
+    }
+
+    @Test (expected = UnidadAereaDebeEstarEnModoAlternoException.class)
+    public void unidadAereaNoAtraviesaNubeEnModoHumanoide(){
+        casillero1_1.asignarEfecto(new Roca());
+        casillero2_2.asignarEfecto(new Nube());
+        Megatron megatron=new Megatron(casillero1_1);
+        megatron.avanzar(casillero2_2);
+    }
 
 
+    //estos tests seran modificados cuando se implemente la logica de turnos
 
+    @Test
+    public void unidadAereaBloqueadaEnNebulosaEnModoHumanoide(){
+        casillero1_1.asignarEfecto(new Roca());
+        casillero2_2.asignarEfecto(new NebulosaAndromeda());
+        Megatron megatron=new Megatron(casillero1_1);
+        megatron.avanzar(casillero2_2);
+        Assert.assertTrue(megatron.getBloqueo()==3);
+    }
+
+    @Test
+    public void unidadAereaBloqueadaEnNebulosaEnModoAlterno(){
+        casillero1_1.asignarEfecto(new Roca());
+        casillero2_2.asignarEfecto(new NebulosaAndromeda());
+        Megatron megatron=new Megatron(casillero1_1);
+        megatron.cambiarEstadoAlternativo();
+        megatron.avanzar(casillero2_2);
+        Assert.assertTrue(megatron.getBloqueo()==3);
+    }
+
+    @Test
+    public void unidadAereaAfectadaPorTormentaPisionicaEnModoAlterno(){
+        casillero1_1.asignarEfecto(new Roca());
+        casillero2_2.asignarEfecto(new TormentaPsionica());
+        Megatron megatron=new Megatron(casillero1_1);
+        megatron.cambiarEstadoAlternativo();
+        megatron.avanzar(casillero2_2);
+        Assert.assertTrue(megatron.estaPisionico());
+    }
+
+    @Test
+    public void unidadAereaAfectadaPorTormentaPisionicaEnModoHumanoide(){
+        casillero1_1.asignarEfecto(new Roca());
+        casillero2_2.asignarEfecto(new TormentaPsionica());
+        Megatron megatron=new Megatron(casillero1_1);
+        megatron.avanzar(casillero2_2);
+        Assert.assertTrue(megatron.estaPisionico());
+    }
+
+    @Test (expected = JugadorGanoException.class)
+    public void unidadGanaLapartidaAlCaerEnCasilleroConChispa(){
+        casillero1_1.asignarEfecto(new Roca());
+        casillero2_2.asignarEfecto(new Roca());
+        casillero2_2.colocarChispaSuprema();
+        Megatron megatron=new Megatron(casillero1_1);
+        megatron.avanzar(casillero2_2);
+
+    }
+
+
+    ///faltan test
 }

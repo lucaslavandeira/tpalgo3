@@ -10,26 +10,16 @@ public class Frenzy extends AlgoFormer {
     public Frenzy(Casillero unCasillero){
         super(unCasillero);
         this.vida = 400;
-        this.setEstadoHumanoide();
-        this.equipo = Equipo.DECEPTICONS;
+        this.equipo=Equipo.DECEPTICONS;
+        this.estadoAlternativo=new EstadoAlternativoTerrestre();
+		this.estadoHumanoide=new EstadoHumanoideTerrestre();
+
+        this.estadoAlternativo.modificarStatsEstado(25,6,2);
+        this.estadoHumanoide.modificarStatsEstado(10,2,5);
+        this.estadoActual=this.estadoHumanoide;
+        this.estadoActual.modificarStatsFormer(this);
 
     }
 
-    public void setEstadoAlternativo(){
 
-
-        this.danio=25;
-        this.velocidad=6;
-        this.rangoAtaque=2;
-        this.estado = this.estadoAlternativo;
-        this.estaVolando = false;
-    }
-
-    public void setEstadoHumanoide(){
-        this.danio=10;
-        this.velocidad=2;
-        this.rangoAtaque=5;
-        this.estado = this.estadoHumanoide;
-        this.estaVolando = false;
-    }
 }

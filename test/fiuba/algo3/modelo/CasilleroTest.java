@@ -11,21 +11,24 @@ public class CasilleroTest {
     @Test
     public void ocuparCasillero() {
         Casillero casillero = new Casillero(1, 1);
+        Efecto rocas=new Roca();
+        casillero.asignarEfecto(rocas);
         Optimus optimus = new Optimus(casillero);
         Assert.assertTrue(casillero.estaOcupado());
     }
 
     @Test
     public void moverRobotAlCasilleroLoOcupa() {
-        Casillero casillero = new Casillero(2, 2);
+        Casillero destino = new Casillero(2, 2);
+        Casillero casillero = new Casillero(1, 1);
+        Efecto rocas=new Roca();
+        destino.asignarEfecto(rocas);
+        casillero.asignarEfecto(rocas);
         Optimus optimus = new Optimus(new Casillero(1, 1));
-        optimus.avanzar(casillero);
-        Assert.assertTrue(casillero.estaOcupado());
+
+        optimus.avanzar(destino);
+        Assert.assertTrue(destino.estaOcupado());
     }
-    @Test
-    public void tieneChispaSuprema(){
-    	Casillero casilleroConChispaSuprema = new Casillero(5, 5);
-    	casilleroConChispaSuprema.colocarChispaSuprema();
-    	Assert.assertTrue(casilleroConChispaSuprema.tieneChispaSuprema());
-    }
+
+
 }

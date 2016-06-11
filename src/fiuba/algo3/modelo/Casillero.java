@@ -5,9 +5,11 @@ package fiuba.algo3.modelo;
  */
 public class Casillero {
     private boolean estaOcupado;
+	private boolean tieneChispaSuprema;
     private int posicionX;
     private int posicionY;
-    private boolean tieneChispaSuprema;
+    private Efecto efecto;
+	
 
     public Casillero(int posicionX, int posicionY) {
         this.posicionX = posicionX;
@@ -16,14 +18,14 @@ public class Casillero {
     }
 
 	public void colocarChispaSuprema(){
-		tieneChispaSuprema = true;
-	}
-	public boolean tieneChispaSuprema(){
-		return tieneChispaSuprema;
+		this.tieneChispaSuprema = true;
 	}
 
-    public void ocupar() {
+
+    public void ocupar()
+    {
         this.estaOcupado = true;
+        if(this.tieneChispaSuprema)throw new JugadorGanoException();
     }
 
 
@@ -35,27 +37,25 @@ public class Casillero {
     public void desocupar() {
         this.estaOcupado = false;
     }
+	
+	public Efecto getEfecto(){
+		return this.efecto;
+	}
 
-    public int calcularDistancia(Casillero otroCasillero) {
+    public void calcularDistancia(Casillero otroCasillero,int limite) {
+
+
 
         int distanciaX = Math.abs(this.posicionX - otroCasillero.posicionX);
         int distanciaY = Math.abs(this.posicionY - otroCasillero.posicionY);
 
-        if (distanciaX > distanciaY){
-            return distanciaX;
-        }else{
-            return distanciaY;
-        }
+        if(distanciaX>limite  ||  distanciaY>limite)
+            throw new SobrepasaRangosException();
 
     }
 
-	public void efectoTerrestre(Estado estado) {
-		
-		
-	}
 
-	public void efectoAereo(Estado estado) {
-		
-		
-	}
+    public void asignarEfecto(Efecto efecto) {
+        this.efecto=efecto;
+    }
 }
