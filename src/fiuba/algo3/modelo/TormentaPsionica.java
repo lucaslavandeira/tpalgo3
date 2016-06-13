@@ -6,7 +6,7 @@ package fiuba.algo3.modelo;
 public class TormentaPsionica implements Efecto{
 	
 	public void aplicarEfectoAlternativoTerrestreEn(AlgoFormer former){
-		
+		throw new ImposibleAtravesarTormentaPsionicaException();
 	}
 	
 	public void aplicarEfectohumanoideAereoEn(AlgoFormer former){
@@ -16,7 +16,7 @@ public class TormentaPsionica implements Efecto{
 	}
 	
 	public void aplicarEfectoHumanoideTerrestreEn(AlgoFormer former){
-		
+		throw new ImposibleAtravesarTormentaPsionicaException();
 	}
 	
 	public void aplicarEfectoAlternativoAereoEn(AlgoFormer former){
