@@ -11,7 +11,7 @@ public class TormentaPsionica implements Efecto{
 	
 	public void aplicarEfectohumanoideAereoEn(AlgoFormer former){
 		if(!(former.estaPisionico())){
-		former.reducirAtaqueDeEstadoAlterno(40);//porcentage
+		former.reducirAtaqueDeEstadoAlterno(40);//porcentage  //se puede cambiar par ano usar if mandar msj directo al former
 		former.activarEstadoPisionico();}
 	}
 	

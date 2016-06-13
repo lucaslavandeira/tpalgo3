@@ -19,8 +19,11 @@ public abstract class AlgoFormer {
     protected Estado estadoHumanoide;
 	protected Equipo equipo;
 
+    protected Bonus bonus;
+
 
     public AlgoFormer(Casillero unCasillero) {
+        this.bonus=new Bonus();
         if(unCasillero.estaOcupado())
             throw new CasilleroInvalidoException();
         this.bloqueo=0;
@@ -34,7 +37,7 @@ public abstract class AlgoFormer {
 
     public void avanzar(Casillero destino) {
 
-        this.posicion.calcularDistancia(destino,this.velocidad);
+        this.posicion.calcularDistancia(destino,bonus.aplicarBonusVelocidad(this.velocidad));
         if (destino.estaOcupado())
             throw new CasilleroInvalidoException();
 
@@ -42,6 +45,7 @@ public abstract class AlgoFormer {
         destino.ocupar();
         this.posicion = destino;
         estadoActual.aplicarEfecto(this,this.posicion.getEfecto());
+        posicion.getArma().añadirAlBonus(bonus);
     }
 
 	
@@ -51,7 +55,7 @@ public abstract class AlgoFormer {
 
         posicion.calcularDistancia(enemigo.posicion,this.rangoAtaque);
 
-        enemigo.recibirAtaque(ataque);
+        enemigo.recibirAtaque(bonus.aplicarBonusAtaque(ataque));
     }
 
 	
@@ -72,7 +76,7 @@ public abstract class AlgoFormer {
 
 
     public void recibirAtaque(int danio) {
-        this.vida -= danio;
+        this.vida -=( bonus.aplicarBonusInmortal(danio));
     }
 
 	public Equipo getEquipo() {
@@ -126,5 +130,9 @@ public abstract class AlgoFormer {
 
     public int getBloqueo() {
         return this.bloqueo;
+    }
+
+    public Bonus getBonus() {
+        return bonus;
     }
 }

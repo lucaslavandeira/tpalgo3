@@ -422,5 +422,19 @@ public class AlgoFormerTest {
     
 
 
-    ///faltan test
+    @Test
+    public void unidadRecogeDobleCanionYDuplicaSuAtaque(){
+        casillero1_1.asignarEfecto(new Roca());
+        casillero2_2.asignarEfecto(new Roca());
+        casillero2_2.asignarArma(new DobleCanion());
+        optimus=new Optimus(casillero1_1);
+        Megatron megatron=new Megatron(casillero3_3);
+        optimus.avanzar(casillero2_2);
+        for(int i=0;i<6;i++) {
+            optimus.atacar(megatron);
+        }
+
+        Assert.assertTrue(megatron.estaMuerto());       //murio en la mitad de tiempo XD
+
+    }
 }

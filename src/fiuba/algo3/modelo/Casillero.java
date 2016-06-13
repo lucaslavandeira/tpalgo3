@@ -9,6 +9,7 @@ public class Casillero {
     private int posicionX;
     private int posicionY;
     private Efecto efecto;
+    private Arma arma;
 	
 
     public Casillero(int posicionX, int posicionY) {
@@ -20,6 +21,8 @@ public class Casillero {
 	public void colocarChispaSuprema(){
 		this.tieneChispaSuprema = true;
 	}
+
+    public void asignarArma(Arma arma){this.arma=arma;}
 
 
     public void ocupar()
@@ -41,6 +44,11 @@ public class Casillero {
 	public Efecto getEfecto(){
 		return this.efecto;
 	}
+
+    public Arma getArma(){
+        return this.arma;
+    }
+
 
     public void calcularDistancia(Casillero otroCasillero,int limite) {
 
