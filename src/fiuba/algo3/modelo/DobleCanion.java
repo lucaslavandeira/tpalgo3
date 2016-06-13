@@ -9,7 +9,7 @@ public class DobleCanion implements Arma {
 
     }
 
-    public void añadirAlBonus(Bonus bonus){
+    public void addAlBonus(Bonus bonus){
         bonus.agregarDobleCanion();
 
     }

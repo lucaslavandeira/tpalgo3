@@ -6,7 +6,7 @@ package fiuba.algo3.modelo;
 public class SinArma implements Arma {
 
 
-    public void añadirAlBonus(Bonus bonus) {
+    public void addAlBonus(Bonus bonus) {
 
     }
 }

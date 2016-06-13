@@ -23,7 +23,9 @@ public class CasilleroTest {
         Casillero casillero = new Casillero(1, 1);
         Efecto rocas=new Roca();
         destino.asignarEfecto(rocas);
+        destino.asignarArma(new SinArma());
         casillero.asignarEfecto(rocas);
+        casillero.asignarArma(new SinArma());
         Optimus optimus = new Optimus(new Casillero(1, 1));
 
         optimus.avanzar(destino);

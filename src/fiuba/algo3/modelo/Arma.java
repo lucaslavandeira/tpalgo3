@@ -5,7 +5,7 @@ package fiuba.algo3.modelo;
  */
 public interface Arma {
 
-        public void añadirAlBonus(Bonus bonus);
+        public void addAlBonus(Bonus bonus);
 
 
 
