@@ -4,7 +4,7 @@ package fiuba.algo3.modelo;
 /**
  * Created by sickness on 30/05/16.
  */
-public abstract class AlgoFormer {
+public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
 	
     protected Casillero posicion;
 	protected int vida;
@@ -58,6 +58,10 @@ public abstract class AlgoFormer {
         enemigo.recibirAtaque(bonus.aplicarBonusAtaque(ataque));
     }
 
+    public void siguienteTurno(){
+        this.bonus.siguienteTurno();
+        this.bloqueo=1;
+    }
 	
     public void cambiarEstadoAlternativo(){
         this.estadoActual=this.estadoAlternativo;

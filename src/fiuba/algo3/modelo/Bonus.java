@@ -3,11 +3,23 @@ package fiuba.algo3.modelo;
 /**
  * Created by usuario on 12/06/2016.
  */
-public class Bonus {
+public class Bonus implements  ObjetoDependienteDeTurno{
 
     private int duracionInmortal=0;
     private int duracionDobleCanion=0;
     private int duracionTriplicaVelocidad=0;
+
+    public void siguienteTurno(){
+        if(0<this.duracionInmortal)
+            this.duracionInmortal--;
+
+        if(0<this.duracionInmortal)
+            this.duracionDobleCanion--;
+
+        if(0<this.duracionInmortal)
+            this.duracionTriplicaVelocidad--;
+    }
+
 
     public Bonus (){
 
@@ -41,15 +53,6 @@ public class Bonus {
         this.duracionTriplicaVelocidad++;
     }
 
-    public void quitarDuracionDeUnTurno(){
-        if(0<this.duracionInmortal)
-        this.duracionInmortal--;
 
-        if(0<this.duracionInmortal)
-        this.duracionDobleCanion--;
-
-        if(0<this.duracionInmortal)
-        this.duracionTriplicaVelocidad--;
-    }
 
 }
