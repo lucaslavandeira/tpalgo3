@@ -13,9 +13,9 @@ public class EstadoHumanoideTerrestre implements Estado {
 		
 	}
 	
-	public void aplicarEfecto(AlgoFormer former,Efecto efecto)
+	public void aplicarEfecto(AlgoFormer former,Superficie superficie)
 	{
-		efecto.aplicarEfectoHumanoideTerrestreEn(former);
+		superficie.aplicarEfectoHumanoideTerrestreEn(former);
 	}
 	
 	public void modificarStatsFormer(AlgoFormer former){

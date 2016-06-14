@@ -13,9 +13,9 @@ public class EstadoAlternativoTerrestre implements Estado {
 		
 	}
 	
-	public void aplicarEfecto(AlgoFormer former,Efecto efecto)
+	public void aplicarEfecto(AlgoFormer former,Superficie superficie)
 	{
-		efecto.aplicarEfectoAlternativoTerrestreEn(former);
+		superficie.aplicarEfectoAlternativoTerrestreEn(former);
 	}
 	
 	public void modificarStatsFormer(AlgoFormer former){

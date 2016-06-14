@@ -14,9 +14,9 @@ public class EstadoAlternativoAereo implements Estado{
 		
 	}
 	
-	public void aplicarEfecto(AlgoFormer former,Efecto efecto)
+	public void aplicarEfecto(AlgoFormer former,Superficie superficie)
 	{
-		efecto.aplicarEfectoAlternativoAereoEn(former);
+		superficie.aplicarEfectoAlternativoAereoEn(former);
 	}
 	
 	public void modificarStatsFormer(AlgoFormer former){

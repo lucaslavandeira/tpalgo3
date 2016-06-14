@@ -11,8 +11,8 @@ public class CasilleroTest {
     @Test
     public void ocuparCasillero() {
         Casillero casillero = new Casillero(1, 1);
-        Efecto rocas=new Roca();
-        casillero.asignarEfecto(rocas);
+        Superficie rocas=new Roca();
+        casillero.asignarSuperficie(rocas);
         Optimus optimus = new Optimus(casillero);
         Assert.assertTrue(casillero.estaOcupado());
     }
@@ -21,11 +21,11 @@ public class CasilleroTest {
     public void moverRobotAlCasilleroLoOcupa() {
         Casillero destino = new Casillero(2, 2);
         Casillero casillero = new Casillero(1, 1);
-        Efecto rocas=new Roca();
-        destino.asignarEfecto(rocas);
-        destino.asignarArma(new SinArma());
-        casillero.asignarEfecto(rocas);
-        casillero.asignarArma(new SinArma());
+        Superficie rocas=new Roca();
+        destino.asignarSuperficie(rocas);
+        destino.asignarEquipamiento(new SinEquipamiento());
+        casillero.asignarSuperficie(rocas);
+        casillero.asignarEquipamiento(new SinEquipamiento());
         Optimus optimus = new Optimus(new Casillero(1, 1));
 
         optimus.avanzar(destino);

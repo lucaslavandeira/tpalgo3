@@ -8,8 +8,8 @@ public class Casillero {
 	private boolean tieneChispaSuprema;
     private int posicionX;
     private int posicionY;
-    private Efecto efecto;
-    private Arma arma;
+    private Superficie superficie;
+    private Equipamiento equipamiento;
 	
 
     public Casillero(int posicionX, int posicionY) {
@@ -22,7 +22,7 @@ public class Casillero {
 		this.tieneChispaSuprema = true;
 	}
 
-    public void asignarArma(Arma arma){this.arma=arma;}
+    public void asignarEquipamiento(Equipamiento equipamiento){this.equipamiento = equipamiento;}
 
 
     public void ocupar()
@@ -41,12 +41,12 @@ public class Casillero {
         this.estaOcupado = false;
     }
 	
-	public Efecto getEfecto(){
-		return this.efecto;
+	public Superficie getSuperficie(){
+		return this.superficie;
 	}
 
-    public Arma getArma(){
-        return this.arma;
+    public Equipamiento getEquipamiento(){
+        return this.equipamiento;
     }
 
 
@@ -63,7 +63,7 @@ public class Casillero {
     }
 
 
-    public void asignarEfecto(Efecto efecto) {
-        this.efecto=efecto;
+    public void asignarSuperficie(Superficie superficie) {
+        this.superficie = superficie;
     }
 }

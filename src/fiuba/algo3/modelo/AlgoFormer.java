@@ -44,8 +44,8 @@ public abstract class AlgoFormer {
 		this.posicion.desocupar();
         destino.ocupar();
         this.posicion = destino;
-        estadoActual.aplicarEfecto(this,this.posicion.getEfecto());
-        posicion.getArma().addAlBonus(bonus);
+        estadoActual.aplicarEfecto(this,this.posicion.getSuperficie());
+        posicion.getEquipamiento().addAlBonus(bonus);
     }
 
 	

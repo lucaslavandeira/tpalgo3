@@ -5,7 +5,7 @@ package fiuba.algo3.modelo;
  */
 public interface Estado {
 	
-	public void aplicarEfecto(AlgoFormer former,Efecto efecto);
+	public void aplicarEfecto(AlgoFormer former,Superficie superficie);
 	public void modificarStatsFormer(AlgoFormer former);
 	public void modificarStatsEstado(int ataque,int velocidad,int rangoAtaque);
 	public void reducirDanio(int porcentage);
