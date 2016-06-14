@@ -26,18 +26,18 @@ public class Bonus implements  ObjetoDependienteDeTurno{
     }
 
     public int aplicarBonusAtaque(int ataque){
-        if (0<duracionDobleCanion)ataque=ataque*2;
+        if (duracionDobleCanion > 0)ataque=ataque*2;
         return ataque;
     }
 
     public int aplicarBonusVelocidad(int velocidad){
-        if(0<duracionTriplicaVelocidad)velocidad=velocidad*3;
+        if(duracionTriplicaVelocidad > 0)velocidad=velocidad*3;
         return velocidad;
 
     }
 
     public int aplicarBonusInmortal(int danio){
-        if(0<duracionInmortal)danio=0;
+        if(duracionInmortal > 0)danio=0;
         return danio;
     }
 
