@@ -46,7 +46,9 @@ public class Casillero {
 	}
 
     public Equipamiento getEquipamiento(){
-        return this.equipamiento;
+       Equipamiento aux=this.equipamiento;
+        this.equipamiento=new SinEquipamiento();
+        return aux;
     }
 
 
