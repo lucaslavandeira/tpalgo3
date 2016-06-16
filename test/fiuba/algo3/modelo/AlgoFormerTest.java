@@ -412,18 +412,18 @@ public class AlgoFormerTest {
         casillero2_2.asignarSuperficie(new NebulosaAndromeda());
         Megatron megatron=new Megatron(casillero1_1);
         megatron.avanzar(casillero2_2);
-        Assert.assertTrue(megatron.getMovDisponibles()==-2);
+        Assert.assertTrue(megatron.getMovDisponibles()==96);
     }
 
     
     @Test
-    public void unidadAereaBloqueadaEnNebulosaEnModoAlterno(){
+    public void unidadAereaBloqueadaEnNebulosaEnModoAlterno(){      //sin usar el juego el former tiene 100 movimientos disponibles
         casillero1_1.asignarSuperficie(new Roca());
         casillero2_2.asignarSuperficie(new NebulosaAndromeda());
         Megatron megatron=new Megatron(casillero1_1);
-        megatron.cambiarEstadoAlternativo();
-        megatron.avanzar(casillero2_2);
-        Assert.assertTrue(megatron.getMovDisponibles()==-2);
+        megatron.cambiarEstadoAlternativo();            //1° mov
+        megatron.avanzar(casillero2_2);                 //2° mov -3 turnos bloqueados
+        Assert.assertTrue(megatron.getMovDisponibles()==95);
     }
 
     

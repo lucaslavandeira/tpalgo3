@@ -13,10 +13,10 @@ public class Bonus implements  ObjetoDependienteDeTurno{
         if(0<this.duracionInmortal)
             this.duracionInmortal--;
 
-        if(0<this.duracionInmortal)
+        if(0<this.duracionDobleCanion)
             this.duracionDobleCanion--;
 
-        if(0<this.duracionInmortal)
+        if(0<this.duracionTriplicaVelocidad)
             this.duracionTriplicaVelocidad--;
     }
 
