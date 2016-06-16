@@ -11,7 +11,7 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
     protected int ataque;
     protected int velocidad;
     protected int rangoAtaque;
-	protected int bloqueo;
+	protected int movDisponibles;
 	protected boolean pisionico;
 	
 	protected Estado estadoActual;
@@ -26,7 +26,7 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
         this.bonus=new Bonus();
         if(unCasillero.estaOcupado())
             throw new CasilleroInvalidoException();
-        this.bloqueo=0;
+        this.movDisponibles =1;
         this.posicion = unCasillero;
         this.pisionico=false;
         unCasillero.ocupar();
@@ -37,6 +37,7 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
 
     public void avanzar(Casillero destino) {
 
+        if(this.movDisponibles <=0)throw new BloqueadoException();
         this.posicion.calcularDistancia(destino,bonus.aplicarBonusVelocidad(this.velocidad));
         if (destino.estaOcupado())
             throw new CasilleroInvalidoException();
@@ -50,17 +51,16 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
 
 	
     public void atacar(AlgoFormer enemigo) {
+        if(this.movDisponibles <=0)throw new BloqueadoException();
         if (this.equipo==enemigo.equipo)
             throw new FuegoAmigoException();
-
         posicion.calcularDistancia(enemigo.posicion,this.rangoAtaque);
-
         enemigo.recibirAtaque(bonus.aplicarBonusAtaque(ataque));
     }
 
     public void siguienteTurno(){
         this.bonus.siguienteTurno();
-        this.bloqueo=1;
+        if(0<this.movDisponibles) this.movDisponibles--;
     }
 	
     public void cambiarEstadoAlternativo(){
@@ -100,14 +100,10 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
     }
 
 
-    public void reducirVida(int porcentage)
-    {
-
-        this.vida-= (float)(porcentage*this.vida)/100;
-    }
+    public void reducirVida(int porcentage){this.vida-= (float)(porcentage*this.vida)/100;}
 
     public void bloquearTurnos(int cantidad) {
-        this.bloqueo+=cantidad;
+        this.movDisponibles -=cantidad;
     }
 
     public void reducirVelocidad(int porcentage) {
@@ -132,11 +128,11 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
     }
 
 
-    public int getBloqueo() {
-        return this.bloqueo;
+    public int getMovDisponibles() {
+        return this.movDisponibles;
     }
 
     public Bonus getBonus() {
-        return bonus;
+        return this.bonus;
     }
 }
