@@ -412,7 +412,7 @@ public class AlgoFormerTest {
         casillero2_2.asignarSuperficie(new NebulosaAndromeda());
         Megatron megatron=new Megatron(casillero1_1);
         megatron.avanzar(casillero2_2);
-        Assert.assertTrue(megatron.getBloqueo()==3);
+        Assert.assertTrue(megatron.getMovDisponibles()==-2);
     }
 
     
@@ -423,7 +423,7 @@ public class AlgoFormerTest {
         Megatron megatron=new Megatron(casillero1_1);
         megatron.cambiarEstadoAlternativo();
         megatron.avanzar(casillero2_2);
-        Assert.assertTrue(megatron.getBloqueo()==3);
+        Assert.assertTrue(megatron.getMovDisponibles()==-2);
     }
 
     
