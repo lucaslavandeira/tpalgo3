@@ -41,13 +41,14 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
         this.posicion.calcularDistancia(destino,bonus.aplicarBonusVelocidad(this.velocidad));
         if (destino.estaOcupado())
             throw new CasilleroInvalidoException();
-
 		this.posicion.desocupar();
         destino.ocupar();
         this.posicion = destino;
         estadoActual.aplicarEfecto(this,this.posicion.getSuperficie());
         posicion.getEquipamiento().addAlBonus(bonus);
         this.movDisponibles--;
+        if (destino.tieneChispaSuprema()) 
+        	throw new JugadorGanoException();
     }
 
 	

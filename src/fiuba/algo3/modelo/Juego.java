@@ -19,6 +19,7 @@ public class Juego {
 
     public Juego(Tablero tablero){
         this.mapa=tablero;
+        mapa.obtenerCentroDeTablero().colocarChispaSuprema();
         this.autobots=new ArrayList<AlgoFormer>();
         this.decepticons=new ArrayList<AlgoFormer>();
     }

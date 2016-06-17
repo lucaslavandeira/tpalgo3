@@ -21,6 +21,9 @@ public class Casillero {
 	public void colocarChispaSuprema(){
 		this.tieneChispaSuprema = true;
 	}
+	public boolean tieneChispaSuprema(){
+		return this.tieneChispaSuprema;
+	}
 
     public void asignarEquipamiento(Equipamiento equipamiento){this.equipamiento = equipamiento;}
 

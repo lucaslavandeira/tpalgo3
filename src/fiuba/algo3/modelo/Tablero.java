@@ -29,4 +29,7 @@ public class Tablero {
 
         return (this.casilleros[posicionX][posicionY]);
     }
+    public Casillero obtenerCentroDeTablero(){
+    	return this.casilleros[this.tamanio/2][this.tamanio/2];
+    }
 }

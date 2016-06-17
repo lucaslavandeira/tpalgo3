@@ -22,14 +22,14 @@ public class JuegoTest {
 
     @Before
     public void setUp() {
-        tablero = new Tablero(11);
+        tablero = new Tablero(10);
         game=new Juego(tablero);
         optimus=new Optimus(tablero.obtenerCasillero(0,4));
         bumblebee=new Bumblebee(tablero.obtenerCasillero(0,5));
         ratchet=new Ratchet(tablero.obtenerCasillero(0,6));
-        megatron=new Megatron(tablero.obtenerCasillero(10,4));
-        bonecrusher=new Bonecrusher(tablero.obtenerCasillero(10,5));
-        frenzy=new Frenzy(tablero.obtenerCasillero(10,6));
+        megatron=new Megatron(tablero.obtenerCasillero(9,4));
+        bonecrusher=new Bonecrusher(tablero.obtenerCasillero(9,5));
+        frenzy=new Frenzy(tablero.obtenerCasillero(9,6));
 
 
 
@@ -85,10 +85,26 @@ public class JuegoTest {
     @Test(expected = BloqueadoException.class)
     public void alCrearJuegoDesepticonNoPuedeAtacarAlComienzo(){
         Juego game=new Juego(tablero);
-        AlgoFormer autobot=new Optimus(tablero.obtenerCasillero(9,5));
+        AlgoFormer autobot=new Optimus(tablero.obtenerCasillero(8,5));
         game.addAutobots(optimus,bumblebee,ratchet);
         game.addDecepticons(megatron,bonecrusher,frenzy);
         game.comenzarJuego();
         megatron.atacar(autobot);
+    }
+    @Test (expected = JugadorGanoException.class)
+    public void jugadorGano(){
+        Juego game=new Juego(tablero);
+        game.addAutobots(optimus,bumblebee,ratchet);
+        game.addDecepticons(megatron,bonecrusher,frenzy);
+        game.comenzarJuego();
+        optimus.avanzar(tablero.obtenerCasillero(1, 5));
+        game.proximoTurno();
+        optimus.avanzar(tablero.obtenerCasillero(2, 5));
+        game.proximoTurno();
+        optimus.avanzar(tablero.obtenerCasillero(3, 5));
+        game.proximoTurno();
+        optimus.avanzar(tablero.obtenerCasillero(4, 5));
+        game.proximoTurno();
+        optimus.avanzar(tablero.obtenerCasillero(5, 5));
     }
 }
