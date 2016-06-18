@@ -46,6 +46,7 @@ public class Juego {
     }
 
     public void comenzarJuego(){
+        //tal ves deberia instanciarse las posiciones iniciales aqui dado el caso
         this.autobots.get(0).siguienteTurno();
         this.autobots.get(1).siguienteTurno();
         this.autobots.get(2).siguienteTurno();

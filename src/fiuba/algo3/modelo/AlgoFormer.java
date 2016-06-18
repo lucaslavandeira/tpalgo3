@@ -12,6 +12,7 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
     protected int velocidad;
     protected int rangoAtaque;
 	protected int movDisponibles;
+    protected boolean bloqueado;
 	protected boolean pisionico;
 	
 	protected Estado estadoActual;
@@ -24,6 +25,7 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
 
     public AlgoFormer(Casillero unCasillero) {
         this.bonus=new Bonus();
+        this.bloqueado=false;
         if(unCasillero.estaOcupado())
             throw new CasilleroInvalidoException();
         this.movDisponibles =100;
@@ -37,7 +39,7 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
 
     public void avanzar(Casillero destino) {
 
-        if(this.movDisponibles==0){throw new BloqueadoException();}
+        if(this.movDisponibles==0   || this.bloqueado==true){throw new BloqueadoException();}
         this.posicion.calcularDistancia(destino,bonus.aplicarBonusVelocidad(this.velocidad));
         if (destino.estaOcupado())
             throw new CasilleroInvalidoException();
@@ -53,7 +55,7 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
 
 	
     public void atacar(AlgoFormer enemigo) {
-        if(this.movDisponibles==0){throw new BloqueadoException();}
+        if(this.movDisponibles==0   || this.bloqueado==true){throw new BloqueadoException();}
         if (this.equipo==enemigo.equipo)
             throw new FuegoAmigoException();
         posicion.calcularDistancia(enemigo.posicion,this.rangoAtaque);
@@ -64,12 +66,16 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
     public void siguienteTurno(){
         this.bonus.siguienteTurno();
         if(this.movDisponibles<=0)this.movDisponibles++;
-        else if (this.movDisponibles>0)this.movDisponibles=0;
+        else if (this.movDisponibles>0)this.movDisponibles=1;
+
+        if(this.bloqueado==true)this.bloqueado=false;
+        else this.bloqueado=true;
+
 
     }
 	
     public void cambiarEstadoAlternativo(){
-        if(this.movDisponibles==0){throw new BloqueadoException();}
+        if(this.movDisponibles==0   || this.bloqueado==true){throw new BloqueadoException();}
         this.estadoActual=this.estadoAlternativo;
         this.estadoActual.modificarStatsFormer(this);
         this.movDisponibles--;

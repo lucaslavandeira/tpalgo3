@@ -35,6 +35,20 @@ public class JuegoTest {
 
     }
 
+    @Test(expected=BloqueadoException.class)
+    public void ningunAutobotMueveSinComenzarElJuego(){
+        game.addAutobots(optimus,bumblebee,ratchet);
+        game.addDecepticons(megatron,bonecrusher,frenzy);
+        optimus.avanzar(tablero.obtenerCasillero(1,4));
+    }
+
+    @Test(expected=BloqueadoException.class)
+    public void ningunDecepticonMueveSinComenzarElJuego(){
+        game.addAutobots(optimus,bumblebee,ratchet);
+        game.addDecepticons(megatron,bonecrusher,frenzy);
+        megatron.avanzar(tablero.obtenerCasillero(1,4));
+    }
+
     @Test
     public void alCrearJuegoAutobotsComienza(){
         game.addAutobots(optimus,bumblebee,ratchet);
@@ -47,8 +61,6 @@ public class JuegoTest {
 
     @Test
     public void alCrearJuegoAutobotsAtacaAlComienzo(){
-
-
         game.addAutobots(optimus,bumblebee,ratchet);
         game.addDecepticons(megatron,bonecrusher,frenzy);
         game.comenzarJuego();
@@ -57,6 +69,14 @@ public class JuegoTest {
         Assert.assertTrue(this.optimus.getPosicion()     ==   tablero.obtenerCasillero(0,4));
     }
 
+    @Test
+    public void alCrearJuegoAutobotsCambiaModoAlternoAlComienzo(){      //modificar test para realizar movimiento
+        game.addAutobots(optimus,bumblebee,ratchet);
+        game.addDecepticons(megatron,bonecrusher,frenzy);
+        game.comenzarJuego();
+        optimus.cambiarEstadoAlternativo();
+        Assert.assertTrue(this.optimus.getPosicion()     ==   tablero.obtenerCasillero(0,4));
+    }
 
 
     @Test(expected = BloqueadoException.class)
@@ -98,13 +118,66 @@ public class JuegoTest {
         game.addDecepticons(megatron,bonecrusher,frenzy);
         game.comenzarJuego();
         optimus.avanzar(tablero.obtenerCasillero(1, 5));
+        game.proximoTurno();        //decepticon estaria cediendo el turno por eso es doble turno
         game.proximoTurno();
         optimus.avanzar(tablero.obtenerCasillero(2, 5));
         game.proximoTurno();
+        game.proximoTurno();
         optimus.avanzar(tablero.obtenerCasillero(3, 5));
+        game.proximoTurno();
         game.proximoTurno();
         optimus.avanzar(tablero.obtenerCasillero(4, 5));
         game.proximoTurno();
+        game.proximoTurno();
         optimus.avanzar(tablero.obtenerCasillero(5, 5));
     }
+
+    @Test(expected=BloqueadoException.class)
+    public void autobotNoSePuedeMoverDosVecesSeguidas(){
+        Juego game=new Juego(tablero);
+        game.addAutobots(optimus,bumblebee,ratchet);
+        game.addDecepticons(megatron,bonecrusher,frenzy);
+        game.comenzarJuego();
+        optimus.avanzar(tablero.obtenerCasillero(1, 5));
+        optimus.avanzar(tablero.obtenerCasillero(2, 5));
+
+    }
+
+    @Test(expected=BloqueadoException.class)
+    public void decepticonNoSePuedeMoverDosVecesSeguidas(){
+        Juego game=new Juego(tablero);
+        game.addAutobots(optimus,bumblebee,ratchet);
+        game.addDecepticons(megatron,bonecrusher,frenzy);
+        game.comenzarJuego();
+        optimus.avanzar(tablero.obtenerCasillero(1, 5));
+        game.proximoTurno();
+        megatron.avanzar(tablero.obtenerCasillero(8, 5));
+        megatron.avanzar(tablero.obtenerCasillero(7,5));
+
+    }
+
+    @Test(expected=BloqueadoException.class)
+    public void autobotNoSePuedeMoverDosVecesSeguidasEntreTurnos(){
+        Juego game=new Juego(tablero);
+        game.addAutobots(optimus,bumblebee,ratchet);
+        game.addDecepticons(megatron,bonecrusher,frenzy);
+        game.comenzarJuego();
+        optimus.avanzar(tablero.obtenerCasillero(1, 5));
+        game.proximoTurno();
+        optimus.avanzar(tablero.obtenerCasillero(2,5));
+    }
+
+    @Test(expected=BloqueadoException.class)
+    public void decepticonNoSePuedeMoverDosVecesSeguidasEntreTurnos(){
+        Juego game=new Juego(tablero);
+        game.addAutobots(optimus,bumblebee,ratchet);
+        game.addDecepticons(megatron,bonecrusher,frenzy);
+        game.comenzarJuego();
+        optimus.avanzar(tablero.obtenerCasillero(1, 5));
+        game.proximoTurno();
+        megatron.avanzar(tablero.obtenerCasillero(8,5));
+        game.proximoTurno();
+        megatron.avanzar(tablero.obtenerCasillero(7,5));
+    }
+
 }
