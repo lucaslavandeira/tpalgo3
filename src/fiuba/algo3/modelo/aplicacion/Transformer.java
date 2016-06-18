@@ -38,8 +38,7 @@ public class Transformer extends Application {
 
         stage.setTitle("TRANSFORMERS");
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/iconos/optimus.png")));
-
-        Scene bienvenida=new Scene(new EscenarioInicial(),750,480,Color.SNOW );
+        Scene bienvenida=new Scene(new EscenarioInicial(stage),750,480,Color.SNOW );
 
 
         stage.setScene(bienvenida);

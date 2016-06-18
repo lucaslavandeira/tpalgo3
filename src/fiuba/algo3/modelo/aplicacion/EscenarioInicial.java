@@ -3,6 +3,7 @@ package fiuba.algo3.modelo.aplicacion;
 import com.sun.javafx.scene.control.skin.ButtonSkin;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.image.Image;
@@ -10,6 +11,9 @@ import javafx.scene.image.ImageView;
 import javafx.scene.layout.*;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.media.Media;
+import javafx.scene.paint.Color;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,10 +25,12 @@ import java.net.URL;
 public class EscenarioInicial extends HBox {
 
    private  MediaPlayer mediaPlayer;
+   private  Stage stage;
 
-    public EscenarioInicial() {
+    public EscenarioInicial(Stage stage) {
 
         super();
+        this.stage=stage;
         this.setFondo();
         this.setBotonJugar();
         this.setBotonSalir();
@@ -44,14 +50,9 @@ public class EscenarioInicial extends HBox {
 
 
     private Image setImagenFondo() {
-
         return new Image(getClass().getResourceAsStream("/imagenes/transformers-30.jpg"));
     }
 
-
-    private void setSonido(EscenarioInicial escenario) {
-
-    }
 
     private void setBotonSalir(){
 
@@ -70,8 +71,6 @@ public class EscenarioInicial extends HBox {
 
         botonSalir.setGraphic(imagenSalir);
         botonSalir.setLayoutY(500);
-        //botonSalir.setFont(Font.font("Nirvana",FontWeight.EXTRA_LIGHT,20));
-        //botonSalir.setTextFill(Color.WHITE);
         botonSalir.setPrefSize(50, 50);
         botonSalir.setContentDisplay(ContentDisplay.CENTER);
         botonSalir.setAlignment(Pos.BOTTOM_LEFT);
@@ -106,12 +105,12 @@ public class EscenarioInicial extends HBox {
         botonJugar.setContentDisplay(ContentDisplay.CENTER);
         botonJugar.setAlignment(Pos.BOTTOM_CENTER);
 
-
-
-
         botonJugar.setOnAction(event -> {
-            if(this.mediaPlayer.isMute())this.mediaPlayer.play();
-            else this.mediaPlayer.stop();
+            this.mediaPlayer.stop();
+            Scene escenarioPrincipal=new Scene(new EscenarioPrincipal (stage),1280,720, Color.SNOW );
+            stage.setScene(escenarioPrincipal);
+            stage.setFullScreen(true);
+            stage.show();
         });
 
 
