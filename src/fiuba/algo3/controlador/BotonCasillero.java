@@ -11,16 +11,18 @@ import java.io.IOException;
 /**
  * Created by Vietnamita on 18/06/2016.
  */
-public class ControladorCasillero extends Button{
+public class BotonCasillero extends Button{
 
     private Casillero posicion;
     private Button local;
 
-    public ControladorCasillero (Casillero casillero){
+    public BotonCasillero (Casillero casillero, ControladorDeMovimientos movimiento, Button mover, Button atacar){
         super();
         this.posicion=casillero;
 
         this.local=this;
+        ControladorOpcionCasilleroEventHandler controladorCasillero=new ControladorOpcionCasilleroEventHandler(this.posicion,movimiento,mover,atacar);
+        this.setOnAction(controladorCasillero);
     }
 
 

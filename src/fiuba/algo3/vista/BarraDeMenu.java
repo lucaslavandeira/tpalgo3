@@ -39,7 +39,7 @@ public class BarraDeMenu extends MenuBar {
         opcionNuevo.setOnAction(opcionNuevoJuegoEventHandler);
 
 
-        opcionPantallaCompleta.setDisable(true);
+      //  opcionPantallaCompleta.setDisable(false);
 
         menuArchivo.getItems().addAll(opcionNuevo, new SeparatorMenuItem(), opcionSalir);
         menuAyuda.getItems().addAll(opcionAcercaDe);

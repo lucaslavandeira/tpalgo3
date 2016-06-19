@@ -1,8 +1,10 @@
 package fiuba.algo3.vista;
 import fiuba.algo3.modelo.*;
-import fiuba.algo3.controlador.ControladorCasillero;
-import fiuba.algo3.controlador.ControladorFormer;
+import fiuba.algo3.controlador.BotonCasillero;
+import fiuba.algo3.controlador.BotonFormer;
+import fiuba.algo3.controlador.ControladorAtacar;
 import fiuba.algo3.controlador.ControladorDeMovimientos;
+import fiuba.algo3.controlador.ControladorOpcionMoverEventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -18,6 +20,8 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
+import com.sun.xml.internal.ws.dump.LoggingDumpTube.Position;
+
 /**
  * Created by Vietnamita on 18/06/2016.
  */
@@ -28,7 +32,7 @@ public class VistaJuego extends BorderPane {
     private Tablero mapa;
     private Button mover;
     private Button atacar;
-    private ControladorDeMovimientos mov;
+    private ControladorDeMovimientos movimiento;
     private Juego juego;
     private Optimus optimus;
     private Bumblebee bumblebee;
@@ -36,14 +40,14 @@ public class VistaJuego extends BorderPane {
     private Megatron megatron;
     private Frenzy frenzy;
     private Bonecrusher bonecrusher;
-
+    private Stage vista;
     public VistaJuego(Stage stage) {
 
         this.mapa=new Tablero(11);
         this.armarJuego();
         this.barra=new BarraDeMenu(stage);
         this.barra.setOpcionNuevoJuego(this);
-        this.mov=new ControladorDeMovimientos();
+        this.movimiento=new ControladorDeMovimientos();
         this.setTop(barra);
         this.panelLateralIzquierdo();
         this.panelCentral();
@@ -52,6 +56,7 @@ public class VistaJuego extends BorderPane {
         final Media media = new Media(resource.toString());
       mediaPlayer = new MediaPlayer(media);
       mediaPlayer.play();
+      this.vista = stage;
     }
 
     private void armarJuego() {
@@ -64,17 +69,18 @@ public class VistaJuego extends BorderPane {
         bonecrusher=new Bonecrusher(mapa.obtenerCasillero(10,7));
         this.juego.addAutobots(optimus,bumblebee,ratchet);
         this.juego.addDecepticons(megatron,frenzy,bonecrusher);
+        this.juego.comenzarJuego();
 
     }
 
     private void panelInferior() {
-        ControladorFormer botonOptimus=new ControladorFormer(this.optimus,mov);
-        Button botonBumblebee=new Button();
-        Button botonRatchet=new Button();
+    	BotonFormer botonOptimus=new BotonFormer(this.optimus,movimiento,this.mover,this.atacar);
+    	BotonFormer botonBumblebee=new BotonFormer(this.bumblebee,movimiento,this.mover,this.atacar);
+    	BotonFormer botonRatchet=new BotonFormer(this.ratchet,movimiento,this.mover,this.atacar);
 
-        Button botonMegatron=new Button();
-        Button botonFrenzy=new Button();
-        Button botonBonecrucher=new Button();
+    	BotonFormer botonMegatron=new BotonFormer(this.megatron,movimiento,this.mover,this.atacar);
+    	BotonFormer botonFrenzy=new BotonFormer(this.frenzy,movimiento,this.mover,this.atacar);
+    	BotonFormer botonBonecrucher=new BotonFormer(this.bonecrusher,movimiento,this.mover,this.atacar);
 
 
         this.setImagenIcono(botonOptimus,"/imagenes/caraOptimus.jpg");
@@ -100,7 +106,7 @@ public class VistaJuego extends BorderPane {
 
     }
 
-    private void panelCentral() {
+    public void panelCentral() {
         //BotonCasillero botonCasillero=new BotonCasillero(this.mapa.obtenerCasillero(0,0));
         //Casillero casi=this.mapa.obtenerCasillero(0,4);
         //Optimus optimus=new Optimus(casi);
@@ -112,7 +118,7 @@ public class VistaJuego extends BorderPane {
             HBox fila=new HBox();
             for(int j=0;j<11;j++)
             {
-                ControladorCasillero boton=new ControladorCasillero(this.mapa.obtenerCasillero(i,j));
+                BotonCasillero boton=new BotonCasillero(this.mapa.obtenerCasillero(i,j),this.movimiento,this.mover,this.atacar);
                 this.setVistaBotonCasillero(boton);
                 fila.getChildren().add(boton);
             }
@@ -123,7 +129,7 @@ public class VistaJuego extends BorderPane {
         this.setCenter(panelCentral);
     }
 
-    private void setVistaBotonCasillero(ControladorCasillero botonCasillero){
+    private void setVistaBotonCasillero(BotonCasillero botonCasillero){
         botonCasillero.setPrefSize(50,50);
         if(botonCasillero.getCasillero().estaOcupado()){
             ImageView imagenSalir=new ImageView();
@@ -175,6 +181,9 @@ public class VistaJuego extends BorderPane {
         panelIzquierdo.getChildren().add(mover);
         panelIzquierdo.getChildren().add(atacar);
         this.setLeft(panelIzquierdo);
+        mover.setVisible(false);
+        this.mover.setOnAction(new ControladorOpcionMoverEventHandler(movimiento,this));
+        atacar.setVisible(false);
     }
 
     private void setImagenIcono(Button boton,String recurso){

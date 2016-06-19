@@ -15,17 +15,19 @@ public class ControladorOpcionMoverEventHandler implements EventHandler<ActionEv
 
     private Stage stage;
     private Casillero posicion;
-    private ControladorDeMovimientos mov;
+    private ControladorDeMovimientos movimientoActual;
+    private VistaJuego vista;
 
-    public ControladorOpcionMoverEventHandler(Stage stage, ControladorDeMovimientos mov){
+    public ControladorOpcionMoverEventHandler(ControladorDeMovimientos movimiento, VistaJuego vistaJuego){
         this.stage=stage;
+        this.movimientoActual = movimiento;
+        vista = vistaJuego;
     }
 
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        mov.run();
-        stage.show();
-
+        this.movimientoActual.run();
+        this.vista.panelCentral();
     }
 }

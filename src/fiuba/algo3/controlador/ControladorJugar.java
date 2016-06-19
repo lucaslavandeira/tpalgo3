@@ -18,13 +18,17 @@ public class ControladorJugar implements EventHandler<ActionEvent> {
 	
 
 
+	public ControladorJugar(Stage stageMenuPrincipal) {
+		stage = stageMenuPrincipal;
+	}
+
+
+
 	@Override
 	public void handle(ActionEvent event) {
-        //this.mediaPlayer.stop();
         Scene escenarioPrincipal=new Scene(new VistaJuego (stage),1280,720, Color.SNOW );
         stage.setScene(escenarioPrincipal);
         stage.setFullScreen(true);
         stage.show();
-		
 	}
 }
