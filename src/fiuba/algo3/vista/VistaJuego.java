@@ -1,5 +1,6 @@
 package fiuba.algo3.vista;
 import fiuba.algo3.modelo.*;
+
 import fiuba.algo3.controlador.BotonCasillero;
 import fiuba.algo3.controlador.BotonFormer;
 import fiuba.algo3.controlador.ControladorAtacar;
@@ -20,7 +21,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
 
-import com.sun.xml.internal.ws.dump.LoggingDumpTube.Position;
+
 
 /**
  * Created by Vietnamita on 18/06/2016.
