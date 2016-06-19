@@ -8,7 +8,8 @@ import fiuba.algo3.controlador.ControladorDeMovimientos;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
-
+import javafx.scene.control.Label;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
@@ -27,13 +28,15 @@ import javafx.event.EventHandler;
  */
 
 
-public class SeleccionarFormerEventHandler implements EventHandler<ActionEvent> {
+public class SeleccionarFormerEventHandler implements EventHandler<ActionEvent>{
 
     private Button mover;
     private Button atacar;
     private AlgoFormer former;
     private ControladorDeMovimientos movimientoActual;
     private Stage actualizarVista;
+    StackPane panel = new StackPane();
+
 
     public SeleccionarFormerEventHandler(AlgoFormer former, ControladorDeMovimientos movimiento, Button mover, Button atacar)
     {
@@ -45,12 +48,16 @@ public class SeleccionarFormerEventHandler implements EventHandler<ActionEvent> 
     }
 
 
-    @Override
+    public SeleccionarFormerEventHandler(AlgoFormer former, ControladorDeMovimientos movimiento, VBox panelIzquierdo) {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	@Override
     public void handle(ActionEvent actionEvent) {
     	movimientoActual.setFormer(this.former);
     	this.mover.setVisible(true);
     	this.atacar.setVisible(true);
-    	
     	
     }
 

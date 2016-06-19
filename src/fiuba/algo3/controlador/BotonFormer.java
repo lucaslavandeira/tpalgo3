@@ -1,8 +1,9 @@
 package fiuba.algo3.controlador;
 
 import fiuba.algo3.modelo.AlgoFormer;
-
+import fiuba.algo3.modelo.Optimus;
 import javafx.scene.control.Button;
+import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
 
 /**
@@ -18,7 +19,11 @@ public class BotonFormer extends Button {
         this.setOnAction(seleccion);
     }
 
-    public AlgoFormer getFormer(){
+    public BotonFormer(Optimus optimus, ControladorDeMovimientos movimiento, VBox panelIzquierdo) {
+		// TODO Auto-generated constructor stub
+	}
+
+	public AlgoFormer getFormer(){
         return this.former;
     }
 }

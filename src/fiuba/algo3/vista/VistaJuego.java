@@ -6,18 +6,20 @@ import fiuba.algo3.controlador.BotonFormer;
 import fiuba.algo3.controlador.ControladorAtacar;
 import fiuba.algo3.controlador.ControladorDeMovimientos;
 import fiuba.algo3.controlador.ControladorOpcionMoverEventHandler;
+import fiuba.algo3.controlador.ControladorPasarTurno;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
+import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
+import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
-
 import java.io.IOException;
 import java.net.URL;
 
@@ -33,6 +35,7 @@ public class VistaJuego extends BorderPane {
     private Tablero mapa;
     private Button mover;
     private Button atacar;
+    private Button pasarTurno;
     private ControladorDeMovimientos movimiento;
     private Juego juego;
     private Optimus optimus;
@@ -42,6 +45,12 @@ public class VistaJuego extends BorderPane {
     private Frenzy frenzy;
     private Bonecrusher bonecrusher;
     private Stage vista;
+	private Label Vida;
+	private Label ataque;
+	private Label vida;
+	private Label estado;
+	private Label velocidad;
+	private Label turno;
     public VistaJuego(Stage stage) {
 
         this.mapa=new Tablero(11);
@@ -163,30 +172,54 @@ public class VistaJuego extends BorderPane {
     private void panelLateralIzquierdo(){
         mover=new Button();
         atacar=new Button();
+        pasarTurno=new Button();
+        vida=new Label();
+        ataque=new Label();
+        estado=new Label();
+        velocidad = new Label();
+        turno = new Label();
+        VBox panelIzquierdo = new VBox();
         try {
             mover= FXMLLoader.load(getClass().getResource("sample.fxml"));
             atacar= FXMLLoader.load(getClass().getResource("sample.fxml"));
+            pasarTurno=FXMLLoader.load(getClass().getResource("sample.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
 
         mover.setText("Mover");
         atacar.setText("Atacar");
-
-        //OpcionMoverEventHandler opcionmover=new OpcionMoverEventHandler();
-
-
-
-        VBox panelIzquierdo=new VBox();
-        panelIzquierdo.setAlignment(Pos.CENTER);
+        pasarTurno.setText("Pasar Turno");
+        vida.setText("Vida:....");
+        ataque.setText("Ataque:....");
+        estado.setText("Estado:....");
+        velocidad.setText("Velocidad:....");
+        turno.setText("Turno:");
+        
+        
         panelIzquierdo.getChildren().add(mover);
         panelIzquierdo.getChildren().add(atacar);
+        panelIzquierdo.getChildren().add(pasarTurno);
+        panelIzquierdo.getChildren().add(turno);
+        panelIzquierdo.getChildren().add(vida);
+        panelIzquierdo.getChildren().add(estado);
+        panelIzquierdo.getChildren().add(velocidad);
+        panelIzquierdo.getChildren().add(ataque);
+        panelIzquierdo.setAlignment(Pos.CENTER);
         this.setLeft(panelIzquierdo);
-        mover.setVisible(false);
+        this.pasarTurno.setOnAction(new ControladorPasarTurno(this.juego,this.turno));
         this.mover.setOnAction(new ControladorOpcionMoverEventHandler(movimiento,this));
         atacar.setVisible(false);
+        pasarTurno.setVisible(true);
+        mover.setVisible(false);
+        vida.setVisible(true);
+        estado.setVisible(true);
+        velocidad.setVisible(true);
+        ataque.setVisible(true);
+        turno.setText("Turno: "+juego.obtenerTurnoActual());
+        
     }
-
+   
     private void setImagenIcono(Button boton,String recurso){
         ImageView imagen=new ImageView();
         imagen.setImage(new javafx.scene.image.Image(getClass().getResource(recurso).toExternalForm()));

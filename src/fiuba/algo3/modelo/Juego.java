@@ -15,6 +15,7 @@ public class Juego {
     private ArrayList<AlgoFormer> autobots;
     private ArrayList<AlgoFormer> decepticons;
     private String ganador;
+    private String turnoActual;
 
 
     public Juego(Tablero tablero){
@@ -41,8 +42,6 @@ public class Juego {
         this.decepticons.get(0).siguienteTurno();
         this.decepticons.get(1).siguienteTurno();
         this.decepticons.get(2).siguienteTurno();
-
-
     }
 
     public void comenzarJuego(){
@@ -50,9 +49,11 @@ public class Juego {
         this.autobots.get(0).siguienteTurno();
         this.autobots.get(1).siguienteTurno();
         this.autobots.get(2).siguienteTurno();
-
+        turnoActual = "Autobots";
     }
-
+    public String obtenerTurnoActual(){
+    	return turnoActual;
+    }
     public void proximoTurno(){
         this.decepticons.get(0).siguienteTurno();
         this.decepticons.get(1).siguienteTurno();
@@ -60,6 +61,13 @@ public class Juego {
         this.autobots.get(0).siguienteTurno();
         this.autobots.get(1).siguienteTurno();
         this.autobots.get(2).siguienteTurno();
+        if (turnoActual == "Autobots") {
+        	turnoActual = "Decepticons"; 
+        }
+        else
+        	    {
+        		turnoActual = "Autobots";
+        		}
     }
 
 

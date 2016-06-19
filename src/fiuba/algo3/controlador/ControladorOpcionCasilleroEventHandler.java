@@ -29,8 +29,13 @@ public class ControladorOpcionCasilleroEventHandler implements EventHandler<Acti
     @Override
     public void handle(ActionEvent actionEvent) {
         this.mov.setCasillero(posicion);
-        this.mover.setVisible(false);
-        this.atacar.setVisible(false);
+        /*Para mover no se si conviene que desapareca mover y atacar 
+         * al hacer click en casillero
+         * mejor que clickee en former y luego clickee en un casillero valido para mover
+         * Se podria poner en un costado el former y el casillero que se esta seleccionando
+         */
+        //this.mover.setVisible(false); 
+        //this.atacar.setVisible(false);
         
 
 
