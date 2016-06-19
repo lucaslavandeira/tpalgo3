@@ -1,6 +1,7 @@
-package fiuba.algo3.modelo.aplicacion.eventos;
+package fiuba.algo3.controlador;
 
-import fiuba.algo3.modelo.aplicacion.EscenarioPrincipal;
+import fiuba.algo3.vista.VistaJuego;
+
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
@@ -18,12 +19,12 @@ import java.io.IOException;
 /**
  * Created by Vietnamita on 18/06/2016.
  */
-public class OpcionNuevoJuegoEventHandler implements EventHandler<ActionEvent> {
+public class ControladorOpcionNuevoJuegoEventHandler implements EventHandler<ActionEvent> {
 
     private Stage stage;
-    private EscenarioPrincipal escenario;
+    private VistaJuego escenario;
 
-    public OpcionNuevoJuegoEventHandler(Stage stage, EscenarioPrincipal escenario){
+    public ControladorOpcionNuevoJuegoEventHandler(Stage stage, VistaJuego escenario){
         this.escenario=escenario;
         this.stage=stage;
     }

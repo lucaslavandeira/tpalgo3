@@ -1,11 +1,11 @@
-package fiuba.algo3.modelo.aplicacion.eventos;
+package fiuba.algo3.controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 //import javafx.scene.control.Alert;
 //import javafx.scene.control.Alert.AlertType;
 
-public class OpcionAcercaDeEventHandler implements EventHandler<ActionEvent> {
+public class ControladorOpcionAcercaDeEventHandler implements EventHandler<ActionEvent> {
 
     @Override
     public void handle(ActionEvent actionEvent) {

@@ -1,4 +1,4 @@
-package fiuba.algo3.modelo.aplicacion;
+package fiuba.algo3.vista;
 
 import fiuba.algo3.modelo.*;
 import javafx.application.Application;
@@ -26,7 +26,7 @@ import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
-public class Transformer extends Application {
+public class Vista extends Application {
 
     public static void main(String[] args) {
         launch(args);
@@ -35,12 +35,9 @@ public class Transformer extends Application {
 
     @Override
     public void start(final Stage stage) throws Exception{
-
         stage.setTitle("TRANSFORMERS");
         stage.getIcons().add(new Image(getClass().getResourceAsStream("/iconos/optimus.png")));
-        Scene bienvenida=new Scene(new EscenarioInicial(stage),750,480,Color.SNOW );
-
-
+        Scene bienvenida=new Scene(new VistaMenuPrincipal(stage),750,480,Color.SNOW );
         stage.setScene(bienvenida);
         stage.initStyle(StageStyle.UNDECORATED);
         stage.setFullScreen(true);

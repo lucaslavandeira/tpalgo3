@@ -1,6 +1,8 @@
-package fiuba.algo3.modelo.aplicacion;
+package fiuba.algo3.vista;
 
 import com.sun.javafx.scene.control.skin.ButtonSkin;
+
+import fiuba.algo3.controlador.ControladorSalir;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -22,12 +24,12 @@ import java.net.URL;
 /**
  * Created by Diego on 14/06/2016.
  */
-public class EscenarioInicial extends HBox {
+public class VistaMenuPrincipal extends HBox {
 
    private  MediaPlayer mediaPlayer;
    private  Stage stage;
 
-    public EscenarioInicial(Stage stage) {
+    public VistaMenuPrincipal(Stage stage) {
 
         super();
         this.stage=stage;
@@ -76,9 +78,7 @@ public class EscenarioInicial extends HBox {
         botonSalir.setAlignment(Pos.BOTTOM_LEFT);
 
         //accion
-        botonSalir.setOnAction(event -> {
-            System.exit(0);
-        });
+        botonSalir.setOnAction(new ControladorSalir());
 
 
         this.getChildren().add(botonSalir);
@@ -107,7 +107,7 @@ public class EscenarioInicial extends HBox {
 
         botonJugar.setOnAction(event -> {
             this.mediaPlayer.stop();
-            Scene escenarioPrincipal=new Scene(new EscenarioPrincipal (stage),1280,720, Color.SNOW );
+            Scene escenarioPrincipal=new Scene(new VistaJuego (stage),1280,720, Color.SNOW );
             stage.setScene(escenarioPrincipal);
             stage.setFullScreen(true);
             stage.show();

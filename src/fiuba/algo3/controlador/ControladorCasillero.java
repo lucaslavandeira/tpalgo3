@@ -1,4 +1,4 @@
-package fiuba.algo3.modelo.aplicacion.eventos;
+package fiuba.algo3.controlador;
 
 import fiuba.algo3.modelo.Casillero;
 import javafx.fxml.FXMLLoader;
@@ -11,12 +11,12 @@ import java.io.IOException;
 /**
  * Created by Vietnamita on 18/06/2016.
  */
-public class BotonCasillero extends Button{
+public class ControladorCasillero extends Button{
 
     private Casillero posicion;
     private Button local;
 
-    public BotonCasillero (Casillero casillero){
+    public ControladorCasillero (Casillero casillero){
         super();
         this.posicion=casillero;
 

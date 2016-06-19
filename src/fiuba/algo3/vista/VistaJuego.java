@@ -1,9 +1,8 @@
-package fiuba.algo3.modelo.aplicacion;
-
+package fiuba.algo3.vista;
 import fiuba.algo3.modelo.*;
-import fiuba.algo3.modelo.aplicacion.eventos.BotonCasillero;
-import fiuba.algo3.modelo.aplicacion.eventos.BotonFormer;
-import fiuba.algo3.modelo.aplicacion.eventos.ControladorDeMovimientos;
+import fiuba.algo3.controlador.ControladorCasillero;
+import fiuba.algo3.controlador.ControladorFormer;
+import fiuba.algo3.controlador.ControladorDeMovimientos;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -22,7 +21,7 @@ import java.net.URL;
 /**
  * Created by Vietnamita on 18/06/2016.
  */
-public class EscenarioPrincipal extends BorderPane {
+public class VistaJuego extends BorderPane {
 
     private BarraDeMenu barra;
     private MediaPlayer mediaPlayer;
@@ -38,7 +37,7 @@ public class EscenarioPrincipal extends BorderPane {
     private Frenzy frenzy;
     private Bonecrusher bonecrusher;
 
-    public EscenarioPrincipal(Stage stage) {
+    public VistaJuego(Stage stage) {
 
         this.mapa=new Tablero(11);
         this.armarJuego();
@@ -49,10 +48,10 @@ public class EscenarioPrincipal extends BorderPane {
         this.panelLateralIzquierdo();
         this.panelCentral();
         this.panelInferior();
-        final URL resource = getClass().getResource("/sonido/playing.mp3");
+       final URL resource = getClass().getResource("/sonido/playing.mp3");
         final Media media = new Media(resource.toString());
-        mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.play();
+      mediaPlayer = new MediaPlayer(media);
+      mediaPlayer.play();
     }
 
     private void armarJuego() {
@@ -69,7 +68,7 @@ public class EscenarioPrincipal extends BorderPane {
     }
 
     private void panelInferior() {
-        BotonFormer botonOptimus=new BotonFormer(this.optimus,mov);
+        ControladorFormer botonOptimus=new ControladorFormer(this.optimus,mov);
         Button botonBumblebee=new Button();
         Button botonRatchet=new Button();
 
@@ -113,7 +112,7 @@ public class EscenarioPrincipal extends BorderPane {
             HBox fila=new HBox();
             for(int j=0;j<11;j++)
             {
-                BotonCasillero boton=new BotonCasillero(this.mapa.obtenerCasillero(i,j));
+                ControladorCasillero boton=new ControladorCasillero(this.mapa.obtenerCasillero(i,j));
                 this.setVistaBotonCasillero(boton);
                 fila.getChildren().add(boton);
             }
@@ -124,7 +123,7 @@ public class EscenarioPrincipal extends BorderPane {
         this.setCenter(panelCentral);
     }
 
-    private void setVistaBotonCasillero(BotonCasillero botonCasillero){
+    private void setVistaBotonCasillero(ControladorCasillero botonCasillero){
         botonCasillero.setPrefSize(50,50);
         if(botonCasillero.getCasillero().estaOcupado()){
             ImageView imagenSalir=new ImageView();

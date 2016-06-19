@@ -1,4 +1,4 @@
-package fiuba.algo3.modelo.aplicacion.eventos;
+package fiuba.algo3.controlador;
 
 import fiuba.algo3.modelo.Casillero;
 import javafx.event.ActionEvent;
@@ -8,13 +8,13 @@ import javafx.stage.Stage;
 /**
  * Created by Vietnamita on 18/06/2016.
  */
-public class OpcionCasilleroEventHandler implements EventHandler<ActionEvent> {
+public class ControladorOpcionCasilleroEventHandler implements EventHandler<ActionEvent> {
 
 
     private Casillero posicion;
     private ControladorDeMovimientos mov;
 
-    public OpcionCasilleroEventHandler(Casillero casillero, ControladorDeMovimientos mov){
+    public ControladorOpcionCasilleroEventHandler(Casillero casillero, ControladorDeMovimientos mov){
        this.mov=mov;
     }
 

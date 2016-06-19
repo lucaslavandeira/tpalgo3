@@ -1,9 +1,9 @@
-package fiuba.algo3.modelo.aplicacion;
+package fiuba.algo3.vista;
 
-import fiuba.algo3.modelo.aplicacion.eventos.OpcionAcercaDeEventHandler;
-import fiuba.algo3.modelo.aplicacion.eventos.OpcionNuevoJuegoEventHandler;
-import fiuba.algo3.modelo.aplicacion.eventos.OpcionPantallaCompletaEventHandler;
-import fiuba.algo3.modelo.aplicacion.eventos.OpcionSalirEventHandler;
+import fiuba.algo3.controlador.ControladorOpcionAcercaDeEventHandler;
+import fiuba.algo3.controlador.ControladorOpcionNuevoJuegoEventHandler;
+import fiuba.algo3.controlador.ControladorOpcionPantallaCompletaEventHandler;
+import fiuba.algo3.controlador.ControladorOpcionSalirEventHandler;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -14,7 +14,7 @@ import javafx.stage.Stage;
 public class BarraDeMenu extends MenuBar {
 
     MenuItem opcionPantallaCompleta = new MenuItem("Pantalla completa");
-    EscenarioPrincipal escenario;
+    VistaJuego escenario;
 
     public BarraDeMenu(Stage stage) {
         Menu menuArchivo = new Menu("Archivo");
@@ -26,16 +26,16 @@ public class BarraDeMenu extends MenuBar {
         MenuItem opcionAcercaDe = new MenuItem("Acerca de...");
         MenuItem opcionNuevo= new MenuItem("Juego Nuevo");
 
-        OpcionSalirEventHandler opcionSalirHandler = new OpcionSalirEventHandler();
+        ControladorOpcionSalirEventHandler opcionSalirHandler = new ControladorOpcionSalirEventHandler();
         opcionSalir.setOnAction(opcionSalirHandler);
 
-        OpcionAcercaDeEventHandler opcionAcercaDeHandler = new OpcionAcercaDeEventHandler();
+        ControladorOpcionAcercaDeEventHandler opcionAcercaDeHandler = new ControladorOpcionAcercaDeEventHandler();
         opcionAcercaDe.setOnAction(opcionAcercaDeHandler);
 
-        OpcionPantallaCompletaEventHandler opcionPantallaCompletaHandler = new OpcionPantallaCompletaEventHandler(stage, opcionPantallaCompleta);
+        ControladorOpcionPantallaCompletaEventHandler opcionPantallaCompletaHandler = new ControladorOpcionPantallaCompletaEventHandler(stage, opcionPantallaCompleta);
         opcionPantallaCompleta.setOnAction(opcionPantallaCompletaHandler);
 
-        OpcionNuevoJuegoEventHandler opcionNuevoJuegoEventHandler =new OpcionNuevoJuegoEventHandler(stage,escenario);
+        ControladorOpcionNuevoJuegoEventHandler opcionNuevoJuegoEventHandler =new ControladorOpcionNuevoJuegoEventHandler(stage,escenario);
         opcionNuevo.setOnAction(opcionNuevoJuegoEventHandler);
 
 
@@ -53,7 +53,7 @@ public class BarraDeMenu extends MenuBar {
 
     }
 
-    public void setOpcionNuevoJuego(EscenarioPrincipal escenarioPrincipal){
+    public void setOpcionNuevoJuego(VistaJuego escenarioPrincipal){
         this.escenario=escenarioPrincipal;
     }
 }

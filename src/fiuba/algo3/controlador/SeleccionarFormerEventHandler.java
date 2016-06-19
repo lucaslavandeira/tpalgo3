@@ -1,4 +1,4 @@
-package fiuba.algo3.modelo.aplicacion.eventos;
+package fiuba.algo3.controlador;
 
 import fiuba.algo3.modelo.AlgoFormer;
 import fiuba.algo3.modelo.Casillero;
