@@ -5,7 +5,7 @@ package fiuba.algo3.modelo;
  * Created by Diego on 03/06/2016.
  */
 public class Ratchet extends AlgoFormer{
-
+private String nombre = "Ratchet";
     public Ratchet(Casillero unCasillero){
         super(unCasillero);
         this.vida=150;
@@ -19,7 +19,10 @@ public class Ratchet extends AlgoFormer{
         this.estadoActual.modificarStatsFormer(this);
 
     }
-
+	public String getNombre() {
+		
+		return nombre;
+	}
 
 }
 

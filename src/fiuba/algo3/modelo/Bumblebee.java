@@ -4,7 +4,7 @@ package fiuba.algo3.modelo;
  * Created by Diego on 03/06/2016.
  */
 public class Bumblebee extends AlgoFormer{
-
+	 private String nombre = "Bumblebee";
 
     public Bumblebee(Casillero unCasillero){
         super(unCasillero);
@@ -19,6 +19,8 @@ public class Bumblebee extends AlgoFormer{
         this.estadoActual.modificarStatsFormer(this);
 
     }
-
+	public String getNombre() {
+		return nombre;
+	}
 
 }

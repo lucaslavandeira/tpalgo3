@@ -1,7 +1,6 @@
 package fiuba.algo3.vista;
 
 import com.sun.javafx.scene.control.skin.ButtonSkin;
-
 import fiuba.algo3.controlador.ControladorJugar;
 import fiuba.algo3.controlador.ControladorSalir;
 import javafx.fxml.FXMLLoader;

@@ -13,15 +13,11 @@ public class BotonFormer extends Button {
     private AlgoFormer former;
 
 
-    public BotonFormer(AlgoFormer former ,ControladorDeMovimientos movimiento, Button mover, Button atacar){
+    public BotonFormer(AlgoFormer former ,ControladorDeMovimientos movimiento, Button mover, Button atacar, VBox panelIzquierdo){
         this.former=former;
-        SeleccionarFormerEventHandler seleccion=new SeleccionarFormerEventHandler(this.former,movimiento,mover,atacar);
+        SeleccionarFormerEventHandler seleccion=new SeleccionarFormerEventHandler(this.former,movimiento,mover,atacar,panelIzquierdo);
         this.setOnAction(seleccion);
     }
-
-    public BotonFormer(Optimus optimus, ControladorDeMovimientos movimiento, VBox panelIzquierdo) {
-		// TODO Auto-generated constructor stub
-	}
 
 	public AlgoFormer getFormer(){
         return this.former;

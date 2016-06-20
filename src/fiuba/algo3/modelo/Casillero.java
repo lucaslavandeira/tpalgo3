@@ -71,4 +71,11 @@ public class Casillero {
     public void asignarSuperficie(Superficie superficie) {
         this.superficie = superficie;
     }
+    public int getX(){
+    	return this.posicionX;
+    }
+    public int getY(){
+    	return this.posicionY;
+    }
+
 }

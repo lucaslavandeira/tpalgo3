@@ -4,7 +4,7 @@ package fiuba.algo3.modelo;
  * Created by Diego on 03/06/2016.
  */
 public class Megatron extends AlgoFormer {
-
+private String nombre = "Megatron";
     public Megatron(Casillero unCasillero){
         super(unCasillero);
         this.vida=550;
@@ -18,6 +18,8 @@ public class Megatron extends AlgoFormer {
         this.estadoActual.modificarStatsFormer(this);
 
     }
-
+	public String getNombre() {
+		return nombre;
+	}
 
 }

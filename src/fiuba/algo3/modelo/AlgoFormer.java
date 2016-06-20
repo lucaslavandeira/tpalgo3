@@ -103,9 +103,14 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
     }
 	
 	public int getVida() {
-        return vida;
+        return this.vida;
     }
-
+	public int getVelocidad() {
+        return this.velocidad;
+    }
+	public int getAtaque() {
+        return this.ataque;
+    }
     public void asignarValoresStats(int ataque, int velocidad, int rangoAtaque) {
 
         this.ataque=ataque;
@@ -150,4 +155,11 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
     public Bonus getBonus() {
         return this.bonus;
     }
+
+	public String getNombre() {
+		
+		return "former";
+	}
+
+
 }

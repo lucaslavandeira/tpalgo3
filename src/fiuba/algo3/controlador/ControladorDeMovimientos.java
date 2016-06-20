@@ -21,10 +21,21 @@ public class ControladorDeMovimientos {
     public void setCasillero(Casillero casillero){
         this.casillero=casillero;
     }
+    public Casillero getCasillero(){
+    	return this.casillero;
+    }
 
     public void run(){
         try {
             this.former.avanzar(this.casillero);
+        } catch (RuntimeException e) {
+            e.printStackTrace();
+        }
+
+    }
+    public void atack(AlgoFormer formerAAtacar){
+        try {
+           this.former.atacar(formerAAtacar);
         } catch (RuntimeException e) {
             e.printStackTrace();
         }

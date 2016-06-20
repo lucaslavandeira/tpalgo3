@@ -19,9 +19,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import java.io.IOException;
 import java.net.URL;
+import java.util.ArrayList;
 
 
 
@@ -51,6 +53,9 @@ public class VistaJuego extends BorderPane {
 	private Label estado;
 	private Label velocidad;
 	private Label turno;
+	private VBox panelIzquierdo;
+	private Label nombre;
+	private ArrayList listaDeFormers;
     public VistaJuego(Stage stage) {
 
         this.mapa=new Tablero(11);
@@ -71,7 +76,7 @@ public class VistaJuego extends BorderPane {
 
     private void armarJuego() {
         this.juego=new Juego(this.mapa);
-        optimus=new Optimus(mapa.obtenerCasillero(0,3));
+        optimus=new Optimus(mapa.obtenerCasillero(9,3));
         bumblebee=new Bumblebee(mapa.obtenerCasillero(0,5));
         ratchet=new Ratchet(mapa.obtenerCasillero(0,7));
         megatron=new Megatron(mapa.obtenerCasillero(10,3));
@@ -80,17 +85,24 @@ public class VistaJuego extends BorderPane {
         this.juego.addAutobots(optimus,bumblebee,ratchet);
         this.juego.addDecepticons(megatron,frenzy,bonecrusher);
         this.juego.comenzarJuego();
-
+        listaDeFormers = new ArrayList();
+        listaDeFormers.add(optimus);
+        listaDeFormers.add(bumblebee);
+        listaDeFormers.add(ratchet);
+        listaDeFormers.add(megatron);
+        listaDeFormers.add(frenzy);
+        listaDeFormers.add(bonecrusher);
+       
     }
 
     private void panelInferior() {
-    	BotonFormer botonOptimus=new BotonFormer(this.optimus,movimiento,this.mover,this.atacar);
-    	BotonFormer botonBumblebee=new BotonFormer(this.bumblebee,movimiento,this.mover,this.atacar);
-    	BotonFormer botonRatchet=new BotonFormer(this.ratchet,movimiento,this.mover,this.atacar);
+    	BotonFormer botonOptimus=new BotonFormer(this.optimus,movimiento,this.mover,this.atacar,this.panelIzquierdo);
+    	BotonFormer botonBumblebee=new BotonFormer(this.bumblebee,movimiento,this.mover,this.atacar,this.panelIzquierdo);
+    	BotonFormer botonRatchet=new BotonFormer(this.ratchet,movimiento,this.mover,this.atacar,this.panelIzquierdo);
 
-    	BotonFormer botonMegatron=new BotonFormer(this.megatron,movimiento,this.mover,this.atacar);
-    	BotonFormer botonFrenzy=new BotonFormer(this.frenzy,movimiento,this.mover,this.atacar);
-    	BotonFormer botonBonecrucher=new BotonFormer(this.bonecrusher,movimiento,this.mover,this.atacar);
+    	BotonFormer botonMegatron=new BotonFormer(this.megatron,movimiento,this.mover,this.atacar,this.panelIzquierdo);
+    	BotonFormer botonFrenzy=new BotonFormer(this.frenzy,movimiento,this.mover,this.atacar,this.panelIzquierdo);
+    	BotonFormer botonBonecrucher=new BotonFormer(this.bonecrusher,movimiento,this.mover,this.atacar,this.panelIzquierdo);
 
 
         this.setImagenIcono(botonOptimus,"/imagenes/caraOptimus.jpg");
@@ -173,12 +185,13 @@ public class VistaJuego extends BorderPane {
         mover=new Button();
         atacar=new Button();
         pasarTurno=new Button();
+        nombre=new Label();
         vida=new Label();
         ataque=new Label();
         estado=new Label();
         velocidad = new Label();
         turno = new Label();
-        VBox panelIzquierdo = new VBox();
+        panelIzquierdo = new VBox();
         try {
             mover= FXMLLoader.load(getClass().getResource("sample.fxml"));
             atacar= FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -192,8 +205,9 @@ public class VistaJuego extends BorderPane {
         pasarTurno.setText("Pasar Turno");
         vida.setText("Vida:....");
         ataque.setText("Ataque:....");
-        estado.setText("Estado:....");
+        estado.setText("Estado: Humanoide");
         velocidad.setText("Velocidad:....");
+        turno.setFont(new Font(25));
         turno.setText("Turno:");
         
         
@@ -201,6 +215,7 @@ public class VistaJuego extends BorderPane {
         panelIzquierdo.getChildren().add(atacar);
         panelIzquierdo.getChildren().add(pasarTurno);
         panelIzquierdo.getChildren().add(turno);
+        panelIzquierdo.getChildren().add(nombre);
         panelIzquierdo.getChildren().add(vida);
         panelIzquierdo.getChildren().add(estado);
         panelIzquierdo.getChildren().add(velocidad);
@@ -208,14 +223,15 @@ public class VistaJuego extends BorderPane {
         panelIzquierdo.setAlignment(Pos.CENTER);
         this.setLeft(panelIzquierdo);
         this.pasarTurno.setOnAction(new ControladorPasarTurno(this.juego,this.turno));
+        this.atacar.setOnAction(new ControladorAtacar(movimiento,listaDeFormers) );
         this.mover.setOnAction(new ControladorOpcionMoverEventHandler(movimiento,this));
         atacar.setVisible(false);
         pasarTurno.setVisible(true);
         mover.setVisible(false);
-        vida.setVisible(true);
-        estado.setVisible(true);
-        velocidad.setVisible(true);
-        ataque.setVisible(true);
+        vida.setVisible(false);
+        estado.setVisible(false);
+        velocidad.setVisible(false);
+        ataque.setVisible(false);
         turno.setText("Turno: "+juego.obtenerTurnoActual());
         
     }
