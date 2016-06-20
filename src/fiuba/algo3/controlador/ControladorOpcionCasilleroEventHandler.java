@@ -14,15 +14,11 @@ public class ControladorOpcionCasilleroEventHandler implements EventHandler<Acti
 
     private Casillero posicion;
     private ControladorDeMovimientos mov;
-    private Button mover;
-    private Button atacar;
     
 
-    public ControladorOpcionCasilleroEventHandler(Casillero casillero, ControladorDeMovimientos mov,Button mover, Button atacar){
+    public ControladorOpcionCasilleroEventHandler(Casillero casillero, ControladorDeMovimientos mov){
        this.mov=mov;
        posicion = casillero;
-       this.mover = mover;
-       this.atacar = atacar;
     }
 
 
@@ -34,8 +30,7 @@ public class ControladorOpcionCasilleroEventHandler implements EventHandler<Acti
          * mejor que clickee en former y luego clickee en un casillero valido para mover
          * Se podria poner en un costado el former y el casillero que se esta seleccionando
          */
-        //this.mover.setVisible(false); 
-        //this.atacar.setVisible(false);
+
         
 
 

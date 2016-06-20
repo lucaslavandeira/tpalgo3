@@ -16,12 +16,11 @@ public class BotonCasillero extends Button{
     private Casillero posicion;
     private Button local;
 
-    public BotonCasillero (Casillero casillero, ControladorDeMovimientos movimiento, Button mover, Button atacar){
+    public BotonCasillero (Casillero casillero, ControladorDeMovimientos movimiento){
         super();
         this.posicion=casillero;
-
         this.local=this;
-        ControladorOpcionCasilleroEventHandler controladorCasillero=new ControladorOpcionCasilleroEventHandler(this.posicion,movimiento,mover,atacar);
+        ControladorOpcionCasilleroEventHandler controladorCasillero=new ControladorOpcionCasilleroEventHandler(this.posicion,movimiento);
         this.setOnAction(controladorCasillero);
     }
 

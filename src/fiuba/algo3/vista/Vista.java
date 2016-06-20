@@ -1,6 +1,7 @@
 package fiuba.algo3.vista;
 
 import fiuba.algo3.modelo.*;
+
 import javafx.application.Application;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -28,11 +29,11 @@ import javafx.stage.StageStyle;
 
 public class Vista extends Application {
 
-    public static void main(String[] args) {
+    public static final void main(String[] args) {
         launch(args);
     }
 
-
+//hola
     @Override
     public void start(final Stage stage) throws Exception{
         stage.setTitle("TRANSFORMERS");

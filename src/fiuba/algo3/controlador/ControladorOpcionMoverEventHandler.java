@@ -13,21 +13,17 @@ import javafx.stage.Stage;
  */
 public class ControladorOpcionMoverEventHandler implements EventHandler<ActionEvent> {
 
-    private Stage stage;
-    private Casillero posicion;
     private ControladorDeMovimientos movimientoActual;
     private VistaJuego vista;
 
     public ControladorOpcionMoverEventHandler(ControladorDeMovimientos movimiento, VistaJuego vistaJuego){
-        this.stage=stage;
         this.movimientoActual = movimiento;
         vista = vistaJuego;
     }
 
-
     @Override
     public void handle(ActionEvent actionEvent) {
         this.movimientoActual.run();
-        this.vista.panelCentral();
+        this.vista.actualizarVistaAlMoverFormer();
     }
 }

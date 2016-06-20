@@ -3,10 +3,11 @@ import fiuba.algo3.modelo.*;
 
 import fiuba.algo3.controlador.BotonCasillero;
 import fiuba.algo3.controlador.BotonFormer;
-import fiuba.algo3.controlador.ControladorAtacar;
+import fiuba.algo3.controlador.ControladorOpcionAtacarEventHandler;
 import fiuba.algo3.controlador.ControladorDeMovimientos;
 import fiuba.algo3.controlador.ControladorOpcionMoverEventHandler;
-import fiuba.algo3.controlador.ControladorPasarTurno;
+import fiuba.algo3.controlador.ControladorOpcionSalirEventHandler;
+import fiuba.algo3.controlador.ControladorOpcionPasarTurnoEventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -96,13 +97,13 @@ public class VistaJuego extends BorderPane {
     }
 
     private void panelInferior() {
-    	BotonFormer botonOptimus=new BotonFormer(this.optimus,movimiento,this.mover,this.atacar,this.panelIzquierdo);
-    	BotonFormer botonBumblebee=new BotonFormer(this.bumblebee,movimiento,this.mover,this.atacar,this.panelIzquierdo);
-    	BotonFormer botonRatchet=new BotonFormer(this.ratchet,movimiento,this.mover,this.atacar,this.panelIzquierdo);
+    	BotonFormer botonOptimus=new BotonFormer(this.optimus,movimiento,this);
+    	BotonFormer botonBumblebee=new BotonFormer(this.bumblebee,movimiento,this);
+    	BotonFormer botonRatchet=new BotonFormer(this.ratchet,movimiento,this);
 
-    	BotonFormer botonMegatron=new BotonFormer(this.megatron,movimiento,this.mover,this.atacar,this.panelIzquierdo);
-    	BotonFormer botonFrenzy=new BotonFormer(this.frenzy,movimiento,this.mover,this.atacar,this.panelIzquierdo);
-    	BotonFormer botonBonecrucher=new BotonFormer(this.bonecrusher,movimiento,this.mover,this.atacar,this.panelIzquierdo);
+    	BotonFormer botonMegatron=new BotonFormer(this.megatron,movimiento,this);
+    	BotonFormer botonFrenzy=new BotonFormer(this.frenzy,movimiento,this);
+    	BotonFormer botonBonecrucher=new BotonFormer(this.bonecrusher,movimiento,this);
 
 
         this.setImagenIcono(botonOptimus,"/imagenes/caraOptimus.jpg");
@@ -128,7 +129,7 @@ public class VistaJuego extends BorderPane {
 
     }
 
-    public void panelCentral() {
+    private void panelCentral() {
         //BotonCasillero botonCasillero=new BotonCasillero(this.mapa.obtenerCasillero(0,0));
         //Casillero casi=this.mapa.obtenerCasillero(0,4);
         //Optimus optimus=new Optimus(casi);
@@ -140,7 +141,7 @@ public class VistaJuego extends BorderPane {
             HBox fila=new HBox();
             for(int j=0;j<11;j++)
             {
-                BotonCasillero boton=new BotonCasillero(this.mapa.obtenerCasillero(i,j),this.movimiento,this.mover,this.atacar);
+                BotonCasillero boton=new BotonCasillero(this.mapa.obtenerCasillero(i,j),this.movimiento);
                 this.setVistaBotonCasillero(boton);
                 fila.getChildren().add(boton);
             }
@@ -150,7 +151,9 @@ public class VistaJuego extends BorderPane {
         panelCentral.setAlignment(Pos.CENTER);
         this.setCenter(panelCentral);
     }
-
+    public void actualizarVistaAlMoverFormer(){
+    	this.panelCentral();
+    }
     private void setVistaBotonCasillero(BotonCasillero botonCasillero){
         botonCasillero.setPrefSize(50,50);
         if(botonCasillero.getCasillero().estaOcupado()){
@@ -222,8 +225,8 @@ public class VistaJuego extends BorderPane {
         panelIzquierdo.getChildren().add(ataque);
         panelIzquierdo.setAlignment(Pos.CENTER);
         this.setLeft(panelIzquierdo);
-        this.pasarTurno.setOnAction(new ControladorPasarTurno(this.juego,this.turno));
-        this.atacar.setOnAction(new ControladorAtacar(movimiento,listaDeFormers) );
+        this.pasarTurno.setOnAction(new ControladorOpcionPasarTurnoEventHandler(this.juego,this.turno));
+        this.atacar.setOnAction(new ControladorOpcionAtacarEventHandler(movimiento,listaDeFormers) );
         this.mover.setOnAction(new ControladorOpcionMoverEventHandler(movimiento,this));
         atacar.setVisible(false);
         pasarTurno.setVisible(true);
@@ -235,7 +238,26 @@ public class VistaJuego extends BorderPane {
         turno.setText("Turno: "+juego.obtenerTurnoActual());
         
     }
-   
+    public void actualizarVistaAlSeleccionFormer(AlgoFormer former){
+    	this.mover.setVisible(true);
+    	this.atacar.setVisible(true);
+    	this.nombre.setFont(new Font(20));
+    	this.nombre.setVisible(true);
+    	this.nombre.setText("Nombre: "+former.getNombre());
+    	this.vida.setVisible(true);
+    	int vidaEnInt = former.getVida();
+    	String vidaEnString = String.valueOf(vidaEnInt);
+    	this.vida.setText("vida: " + vidaEnString);
+    	this.estado.setVisible(true);
+    	this.velocidad.setVisible(true);
+    	int velocidadEnInt = former.getVelocidad();
+    	String velocidadEnString = String.valueOf(velocidadEnInt);
+    	this.velocidad.setText("Velocidad: " + velocidadEnString);
+    	this.ataque.setVisible(true);
+    	int ataqueEnInt = former.getAtaque();
+    	String ataqueEnString = String.valueOf(ataqueEnInt);
+    	this.ataque.setText("Ataque: " + ataqueEnString);
+    }
     private void setImagenIcono(Button boton,String recurso){
         ImageView imagen=new ImageView();
         imagen.setImage(new javafx.scene.image.Image(getClass().getResource(recurso).toExternalForm()));

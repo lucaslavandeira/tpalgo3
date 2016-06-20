@@ -11,14 +11,14 @@ import javafx.stage.StageStyle;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.paint.Color;
-public class ControladorJugar implements EventHandler<ActionEvent> {
+public class ControladorOpcionJugarEventHandler implements EventHandler<ActionEvent> {
     Tablero tablero = new Tablero(10);
 	Juego nuevoJuego = new Juego(tablero);
 	private  Stage stage;
 	
 
 
-	public ControladorJugar(Stage stageMenuPrincipal) {
+	public ControladorOpcionJugarEventHandler(Stage stageMenuPrincipal) {
 		stage = stageMenuPrincipal;
 	}
 

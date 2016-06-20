@@ -6,12 +6,12 @@ import javafx.event.EventHandler;
 import javafx.scene.control.Label;
 import javafx.scene.text.Font;
 
-public class ControladorPasarTurno implements EventHandler<ActionEvent> {
+public class ControladorOpcionPasarTurnoEventHandler implements EventHandler<ActionEvent> {
 
 	private Juego juegoAPasarTurno;
 	private Label actualizarTurno;
 
-	public ControladorPasarTurno(Juego juego, Label turno) {
+	public ControladorOpcionPasarTurnoEventHandler(Juego juego, Label turno) {
 		juegoAPasarTurno = juego;
 		actualizarTurno = turno;
 	}

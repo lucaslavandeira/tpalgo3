@@ -6,12 +6,12 @@ import fiuba.algo3.modelo.Casillero;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-public class ControladorAtacar implements EventHandler<ActionEvent> {
+public class ControladorOpcionAtacarEventHandler implements EventHandler<ActionEvent> {
        private AlgoFormer formerAAtacar;
        private boolean encontrado;
        private ControladorDeMovimientos movimientoActual;
 	   private ArrayList formers;
-	public ControladorAtacar(ControladorDeMovimientos movimiento, ArrayList listaDeFormers) {
+	public ControladorOpcionAtacarEventHandler(ControladorDeMovimientos movimiento, ArrayList listaDeFormers) {
 		encontrado = false;  
         this.formers = listaDeFormers;
 		movimientoActual = movimiento;
@@ -24,8 +24,7 @@ public class ControladorAtacar implements EventHandler<ActionEvent> {
         	   formerAAtacar = formerAnterior;
         	   encontrado = true;
            }
-		}
-		
+		}	
 	}
 
 	@Override

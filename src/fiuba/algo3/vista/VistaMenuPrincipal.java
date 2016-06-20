@@ -1,8 +1,10 @@
 package fiuba.algo3.vista;
 
 import com.sun.javafx.scene.control.skin.ButtonSkin;
-import fiuba.algo3.controlador.ControladorJugar;
-import fiuba.algo3.controlador.ControladorSalir;
+
+import fiuba.algo3.controlador.ControladorOpcionJugarEventHandler;
+import fiuba.algo3.controlador.ControladorOpcionMoverEventHandler;
+import fiuba.algo3.controlador.ControladorOpcionSalirEventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
@@ -78,7 +80,7 @@ public class VistaMenuPrincipal extends HBox {
         botonSalir.setAlignment(Pos.BOTTOM_LEFT);
 
         //accion
-        botonSalir.setOnAction(new ControladorSalir());
+        botonSalir.setOnAction(new ControladorOpcionSalirEventHandler());
 
 
         this.getChildren().add(botonSalir);
@@ -105,7 +107,7 @@ public class VistaMenuPrincipal extends HBox {
         botonJugar.setContentDisplay(ContentDisplay.CENTER);
         botonJugar.setAlignment(Pos.BOTTOM_CENTER);
 
-        botonJugar.setOnAction(new ControladorJugar(stage));
+        botonJugar.setOnAction(new ControladorOpcionJugarEventHandler(stage));
 
 
         this.getChildren().add(botonJugar);
