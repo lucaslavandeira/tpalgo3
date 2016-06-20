@@ -107,7 +107,7 @@ public class VistaMenuPrincipal extends HBox {
         botonJugar.setContentDisplay(ContentDisplay.CENTER);
         botonJugar.setAlignment(Pos.BOTTOM_CENTER);
 
-        botonJugar.setOnAction(new ControladorOpcionJugarEventHandler(stage));
+        botonJugar.setOnAction(new ControladorOpcionJugarEventHandler(stage,this));
 
 
         this.getChildren().add(botonJugar);
@@ -120,4 +120,10 @@ public class VistaMenuPrincipal extends HBox {
         final Media media = new Media(resource.toString());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.play();}
+
+
+public void setStopSonido(){
+    this.mediaPlayer.stop();
+}
+
 }
