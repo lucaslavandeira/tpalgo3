@@ -17,7 +17,7 @@ public class Optimus extends AlgoFormer {
         this.estadoHumanoide.modificarStatsEstado(50,2,2);
         this.estadoActual=this.estadoHumanoide;
         this.estadoActual.modificarStatsFormer(this);
-
+        this.estadoString = "Humanoide";
     }
 	public String getNombre() {
 		

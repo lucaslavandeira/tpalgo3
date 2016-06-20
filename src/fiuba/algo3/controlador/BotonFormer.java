@@ -14,8 +14,8 @@ public class BotonFormer extends Button {
     private AlgoFormer former;
 
 
-    public BotonFormer(AlgoFormer former ,ControladorDeMovimientos movimiento,VistaJuego vista){
-        this.former=former;
+    public BotonFormer(AlgoFormer unFormer ,ControladorDeMovimientos movimiento,VistaJuego vista){
+        this.former=unFormer;
         SeleccionarFormerEventHandler seleccion=new SeleccionarFormerEventHandler(this.former,movimiento,vista);
         this.setOnAction(seleccion);
     }

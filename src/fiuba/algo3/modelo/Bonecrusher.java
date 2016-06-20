@@ -16,6 +16,7 @@ private String nombre = "Bonecrusher";
         this.estadoHumanoide.modificarStatsEstado(30,1,3);
         this.estadoActual=this.estadoHumanoide;
         this.estadoActual.modificarStatsFormer(this);
+        this.estadoString = "Humanoide";
     }
 	public String getNombre() {
 		return nombre;

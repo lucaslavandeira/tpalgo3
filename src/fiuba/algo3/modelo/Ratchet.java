@@ -17,7 +17,7 @@ private String nombre = "Ratchet";
         this.estadoHumanoide.modificarStatsEstado(5,1,5);
         this.estadoActual=this.estadoHumanoide;
         this.estadoActual.modificarStatsFormer(this);
-
+        this.estadoString = "Humanoide";
     }
 	public String getNombre() {
 		

@@ -16,7 +16,7 @@ private String nombre = "Megatron";
         this.estadoHumanoide.modificarStatsEstado(10,1,3);
         this.estadoActual=this.estadoHumanoide;
         this.estadoActual.modificarStatsFormer(this);
-
+        this.estadoString = "Humanoide";
     }
 	public String getNombre() {
 		return nombre;

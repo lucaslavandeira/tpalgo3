@@ -14,7 +14,7 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
 	protected int movDisponibles;
     protected boolean bloqueado;
 	protected boolean pisionico;
-	
+	protected String estadoString;
 	protected Estado estadoActual;
     protected Estado estadoAlternativo;
     protected Estado estadoHumanoide;
@@ -75,9 +75,10 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
     }
 	
     public void cambiarEstadoAlternativo(){
-        if(this.movDisponibles==0   || this.bloqueado==true){throw new BloqueadoException();}
+    	if(this.movDisponibles==0   || this.bloqueado==true){throw new BloqueadoException();}
         this.estadoActual=this.estadoAlternativo;
         this.estadoActual.modificarStatsFormer(this);
+        this.estadoString = "Alternativo";
         this.movDisponibles--;
     }
 	
@@ -85,6 +86,7 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
         if(this.movDisponibles==0){throw new BloqueadoException();}
         this.estadoActual=this.estadoHumanoide;
         this.estadoActual.modificarStatsFormer(this);
+        this.estadoString = "Humanoide";
         this.movDisponibles--;
     }
 
@@ -159,6 +161,12 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
 	public String getNombre() {
 		
 		return "former";
+	}
+
+
+
+	public String getEstado() {
+		return this.estadoString;
 	}
 
 

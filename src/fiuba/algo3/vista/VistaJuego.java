@@ -4,6 +4,7 @@ import fiuba.algo3.modelo.*;
 import fiuba.algo3.controlador.BotonCasillero;
 import fiuba.algo3.controlador.BotonFormer;
 import fiuba.algo3.controlador.ControladorOpcionAtacarEventHandler;
+import fiuba.algo3.controlador.ControladorOpcionCambiarEstadoAlternativoEventHandler;
 import fiuba.algo3.controlador.ControladorDeMovimientos;
 import fiuba.algo3.controlador.ControladorOpcionMoverEventHandler;
 import fiuba.algo3.controlador.ControladorOpcionSalirEventHandler;
@@ -11,6 +12,7 @@ import fiuba.algo3.controlador.ControladorOpcionPasarTurnoEventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
+import javafx.scene.control.ButtonBase;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
@@ -57,6 +59,8 @@ public class VistaJuego extends BorderPane {
 	private VBox panelIzquierdo;
 	private Label nombre;
 	private ArrayList listaDeFormers;
+	private Button cambiarEstadoHumanoide;
+	private Button cambiarEstadoAlternativo;
     public VistaJuego(Stage stage) {
 
         this.mapa=new Tablero(11);
@@ -185,6 +189,8 @@ public class VistaJuego extends BorderPane {
     }
 
     private void panelLateralIzquierdo(){
+    	cambiarEstadoHumanoide=new Button();
+    	cambiarEstadoAlternativo=new Button();
         mover=new Button();
         atacar=new Button();
         pasarTurno=new Button();
@@ -199,6 +205,8 @@ public class VistaJuego extends BorderPane {
             mover= FXMLLoader.load(getClass().getResource("sample.fxml"));
             atacar= FXMLLoader.load(getClass().getResource("sample.fxml"));
             pasarTurno=FXMLLoader.load(getClass().getResource("sample.fxml"));
+            cambiarEstadoHumanoide=FXMLLoader.load(getClass().getResource("sample.fxml"));
+            cambiarEstadoAlternativo=FXMLLoader.load(getClass().getResource("sample.fxml"));
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -206,6 +214,8 @@ public class VistaJuego extends BorderPane {
         mover.setText("Mover");
         atacar.setText("Atacar");
         pasarTurno.setText("Pasar Turno");
+        cambiarEstadoHumanoide.setText("Cambiar Estado Humanoide"); 
+        cambiarEstadoAlternativo.setText("Cambiar Estado Alternativo");        
         vida.setText("Vida:....");
         ataque.setText("Ataque:....");
         estado.setText("Estado: Humanoide");
@@ -213,18 +223,20 @@ public class VistaJuego extends BorderPane {
         turno.setFont(new Font(25));
         turno.setText("Turno:");
         
-        
-        panelIzquierdo.getChildren().add(mover);
-        panelIzquierdo.getChildren().add(atacar);
-        panelIzquierdo.getChildren().add(pasarTurno);
         panelIzquierdo.getChildren().add(turno);
+        panelIzquierdo.getChildren().add(pasarTurno);
+        panelIzquierdo.getChildren().add(atacar);
+        panelIzquierdo.getChildren().add(mover);
+        panelIzquierdo.getChildren().add(cambiarEstadoHumanoide);
+        panelIzquierdo.getChildren().add(cambiarEstadoAlternativo);
         panelIzquierdo.getChildren().add(nombre);
         panelIzquierdo.getChildren().add(vida);
-        panelIzquierdo.getChildren().add(estado);
-        panelIzquierdo.getChildren().add(velocidad);
         panelIzquierdo.getChildren().add(ataque);
+        panelIzquierdo.getChildren().add(velocidad);
+        panelIzquierdo.getChildren().add(estado);
         panelIzquierdo.setAlignment(Pos.CENTER);
         this.setLeft(panelIzquierdo);
+       
         this.pasarTurno.setOnAction(new ControladorOpcionPasarTurnoEventHandler(this.juego,this.turno));
         this.atacar.setOnAction(new ControladorOpcionAtacarEventHandler(movimiento,listaDeFormers) );
         this.mover.setOnAction(new ControladorOpcionMoverEventHandler(movimiento,this));
@@ -235,10 +247,15 @@ public class VistaJuego extends BorderPane {
         estado.setVisible(false);
         velocidad.setVisible(false);
         ataque.setVisible(false);
+    	this.cambiarEstadoHumanoide.setVisible(false);
+    	this.cambiarEstadoAlternativo.setVisible(false);
         turno.setText("Turno: "+juego.obtenerTurnoActual());
         
     }
     public void actualizarVistaAlSeleccionFormer(AlgoFormer former){
+    	estado.setText("Estado: "+former.getEstado());
+    	this.cambiarEstadoHumanoide.setVisible(true);
+    	this.cambiarEstadoAlternativo.setVisible(true);
     	this.mover.setVisible(true);
     	this.atacar.setVisible(true);
     	this.nombre.setFont(new Font(20));
@@ -266,4 +283,10 @@ public class VistaJuego extends BorderPane {
         boton.setGraphic(imagen);
         boton.setContentDisplay(ContentDisplay.CENTER);
     }
+	public Button obtenerBotonCambiarEstadoHumanoide() {
+		return this.cambiarEstadoHumanoide;
+	}
+	public Button obtenerBotonCambiarEstadoAlternativo() {
+		return this.cambiarEstadoAlternativo;
+	}
 }

@@ -51,7 +51,10 @@ public class SeleccionarFormerEventHandler implements EventHandler<ActionEvent>{
 	@Override
     public void handle(ActionEvent actionEvent) {
     	movimientoActual.setFormer(this.former);
+        vistaAnterior.obtenerBotonCambiarEstadoHumanoide().setOnAction(new ControladorOpcionCambiarEstadoHumanoideEventHandler(this.former,vistaAnterior));
+        vistaAnterior.obtenerBotonCambiarEstadoAlternativo().setOnAction(new ControladorOpcionCambiarEstadoAlternativoEventHandler(this.former,vistaAnterior));
         vistaAnterior.actualizarVistaAlSeleccionFormer(this.former);
+
     }
 
 

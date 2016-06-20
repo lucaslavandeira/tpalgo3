@@ -17,7 +17,7 @@ public class Bumblebee extends AlgoFormer{
         this.estadoHumanoide.modificarStatsEstado(40,2,1);
         this.estadoActual=this.estadoHumanoide;
         this.estadoActual.modificarStatsFormer(this);
-
+        this.estadoString = "Humanoide";
     }
 	public String getNombre() {
 		return nombre;
