@@ -2,14 +2,14 @@ package fiuba.algo3.controlador;
 
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
+//import javafx.scene.control.Alert;
+//import javafx.scene.control.Alert.AlertType;
 
 public class ControladorOpcionInstructivoEventHandler implements EventHandler<ActionEvent> {
 
 	@Override
 	public void handle(ActionEvent arg0) {
-        Alert alert = new Alert(AlertType.INFORMATION);
+      /*  Alert alert = new Alert(AlertType.INFORMATION);
         alert.setTitle("Instructivo");
         alert.setHeaderText("Instructivo");
         String mensaje = "Convencion para la superficie segun el color de los casilleros\n"
@@ -22,7 +22,7 @@ public class ControladorOpcionInstructivoEventHandler implements EventHandler<Ac
         		+ "\n"
         		+ "Convencion para el BONUS:";
         alert.setContentText(mensaje);
-        alert.show();
+        alert.show();*/
 	}
  
 
