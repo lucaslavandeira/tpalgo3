@@ -25,6 +25,7 @@ public class Juego {
         this.decepticons=new ArrayList<AlgoFormer>();
     }
 
+
     public void addAutobots(AlgoFormer formerUno,AlgoFormer formerDos,AlgoFormer formerTres){
         this.autobots.add(formerUno);
         this.autobots.add(formerDos);
@@ -35,6 +36,7 @@ public class Juego {
 
     }
 
+
     public void addDecepticons(AlgoFormer formerUno,AlgoFormer formerDos,AlgoFormer formerTres){
         this.decepticons.add(formerUno);
         this.decepticons.add(formerDos);
@@ -44,6 +46,7 @@ public class Juego {
         this.decepticons.get(2).siguienteTurno();
     }
 
+
     public void comenzarJuego(){
         //tal ves deberia instanciarse las posiciones iniciales aqui dado el caso
         this.autobots.get(0).siguienteTurno();
@@ -51,26 +54,28 @@ public class Juego {
         this.autobots.get(2).siguienteTurno();
         turnoActual = "Autobots";
     }
+
+
     public String obtenerTurnoActual(){
     	return turnoActual;
     }
+
+
     public void proximoTurno(){
         this.decepticons.get(0).siguienteTurno();
         this.decepticons.get(1).siguienteTurno();
         this.decepticons.get(2).siguienteTurno();
+
         this.autobots.get(0).siguienteTurno();
         this.autobots.get(1).siguienteTurno();
         this.autobots.get(2).siguienteTurno();
+
         if (turnoActual == "Autobots") {
         	turnoActual = "Decepticons"; 
+        }else{
+            turnoActual = "Autobots";
         }
-        else
-        	    {
-        		turnoActual = "Autobots";
-        		}
     }
-
-
 
 
     public String getGanador(){

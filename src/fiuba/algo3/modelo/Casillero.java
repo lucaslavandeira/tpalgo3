@@ -18,18 +18,23 @@ public class Casillero {
         this.tieneChispaSuprema = false;
     }
 
+
 	public void colocarChispaSuprema(){
-		this.tieneChispaSuprema = true;
+        this.tieneChispaSuprema = true;
 	}
+
+
 	public boolean tieneChispaSuprema(){
 		return this.tieneChispaSuprema;
 	}
 
-    public void asignarEquipamiento(Equipamiento equipamiento){this.equipamiento = equipamiento;}
+
+    public void asignarEquipamiento(Equipamiento equipamiento){
+        this.equipamiento = equipamiento;
+    }
 
 
-    public void ocupar()
-    {
+    public void ocupar() {
         this.estaOcupado = true;
         if(this.tieneChispaSuprema)throw new JugadorGanoException();
     }
@@ -43,22 +48,21 @@ public class Casillero {
     public void desocupar() {
         this.estaOcupado = false;
     }
-	
+
+
 	public Superficie getSuperficie(){
-		return this.superficie;
+        return this.superficie;
 	}
 
+
     public Equipamiento getEquipamiento(){
-       Equipamiento aux=this.equipamiento;
+        Equipamiento aux=this.equipamiento;
         this.equipamiento=new SinEquipamiento();
         return aux;
     }
 
 
     public void calcularDistancia(Casillero otroCasillero,int limite) {
-
-
-
         int distanciaX = Math.abs(this.posicionX - otroCasillero.posicionX);
         int distanciaY = Math.abs(this.posicionY - otroCasillero.posicionY);
 
@@ -71,11 +75,16 @@ public class Casillero {
     public void asignarSuperficie(Superficie superficie) {
         this.superficie = superficie;
     }
+
+
     public int getX(){
-    	return this.posicionX;
+        return this.posicionX;
     }
+
+
     public int getY(){
-    	return this.posicionY;
+        return this.posicionY;
     }
+
 
 }

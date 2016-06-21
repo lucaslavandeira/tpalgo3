@@ -19,74 +19,97 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
     protected Estado estadoAlternativo;
     protected Estado estadoHumanoide;
 	protected Equipo equipo;
-
     protected Bonus bonus;
 
 
     public AlgoFormer(Casillero unCasillero) {
         this.bonus=new Bonus();
         this.bloqueado=false;
+
         if(unCasillero.estaOcupado())
             throw new CasilleroInvalidoException();
+
         this.movDisponibles =100;
         this.posicion = unCasillero;
         this.pisionico=false;
-        unCasillero.ocupar();
-		
-	}
 
+        unCasillero.ocupar();
+	}
 
 
     public void avanzar(Casillero destino) {
 
-        if(this.movDisponibles==0   || this.bloqueado==true){throw new BloqueadoException();}
+        if(this.movDisponibles==0   || this.bloqueado==true){
+            throw new BloqueadoException();
+        }
+
         this.posicion.calcularDistancia(destino,bonus.aplicarBonusVelocidad(this.velocidad));
+
         if (destino.estaOcupado())
             throw new CasilleroInvalidoException();
+
 		this.posicion.desocupar();
         destino.ocupar();
         this.posicion = destino;
+
         estadoActual.aplicarEfecto(this,this.posicion.getSuperficie());
         posicion.getEquipamiento().addAlBonus(bonus);
+
         this.movDisponibles--;
+
         if (destino.tieneChispaSuprema()) 
         	throw new JugadorGanoException();
     }
 
 	
     public void atacar(AlgoFormer enemigo) {
-        if(this.movDisponibles==0   || this.bloqueado==true){throw new BloqueadoException();}
+        if(this.movDisponibles==0   || this.bloqueado==true){
+            throw new BloqueadoException();
+        }
+
         if (this.equipo==enemigo.equipo)
             throw new FuegoAmigoException();
+
         posicion.calcularDistancia(enemigo.posicion,this.rangoAtaque);
         enemigo.recibirAtaque(bonus.aplicarBonusAtaque(ataque));
+
         this.movDisponibles--;
     }
 
+
     public void siguienteTurno(){
         this.bonus.siguienteTurno();
+
         if(this.movDisponibles<=0)this.movDisponibles++;
         else if (this.movDisponibles>0)this.movDisponibles=1;
 
         if(this.bloqueado==true)this.bloqueado=false;
         else this.bloqueado=true;
-
-
     }
-	
+
+
     public void cambiarEstadoAlternativo(){
-    	if(this.movDisponibles==0   || this.bloqueado==true){throw new BloqueadoException();}
+    	if(this.movDisponibles==0   || this.bloqueado==true){
+            throw new BloqueadoException();
+        }
+
         this.estadoActual=this.estadoAlternativo;
         this.estadoActual.modificarStatsFormer(this);
         this.estadoString = "Alternativo";
+
         this.movDisponibles--;
     }
-	
+
+
     public void cambiarEstadoHumanoide(){
-        if(this.movDisponibles==0){throw new BloqueadoException();}
+        if(this.movDisponibles==0){
+            throw new BloqueadoException();
+        }
+
         this.estadoActual=this.estadoHumanoide;
         this.estadoActual.modificarStatsFormer(this);
         this.estadoString = "Humanoide";
+
         this.movDisponibles--;
     }
 
@@ -100,41 +123,51 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
         this.vida -=( bonus.aplicarBonusInmortal(danio));
     }
 
+
 	public Equipo getEquipo() {
         return this.equipo;
     }
-	
+
+
 	public int getVida() {
         return this.vida;
     }
+
+
 	public int getVelocidad() {
         return this.velocidad;
     }
+
+
 	public int getAtaque() {
         return this.ataque;
     }
-    public void asignarValoresStats(int ataque, int velocidad, int rangoAtaque) {
 
+
+    public void asignarValoresStats(int ataque, int velocidad, int rangoAtaque) {
         this.ataque=ataque;
         this.velocidad=velocidad;
         this.rangoAtaque=rangoAtaque;
-
     }
 
 
     public void reducirVida(int porcentage){this.vida-= (float)(porcentage*this.vida)/100;}
 
+
     public void bloquearTurnos(int cantidad) {
         this.movDisponibles -=cantidad;
     }
+
 
     public void reducirVelocidad(int porcentage) {
         this.velocidad-=this.velocidad*porcentage/100;
     }
 
+
     public void activarEstadoPisionico() {
         this.pisionico=true;
     }
+
 
     public void reducirAtaqueDeEstadoAlterno(int porcentage) {
         estadoAlternativo.reducirDanio(porcentage);
@@ -145,6 +178,7 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
         return this.pisionico;
     }
 
+
     public Casillero getPosicion() {
         return this.posicion;
     }
@@ -154,20 +188,19 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
         return this.movDisponibles;
     }
 
+
     public Bonus getBonus() {
         return this.bonus;
     }
 
+
 	public String getNombre() {
-		
 		return "former";
 	}
-
 
 
 	public String getEstado() {
 		return this.estadoString;
 	}
-
 
 }

@@ -9,6 +9,7 @@ public class Bonus implements  ObjetoDependienteDeTurno{
     private int duracionDobleCanion=0;
     private int duracionTriplicaVelocidad=0;
 
+
     public void siguienteTurno(){
         if(0<this.duracionInmortal)
             this.duracionInmortal--;

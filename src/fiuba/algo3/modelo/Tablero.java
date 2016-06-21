@@ -9,6 +9,8 @@ public class Tablero {
     private Casillero[][] casilleros;
     private int tamanio;
 
+
+
     public Tablero(int tamanio){
         this.casilleros = new Casillero[tamanio][tamanio];
 
@@ -23,19 +25,19 @@ public class Tablero {
         this.tamanio = tamanio;
     }
 
+
     private Superficie superficieAleatoria() {
 		Random random= new Random();
 		int superficieAleatoria = (int)(random.nextDouble() * 6 + 1);
+
 		switch (superficieAleatoria){
-		case 1: return new Roca();
-		case 2: return new Pantano();
-		case 3: return new Espinas();
-		case 4: return new Nube();
-		case 5: return new NebulosaAndromeda();
-		default:return new TormentaPsionica();
+		    case 1:  return new Roca();
+		    case 2:  return new Pantano();
+		    case 3:  return new Espinas();
+		    case 4:  return new Nube();
+		    case 5:  return new NebulosaAndromeda();
+		    default: return new TormentaPsionica();
 		}
-		
-		
 	}
 
 	public Casillero obtenerCasillero(int posicionX, int posicionY) {
@@ -45,6 +47,8 @@ public class Tablero {
 
         return (this.casilleros[posicionX][posicionY]);
     }
+
+
     public Casillero obtenerCentroDeTablero(){
     	return this.casilleros[this.tamanio/2][this.tamanio/2];
     }
