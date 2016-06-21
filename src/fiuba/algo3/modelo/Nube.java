@@ -6,15 +6,15 @@ package fiuba.algo3.modelo;
 public class Nube implements Superficie {
 	private SuperficiesEnum superficie ;
 	public void aplicarEfectoAlternativoTerrestreEn(AlgoFormer former){
-		//throw new UnidadTerrestreNoAtraviesaNubeException();
+		throw new UnidadTerrestreNoAtraviesaNubeException();
 	}
 	
 	public void aplicarEfectohumanoideAereoEn(AlgoFormer former){
-		//throw new UnidadAereaDebeEstarEnModoAlternoException();
+		throw new UnidadAereaDebeEstarEnModoAlternoException();
 	}
 	
 	public void aplicarEfectoHumanoideTerrestreEn(AlgoFormer former){
-		//throw new UnidadTerrestreNoAtraviesaNubeException();
+		throw new UnidadTerrestreNoAtraviesaNubeException();
 	}
 	
 	public void aplicarEfectoAlternativoAereoEn(AlgoFormer former){
