@@ -1,6 +1,7 @@
 package fiuba.algo3.vista;
 
 import fiuba.algo3.controlador.ControladorOpcionAcercaDeEventHandler;
+import fiuba.algo3.controlador.ControladorOpcionInstructivoEventHandler;
 import fiuba.algo3.controlador.ControladorOpcionNuevoJuegoEventHandler;
 import fiuba.algo3.controlador.ControladorOpcionPantallaCompletaEventHandler;
 import fiuba.algo3.controlador.ControladorOpcionSalirEventHandler;
@@ -24,6 +25,7 @@ public class BarraDeMenu extends MenuBar {
         MenuItem opcionSalir = new MenuItem("Salir");
         MenuItem opcionAbrir = new MenuItem("Abrir");
         MenuItem opcionAcercaDe = new MenuItem("Acerca de...");
+        MenuItem opcionInstructivo = new MenuItem("Instructivo");
         MenuItem opcionNuevo= new MenuItem("Juego Nuevo");
 
         ControladorOpcionSalirEventHandler opcionSalirHandler = new ControladorOpcionSalirEventHandler();
@@ -31,17 +33,19 @@ public class BarraDeMenu extends MenuBar {
 
         ControladorOpcionAcercaDeEventHandler opcionAcercaDeHandler = new ControladorOpcionAcercaDeEventHandler();
         opcionAcercaDe.setOnAction(opcionAcercaDeHandler);
-
+        ControladorOpcionInstructivoEventHandler opcionInstructivoHandler = new ControladorOpcionInstructivoEventHandler();
+        opcionInstructivo.setOnAction(opcionInstructivoHandler);
         ControladorOpcionPantallaCompletaEventHandler opcionPantallaCompletaHandler = new ControladorOpcionPantallaCompletaEventHandler(stage, opcionPantallaCompleta);
         opcionPantallaCompleta.setOnAction(opcionPantallaCompletaHandler);
 
         ControladorOpcionNuevoJuegoEventHandler opcionNuevoJuegoEventHandler =new ControladorOpcionNuevoJuegoEventHandler(stage,escenario);
         opcionNuevo.setOnAction(opcionNuevoJuegoEventHandler);
-
+        
 
       //  opcionPantallaCompleta.setDisable(false);
 
         menuArchivo.getItems().addAll(opcionNuevo, new SeparatorMenuItem(), opcionSalir);
+        menuAyuda.getItems().addAll(opcionInstructivo);
         menuAyuda.getItems().addAll(opcionAcercaDe);
         menuVer.getItems().addAll(opcionPantallaCompleta);
 

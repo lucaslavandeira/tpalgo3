@@ -1,6 +1,7 @@
 package fiuba.algo3.vista;
 import fiuba.algo3.modelo.*;
 
+
 import fiuba.algo3.controlador.BotonCasillero;
 import fiuba.algo3.controlador.BotonFormer;
 import fiuba.algo3.controlador.ControladorOpcionAtacarEventHandler;
@@ -58,7 +59,7 @@ public class VistaJuego extends BorderPane {
 	private Label turno;
 	private VBox panelIzquierdo;
 	private Label nombre;
-	private ArrayList listaDeFormers;
+	private ArrayList<AlgoFormer> listaDeFormers;
 	private Button cambiarEstadoHumanoide;
 	private Button cambiarEstadoAlternativo;
     public VistaJuego(Stage stage) {
@@ -81,7 +82,7 @@ public class VistaJuego extends BorderPane {
 
     private void armarJuego() {
         this.juego=new Juego(this.mapa);
-        optimus=new Optimus(mapa.obtenerCasillero(9,3));
+        optimus=new Optimus(mapa.obtenerCasillero(0,3));
         bumblebee=new Bumblebee(mapa.obtenerCasillero(0,5));
         ratchet=new Ratchet(mapa.obtenerCasillero(0,7));
         megatron=new Megatron(mapa.obtenerCasillero(10,3));
@@ -145,8 +146,9 @@ public class VistaJuego extends BorderPane {
             HBox fila=new HBox();
             for(int j=0;j<11;j++)
             {
+            	SuperficiesEnum superficieEnum = ((Superficie) this.mapa.obtenerCasillero(i,j).getSuperficie()).getSuperficie();
                 BotonCasillero boton=new BotonCasillero(this.mapa.obtenerCasillero(i,j),this.movimiento);
-                this.setVistaBotonCasillero(boton);
+                this.setVistaBotonCasillero(boton,superficieEnum);
                 fila.getChildren().add(boton);
             }
             panelCentral.getChildren().add(fila);
@@ -158,8 +160,9 @@ public class VistaJuego extends BorderPane {
     public void actualizarVistaAlMoverFormer(){
     	this.panelCentral();
     }
-    private void setVistaBotonCasillero(BotonCasillero botonCasillero){
+    private void setVistaBotonCasillero(BotonCasillero botonCasillero, SuperficiesEnum superficie){
         botonCasillero.setPrefSize(50,50);
+        this.asignarColorAlCasillero(botonCasillero , superficie);
         if(botonCasillero.getCasillero().estaOcupado()){
             ImageView imagenSalir=new ImageView();
             imagenSalir.setImage(new javafx.scene.image.Image(getClass().getResource("/iconos/autobots.png").toExternalForm()));
@@ -188,7 +191,25 @@ public class VistaJuego extends BorderPane {
 
     }
 
-    private void panelLateralIzquierdo(){
+    private void asignarColorAlCasillero(BotonCasillero botonCasillero, SuperficiesEnum superficie) {
+    	
+    	switch (superficie){
+    	case ROCA: botonCasillero.setStyle("-fx-background-color: grey;");
+    	break;
+    	case PANTANO: botonCasillero.setStyle("-fx-background-color: green;");
+    	break;
+    	case ESPINAS: botonCasillero.setStyle("-fx-background-color: limegreen;");
+    	break;
+    	case NUBE: botonCasillero.setStyle("-fx-background-color: cyan;");
+    	break;
+    	case NEBULOSAANDROMEDA: botonCasillero.setStyle("-fx-background-color: violet;");
+    	break;
+    	case TORMENTAPSIONICA: botonCasillero.setStyle("-fx-background-color: darkviolet;");
+    	break;
+    	}
+	}
+
+	private void panelLateralIzquierdo(){
     	cambiarEstadoHumanoide=new Button();
     	cambiarEstadoAlternativo=new Button();
         mover=new Button();

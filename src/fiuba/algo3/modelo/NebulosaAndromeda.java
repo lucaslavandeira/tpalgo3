@@ -4,9 +4,9 @@ package fiuba.algo3.modelo;
  * Created by Vietnamita on 11/06/2016.
  */
 public class NebulosaAndromeda implements Superficie {
-	
+	private SuperficiesEnum superficie ;
 	public void aplicarEfectoAlternativoTerrestreEn(AlgoFormer former){
-		throw new ImposibleAtravesarNebulosaAndromedaException();
+		//throw new ImposibleAtravesarNebulosaAndromedaException();
 	}
 	
 	public void aplicarEfectohumanoideAereoEn(AlgoFormer former){
@@ -14,10 +14,13 @@ public class NebulosaAndromeda implements Superficie {
 	}
 	
 	public void aplicarEfectoHumanoideTerrestreEn(AlgoFormer former){
-		throw new ImposibleAtravesarNebulosaAndromedaException();
+		//throw new ImposibleAtravesarNebulosaAndromedaException();
 	}
 	
 	public void aplicarEfectoAlternativoAereoEn(AlgoFormer former){
 		former.bloquearTurnos(3);
+	}
+	public SuperficiesEnum getSuperficie() {
+		return superficie.NEBULOSAANDROMEDA;
 	}
 }
