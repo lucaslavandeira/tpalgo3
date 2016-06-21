@@ -6,7 +6,7 @@ package fiuba.algo3.modelo;
 public class NebulosaAndromeda implements Superficie {
 	private SuperficiesEnum superficie ;
 	public void aplicarEfectoAlternativoTerrestreEn(AlgoFormer former){
-		throw new ImposibleAtravesarNebulosaAndromedaException();
+		
 	}
 	
 	public void aplicarEfectohumanoideAereoEn(AlgoFormer former){
@@ -14,7 +14,7 @@ public class NebulosaAndromeda implements Superficie {
 	}
 	
 	public void aplicarEfectoHumanoideTerrestreEn(AlgoFormer former){
-		throw new ImposibleAtravesarNebulosaAndromedaException();
+	    
 	}
 	
 	public void aplicarEfectoAlternativoAereoEn(AlgoFormer former){
