@@ -29,7 +29,7 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
         if(unCasillero.estaOcupado())
             throw new CasilleroInvalidoException();
 
-        this.movDisponibles =100;
+        this.movDisponibles = 100;
         this.posicion = unCasillero;
         this.pisionico=false;
 
@@ -121,6 +121,10 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
 
     public void recibirAtaque(int danio) {
         this.vida -=( bonus.aplicarBonusInmortal(danio));
+
+        if(this.estaMuerto()) {
+
+        }
     }
 
 
@@ -203,4 +207,9 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
 		return this.estadoString;
 	}
 
+
+    public void destruir() {
+        this.posicion.desocupar();
+        this.movDisponibles = 0;
+    }
 }

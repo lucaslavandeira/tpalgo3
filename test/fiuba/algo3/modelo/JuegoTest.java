@@ -180,4 +180,25 @@ public class JuegoTest {
         megatron.avanzar(tablero.obtenerCasillero(7,5));
     }
 
+    @Test
+    public void testFormarSuperion() {
+        Juego game=new Juego(tablero);
+        game.addAutobots(new Optimus(tablero.obtenerCasillero(1,0)),new Bumblebee(tablero.obtenerCasillero(1, 1)),new Ratchet(tablero.obtenerCasillero(0, 1)));
+        game.addDecepticons(megatron,bonecrusher,frenzy);
+        game.comenzarJuego();
+
+        Superion superion = game.formarSuperion();
+        Assert.assertTrue(superion.getMovDisponibles() == -2); // bloqueado por dos turnos apenas se crea
+    }
+
+    @Test
+    public void testFormarMenasor() {
+        Juego game=new Juego(tablero);
+        game.addDecepticons(new Megatron(tablero.obtenerCasillero(1,0)),new Bonecrusher(tablero.obtenerCasillero(1, 1)),new Frenzy(tablero.obtenerCasillero(0, 1)));
+        game.addAutobots(megatron,bonecrusher,frenzy);
+        game.comenzarJuego();
+
+        Menasor menasor = game.formarMenasor();
+        Assert.assertTrue(menasor.getMovDisponibles() == -2); // bloqueado por dos turnos apenas se crea
+    }
 }

@@ -473,5 +473,12 @@ public class AlgoFormerTest {
 
         Assert.assertTrue(megatron.estaMuerto());
     }
-    
+
+
+    @Test
+    public void destruirAlgoFormer() {
+        optimus = new Optimus(casillero1_1);
+        optimus.destruir();
+        Assert.assertTrue(casillero1_1.estaOcupado() == false);
+    }
 }

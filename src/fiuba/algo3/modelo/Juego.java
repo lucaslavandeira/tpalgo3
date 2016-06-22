@@ -82,4 +82,46 @@ public class Juego {
         return this.ganador;
     }
 
+    public Superion formarSuperion() {
+        for(int i = 0; i < autobots.size(); i++) {
+            AlgoFormer unRobot = autobots.get(i);
+            for(int j = i+1; j < autobots.size(); j++) {
+                AlgoFormer otroRobot = autobots.get(j);
+                unRobot.getPosicion().calcularDistancia(otroRobot.getPosicion(), 1);
+            }
+        }
+
+        Casillero posicion = autobots.get(0).getPosicion();
+        for (AlgoFormer a : autobots) {
+            a.destruir();
+            // autobots.remove(a);
+        }
+        Superion superion = new Superion(posicion);
+        autobots.add(superion);
+        superion.bloquearTurnos(102);
+
+        return superion;
+    }
+
+    public Menasor formarMenasor() {
+        for(int i = 0; i < decepticons.size(); i++) {
+            AlgoFormer unRobot = decepticons.get(i);
+            for(int j = i+1; j < decepticons.size(); j++) {
+                AlgoFormer otroRobot = decepticons.get(j);
+                unRobot.getPosicion().calcularDistancia(otroRobot.getPosicion(), 1);
+            }
+        }
+
+        Casillero posicion = decepticons.get(0).getPosicion();
+        for (AlgoFormer a : decepticons) {
+            a.destruir();
+            // autobots.remove(a);
+        }
+        Menasor menasor = new Menasor(posicion);
+        autobots.add(menasor);
+        menasor.bloquearTurnos(102);
+
+        return menasor;
+    }
+
 }
