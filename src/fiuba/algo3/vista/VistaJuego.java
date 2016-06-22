@@ -141,6 +141,8 @@ public class VistaJuego extends BorderPane {
         //Optimus optimus=new Optimus(casi);
         //this.setVistaBotonCasillero(botonCasillero);
 
+
+
         VBox panelCentral=new VBox();
 
         for(int i=0;i<11;i++){
@@ -159,6 +161,15 @@ public class VistaJuego extends BorderPane {
         this.setCenter(panelCentral);
     }
     public void actualizarVistaAlMoverFormer(){
+       for(int i=0;i<listaDeFormers.size();i++) {
+           if (listaDeFormers.get(i) == null || listaDeFormers.get(i).estaMuerto()){
+               listaDeFormers.get(i).getPosicion().desocupar();
+               listaDeFormers.remove(i);
+           }
+       }
+
+
+
     	this.panelCentral();
     }
     private void setVistaBotonCasillero(BotonCasillero botonCasillero, SuperficiesEnum superficie){
@@ -275,7 +286,7 @@ public class VistaJuego extends BorderPane {
         this.setLeft(panelIzquierdo);
        
         this.pasarTurno.setOnAction(new ControladorOpcionPasarTurnoEventHandler(this.juego,this.turno));
-        this.atacar.setOnAction(new ControladorOpcionAtacarEventHandler(movimiento,listaDeFormers) );
+        this.atacar.setOnAction(new ControladorOpcionAtacarEventHandler(movimiento,listaDeFormers,this) );
         this.mover.setOnAction(new ControladorOpcionMoverEventHandler(movimiento,this));
         atacar.setVisible(false);
         pasarTurno.setVisible(true);
