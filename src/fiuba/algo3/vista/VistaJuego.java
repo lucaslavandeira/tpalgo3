@@ -62,6 +62,7 @@ public class VistaJuego extends BorderPane {
 	private ArrayList<AlgoFormer> listaDeFormers;
 	private Button cambiarEstadoHumanoide;
 	private Button cambiarEstadoAlternativo;
+	private Label bonus;
     public VistaJuego(Stage stage) {
 
         this.mapa=new Tablero(11);
@@ -163,6 +164,7 @@ public class VistaJuego extends BorderPane {
     private void setVistaBotonCasillero(BotonCasillero botonCasillero, SuperficiesEnum superficie){
         botonCasillero.setPrefSize(50,50);
         this.asignarColorAlCasillero(botonCasillero , superficie);
+        this.asignarEstrellaAlBonus(botonCasillero);
         if(botonCasillero.getCasillero().estaOcupado()){
             ImageView imagenSalir=new ImageView();
             imagenSalir.setImage(new javafx.scene.image.Image(getClass().getResource("/iconos/autobots.png").toExternalForm()));
@@ -191,7 +193,19 @@ public class VistaJuego extends BorderPane {
 
     }
 
-    private void asignarColorAlCasillero(BotonCasillero botonCasillero, SuperficiesEnum superficie) {
+    private void asignarEstrellaAlBonus(BotonCasillero botonCasillero) {
+	       String nombreDeBonus =botonCasillero.getCasillero().getNombreEquipamiento();
+	       if (nombreDeBonus != " "){
+	           ImageView imagenSalir=new ImageView();
+	           imagenSalir.setImage(new javafx.scene.image.Image(getClass().getResource("/iconos/help-and-support.png").toExternalForm()));
+	           imagenSalir.setFitHeight(34);
+	           imagenSalir.setFitWidth(34);
+	    	   botonCasillero.setGraphic(imagenSalir);
+	       }
+		
+	}
+
+	private void asignarColorAlCasillero(BotonCasillero botonCasillero, SuperficiesEnum superficie) {
     	
     	switch (superficie){
     	case ROCA: botonCasillero.setStyle("-fx-background-color: grey;");
@@ -221,6 +235,7 @@ public class VistaJuego extends BorderPane {
         estado=new Label();
         velocidad = new Label();
         turno = new Label();
+        bonus = new Label();
         panelIzquierdo = new VBox();
         try {
             mover= FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -243,7 +258,7 @@ public class VistaJuego extends BorderPane {
         velocidad.setText("Velocidad:....");
         turno.setFont(new Font(25));
         turno.setText("Turno:");
-        
+        bonus.setText("Bonus: ");
         panelIzquierdo.getChildren().add(turno);
         panelIzquierdo.getChildren().add(pasarTurno);
         panelIzquierdo.getChildren().add(atacar);
@@ -255,6 +270,7 @@ public class VistaJuego extends BorderPane {
         panelIzquierdo.getChildren().add(ataque);
         panelIzquierdo.getChildren().add(velocidad);
         panelIzquierdo.getChildren().add(estado);
+        panelIzquierdo.getChildren().add(bonus);
         panelIzquierdo.setAlignment(Pos.CENTER);
         this.setLeft(panelIzquierdo);
        
@@ -268,6 +284,7 @@ public class VistaJuego extends BorderPane {
         estado.setVisible(false);
         velocidad.setVisible(false);
         ataque.setVisible(false);
+        bonus.setVisible(false);
     	this.cambiarEstadoHumanoide.setVisible(false);
     	this.cambiarEstadoAlternativo.setVisible(false);
         turno.setText("Turno: "+juego.obtenerTurnoActual());
@@ -295,8 +312,25 @@ public class VistaJuego extends BorderPane {
     	int ataqueEnInt = former.getAtaque();
     	String ataqueEnString = String.valueOf(ataqueEnInt);
     	this.ataque.setText("Ataque: " + ataqueEnString);
+    	bonus.setVisible(true);
+    	bonus.setText("Bonus:"+this.bonusDisponibles(former));
+    	
     }
-    private void setImagenIcono(Button boton,String recurso){
+    private String bonusDisponibles(AlgoFormer former) {
+    String bonus = " ";  
+    if (former.getBonus().tengoBonusInmortal()){
+        bonus += " Burbuja Inmaculada,";
+    }
+	if (former.getBonus().tengoDobleCanion()){
+        bonus += " Doble Canion,";
+ 	}
+    if (former.getBonus().tengoTriplicaVelocidad()){
+        bonus += " Flash,";
+	}  
+		return bonus;
+	}
+
+	private void setImagenIcono(Button boton,String recurso){
         ImageView imagen=new ImageView();
         imagen.setImage(new javafx.scene.image.Image(getClass().getResource(recurso).toExternalForm()));
         imagen.setFitHeight(80);
@@ -310,4 +344,8 @@ public class VistaJuego extends BorderPane {
 	public Button obtenerBotonCambiarEstadoAlternativo() {
 		return this.cambiarEstadoAlternativo;
 	}
+
+
+
+
 }

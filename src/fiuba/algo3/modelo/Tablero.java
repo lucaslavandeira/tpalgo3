@@ -18,7 +18,7 @@ public class Tablero {
             for (int j=0; j < tamanio; j++) {
                 this.casilleros[i][j] = new Casillero(i, j);
                 this.casilleros[i][j].asignarSuperficie(this.superficieAleatoria());
-                this.casilleros[i][j].asignarEquipamiento(new SinEquipamiento());
+                this.casilleros[i][j].asignarEquipamiento(this.asignarBonus());
             }
         }
 
@@ -26,7 +26,28 @@ public class Tablero {
     }
 
 
-    private Superficie superficieAleatoria() {
+    private Equipamiento asignarBonus() {
+		Random random= new Random();
+		int superficieAleatoria = (int)(random.nextDouble() * 40 + 1);
+
+		switch (superficieAleatoria){
+		    case 1:  return new SinEquipamiento();
+		    case 2:  return new SinEquipamiento();
+		    case 3:  return new SinEquipamiento();
+		    case 4:  return new SinEquipamiento();
+		    case 5:  return new SinEquipamiento();
+		    case 6:  return new SinEquipamiento();
+		    case 7:  return new SinEquipamiento();
+		    case 8:  return new SinEquipamiento();
+		    case 9:  return new Flash();
+		    case 10:  return new BurbujaInmaculada();
+		    case 11:  return new DobleCanion();
+		    default: return new SinEquipamiento();
+		}
+	}
+
+
+	private Superficie superficieAleatoria() {
 		Random random= new Random();
 		int superficieAleatoria = (int)(random.nextDouble() * 6 + 1);
 

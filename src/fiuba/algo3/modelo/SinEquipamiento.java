@@ -5,8 +5,15 @@ package fiuba.algo3.modelo;
  */
 public class SinEquipamiento implements Equipamiento {
 
-
+    private String sinEquipamiento;
+	public SinEquipamiento(){
+		this.sinEquipamiento = " ";
+    }
+    
     public void addAlBonus(Bonus bonus) {
 
+    }
+    public String getNombreDeBonus(){
+    	return this.sinEquipamiento;
     }
 }

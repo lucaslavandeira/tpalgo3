@@ -29,7 +29,7 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
         if(unCasillero.estaOcupado())
             throw new CasilleroInvalidoException();
 
-        this.movDisponibles = 100;
+        this.movDisponibles =100;
         this.posicion = unCasillero;
         this.pisionico=false;
 
@@ -51,12 +51,12 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
 		this.posicion.desocupar();
         destino.ocupar();
         this.posicion = destino;
-
+        this.estadoActual.modificarStatsFormer(this);
         estadoActual.aplicarEfecto(this,this.posicion.getSuperficie());
         posicion.getEquipamiento().addAlBonus(bonus);
 
         this.movDisponibles--;
-
+        
         if (destino.tieneChispaSuprema()) 
         	throw new JugadorGanoException();
     }
@@ -121,10 +121,6 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
 
     public void recibirAtaque(int danio) {
         this.vida -=( bonus.aplicarBonusInmortal(danio));
-
-        if(this.estaMuerto()) {
-
-        }
     }
 
 
@@ -206,10 +202,9 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
 	public String getEstado() {
 		return this.estadoString;
 	}
-
-
     public void destruir() {
-        this.posicion.desocupar();
-        this.movDisponibles = 0;
-    }
+		  this.posicion.desocupar();
+		  this.movDisponibles = 0;
+	 }
+
 }

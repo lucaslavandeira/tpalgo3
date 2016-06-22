@@ -17,6 +17,9 @@ public class ControladorDeMovimientos {
     public void setFormer(AlgoFormer former){
         this.former=former;
     }
+    public AlgoFormer getFormer(){
+        return this.former;
+    }
 
     public void setCasillero(Casillero casillero){
         this.casillero=casillero;
@@ -31,7 +34,7 @@ public class ControladorDeMovimientos {
         } catch (RuntimeException e) {
             e.printStackTrace();
         }
-
+        
     }
     public void atack(AlgoFormer formerAAtacar){
         try {

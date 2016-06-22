@@ -25,5 +25,6 @@ public class ControladorOpcionMoverEventHandler implements EventHandler<ActionEv
     public void handle(ActionEvent actionEvent) {
         this.movimientoActual.run();
         this.vista.actualizarVistaAlMoverFormer();
+
     }
 }

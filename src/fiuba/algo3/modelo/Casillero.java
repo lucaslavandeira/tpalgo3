@@ -60,7 +60,9 @@ public class Casillero {
         this.equipamiento=new SinEquipamiento();
         return aux;
     }
-
+    public String getNombreEquipamiento(){
+    	return this.equipamiento.getNombreDeBonus();
+    }
 
     public void calcularDistancia(Casillero otroCasillero,int limite) {
         int distanciaX = Math.abs(this.posicionX - otroCasillero.posicionX);
