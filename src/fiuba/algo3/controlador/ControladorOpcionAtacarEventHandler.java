@@ -21,9 +21,9 @@ public class ControladorOpcionAtacarEventHandler implements EventHandler<ActionE
 	}
 
 	private void buscarFormerAAtacar(Casillero casillero, ArrayList listaDeFormers) {
-		for (int i =0; i<listaDeFormers.size() || encontrado == false;i++) {
+		for (int i =0; i<listaDeFormers.size() || !encontrado;i++) {
            AlgoFormer formerAnterior = (AlgoFormer) listaDeFormers.get(i) ;
-           if ((formerAnterior.getPosicion().getX() == casillero.getX()) && (formerAnterior.getPosicion().getY() == casillero.getY())){
+           if (formerAnterior.getPosicion() == casillero){
         	   formerAAtacar = formerAnterior;
         	   encontrado = true;
            }

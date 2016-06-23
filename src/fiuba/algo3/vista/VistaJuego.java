@@ -50,6 +50,12 @@ public class VistaJuego extends BorderPane {
     private Megatron megatron;
     private Frenzy frenzy;
     private Bonecrusher bonecrusher;
+    private BotonFormer botonOptimus;
+    private BotonFormer botonBumblebee;
+    private BotonFormer botonRatchet;
+    private BotonFormer botonMegatron;
+    private BotonFormer botonFrenzy;
+    private BotonFormer botonBonecrusher;
     private Stage vista;
 	private Label Vida;
 	private Label ataque;
@@ -103,13 +109,13 @@ public class VistaJuego extends BorderPane {
     }
 
     private void panelInferior() {
-    	BotonFormer botonOptimus=new BotonFormer(this.optimus,movimiento,this);
-    	BotonFormer botonBumblebee=new BotonFormer(this.bumblebee,movimiento,this);
-    	BotonFormer botonRatchet=new BotonFormer(this.ratchet,movimiento,this);
+    	botonOptimus=new BotonFormer(this.optimus,movimiento,this);
+    	botonBumblebee=new BotonFormer(this.bumblebee,movimiento,this);
+    	botonRatchet=new BotonFormer(this.ratchet,movimiento,this);
 
-    	BotonFormer botonMegatron=new BotonFormer(this.megatron,movimiento,this);
-    	BotonFormer botonFrenzy=new BotonFormer(this.frenzy,movimiento,this);
-    	BotonFormer botonBonecrucher=new BotonFormer(this.bonecrusher,movimiento,this);
+    	botonMegatron=new BotonFormer(this.megatron,movimiento,this);
+    	botonFrenzy=new BotonFormer(this.frenzy,movimiento,this);
+    	botonBonecrusher=new BotonFormer(this.bonecrusher,movimiento,this);
 
 
         this.setImagenIcono(botonOptimus,"/imagenes/caraOptimus.jpg");
@@ -117,7 +123,7 @@ public class VistaJuego extends BorderPane {
         this.setImagenIcono(botonRatchet,"/imagenes/caraRatchet.jpg");
         this.setImagenIcono(botonMegatron,"/imagenes/caraMegatron.jpg");
         this.setImagenIcono(botonFrenzy,"/imagenes/caraFrenzy.jpg");
-        this.setImagenIcono(botonBonecrucher,"/imagenes/caraboneCrusher.jpg");
+        this.setImagenIcono(botonBonecrusher,"/imagenes/caraboneCrusher.jpg");
         HBox panelInferior=new HBox();
         HBox subpanelIzq=new HBox();
         HBox subpanelDer=new HBox();
@@ -125,7 +131,7 @@ public class VistaJuego extends BorderPane {
         subpanelIzq.getChildren().addAll(botonOptimus,botonBumblebee,botonRatchet);
         subpanelIzq.setAlignment(Pos.CENTER_LEFT);
 
-        subpanelDer.getChildren().addAll(botonMegatron,botonFrenzy,botonBonecrucher);
+        subpanelDer.getChildren().addAll(botonMegatron,botonFrenzy,botonBonecrusher);
         subpanelDer.setAlignment(Pos.CENTER_RIGHT);
 
         panelInferior.getChildren().addAll(subpanelIzq,subpanelDer);
@@ -164,7 +170,9 @@ public class VistaJuego extends BorderPane {
        for(int i=0;i<listaDeFormers.size();i++) {
            if (listaDeFormers.get(i) == null || listaDeFormers.get(i).estaMuerto()){
                listaDeFormers.get(i).getPosicion().desocupar();
+               this.desablitarBotonFormer(listaDeFormers.get(i));
                listaDeFormers.remove(i);
+               
            }
        }
 
@@ -172,7 +180,25 @@ public class VistaJuego extends BorderPane {
 
     	this.panelCentral();
     }
-    private void setVistaBotonCasillero(BotonCasillero botonCasillero, SuperficiesEnum superficie){
+    private void desablitarBotonFormer(AlgoFormer formerMuerto) {
+    	switch (formerMuerto.getNombre()){
+    	case "Optimus": botonOptimus.setDisable(true);
+    	break;
+    	case "Bumblebee": botonBumblebee.setDisable(true);
+    	break;
+    	case "Ratchet": botonRatchet.setDisable(true);
+    	break;
+    	case "Megatron": botonMegatron.setDisable(true);
+    	break;
+    	case "Bonecrusher": botonBonecrusher.setDisable(true);
+    	break;
+    	case "Frenzy": botonFrenzy.setDisable(true);
+    	break;
+    	}
+		
+	}
+
+	private void setVistaBotonCasillero(BotonCasillero botonCasillero, SuperficiesEnum superficie){
         botonCasillero.setPrefSize(50,50);
         this.asignarColorAlCasillero(botonCasillero , superficie);
         this.asignarEstrellaAlBonus(botonCasillero);
