@@ -11,6 +11,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
@@ -38,6 +40,7 @@ public class SeleccionarFormerEventHandler implements EventHandler<ActionEvent>{
     private Stage vista;
     private VBox panel = new VBox();
     private VistaJuego vistaAnterior;
+    private MediaPlayer sonidoMover;
 
     public SeleccionarFormerEventHandler(AlgoFormer former, ControladorDeMovimientos movimiento,VistaJuego vista)
     {
@@ -51,6 +54,10 @@ public class SeleccionarFormerEventHandler implements EventHandler<ActionEvent>{
 	@Override
     public void handle(ActionEvent actionEvent) {
     	movimientoActual.setFormer(this.former);
+        URL resource = getClass().getResource("/sonido/click.mp3");
+        Media sound = new Media(resource.toString());
+        sonidoMover = new MediaPlayer(sound);
+        sonidoMover.play();
         vistaAnterior.obtenerBotonCambiarEstadoHumanoide().setOnAction(new ControladorOpcionCambiarEstadoHumanoideEventHandler(this.former,vistaAnterior));
         vistaAnterior.obtenerBotonCambiarEstadoAlternativo().setOnAction(new ControladorOpcionCambiarEstadoAlternativoEventHandler(this.former,vistaAnterior));
         vistaAnterior.actualizarVistaAlSeleccionFormer(this.former);
