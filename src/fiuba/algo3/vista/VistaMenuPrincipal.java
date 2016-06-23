@@ -35,12 +35,14 @@ public class VistaMenuPrincipal extends HBox {
 
         super();
         this.stage=stage;
+        this.setStyle("-fx-color:black");
         this.setFondo();
         this.setBotonJugar();
         this.setBotonSalir();
         this.setAlignment(Pos.BOTTOM_CENTER);
         this.setSonido();
         this.setSpacing(1200);
+
     }
 
 

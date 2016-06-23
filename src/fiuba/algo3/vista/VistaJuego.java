@@ -9,14 +9,17 @@ import fiuba.algo3.controlador.ControladorDeMovimientos;
 import fiuba.algo3.controlador.ControladorOpcionAceptarEventHandler;
 import fiuba.algo3.controlador.ControladorOpcionMoverEventHandler;
 import fiuba.algo3.controlador.ControladorOpcionPasarTurnoEventHandler;
+import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -76,6 +79,7 @@ public class VistaJuego extends BorderPane {
         this.mapa=new Tablero(11);
         this.armarJuego();
         this.barra=new BarraDeMenu(stage,this);
+        barra.setStyle("-fx-base:black");
         this.barra.setOpcionNuevoJuego(this);
         this.movimiento=new ControladorDeMovimientos();
         this.setTop(barra);
@@ -86,6 +90,7 @@ public class VistaJuego extends BorderPane {
         final Media media = new Media(resource.toString());
       mediaPlayer = new MediaPlayer(media);
       mediaPlayer.play();
+        this.setStyle("-fx-base:black");
       this.vista = stage;
     }
 
@@ -120,26 +125,59 @@ public class VistaJuego extends BorderPane {
     	botonBonecrusher=new BotonFormer(this.bonecrusher,movimiento,this);
 
 
+        this.addEfecto(botonOptimus);
+        this.addEfecto(botonBumblebee);
+        this.addEfecto(botonRatchet);
+        this.addEfecto(botonMegatron);
+        this.addEfecto(botonFrenzy);
+        this.addEfecto(botonBonecrusher);
+
+
         this.setImagenIcono(botonOptimus,"/imagenes/caraOptimus.jpg");
         this.setImagenIcono(botonBumblebee,"/imagenes/caraBumble.jpg");
         this.setImagenIcono(botonRatchet,"/imagenes/caraRatchet.jpg");
         this.setImagenIcono(botonMegatron,"/imagenes/caraMegatron.jpg");
         this.setImagenIcono(botonFrenzy,"/imagenes/caraFrenzy.jpg");
         this.setImagenIcono(botonBonecrusher,"/imagenes/caraboneCrusher.jpg");
-        VBox panelInferior=new VBox();
-        VBox subpanelIzq=new VBox();
-        VBox subpanelDer=new VBox();
+        VBox panelLateralDerecho=new VBox();
+        VBox subpanelSuperior=new VBox();
+        VBox subpanelInferior=new VBox();
 
-        subpanelIzq.getChildren().addAll(botonOptimus,botonBumblebee,botonRatchet);
-        subpanelIzq.setAlignment(Pos.CENTER_LEFT);
+        subpanelSuperior.getChildren().addAll(botonOptimus,botonBumblebee,botonRatchet);
+        subpanelSuperior.setAlignment(Pos.CENTER_LEFT);
+        subpanelInferior.setStyle("-fx-base:black");
 
-        subpanelDer.getChildren().addAll(botonMegatron,botonFrenzy,botonBonecrusher);
-        subpanelDer.setAlignment(Pos.CENTER_RIGHT);
+        subpanelInferior.getChildren().addAll(botonMegatron,botonFrenzy,botonBonecrusher);
+        subpanelInferior.setAlignment(Pos.CENTER_RIGHT);
+        subpanelSuperior.setStyle("-fx-base:black");
 
-        panelInferior.getChildren().addAll(subpanelIzq,subpanelDer);
-        panelInferior.setAlignment(Pos.CENTER);
-        panelInferior.setSpacing(100);
-        this.setRight(panelInferior);
+        panelLateralDerecho.getChildren().addAll(subpanelSuperior,subpanelInferior);
+        panelLateralDerecho.setAlignment(Pos.CENTER);
+        panelLateralDerecho.setSpacing(100);
+        panelLateralDerecho.getStyleClass().add("-fx-base:black");
+        this.setRight(panelLateralDerecho);
+
+    }
+
+    private void addEfecto(Button boton) {
+
+        DropShadow shadow = new DropShadow();
+
+        boton.addEventHandler(MouseEvent.MOUSE_ENTERED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        boton.setEffect(shadow);
+                    }
+                });
+
+        boton.addEventHandler(MouseEvent.MOUSE_EXITED,
+                new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent e) {
+                        boton.setEffect(null);
+                    }
+                });
 
     }
 
@@ -152,6 +190,7 @@ public class VistaJuego extends BorderPane {
             	SuperficiesEnum superficieEnum = ((Superficie) this.mapa.obtenerCasillero(i,j).getSuperficie()).getSuperficie();
                 BotonCasillero boton=new BotonCasillero(this.mapa.obtenerCasillero(i,j),this.movimiento);
                 this.setVistaBotonCasillero(boton,superficieEnum);
+                this.addEfecto(boton);
                 fila.getChildren().add(boton);
             }
             panelCentral.getChildren().add(fila);
@@ -164,7 +203,7 @@ public class VistaJuego extends BorderPane {
        for(int i=0;i<listaDeFormers.size();i++) {
            if (listaDeFormers.get(i) == null || listaDeFormers.get(i).estaMuerto()){
                listaDeFormers.get(i).getPosicion().desocupar();
-               this.desablitarBotonFormer(listaDeFormers.get(i));
+               this.desabilitarBotonFormer(listaDeFormers.get(i));
                listaDeFormers.remove(i);
            }
        }
@@ -215,7 +254,7 @@ public class VistaJuego extends BorderPane {
 
 
 
-	private void desablitarBotonFormer(AlgoFormer formerMuerto) {
+	private void desabilitarBotonFormer(AlgoFormer formerMuerto) {
     	switch (formerMuerto.getNombre()){
     	case "Optimus": botonOptimus.setDisable(true);
     	break;
@@ -345,11 +384,11 @@ public class VistaJuego extends BorderPane {
             e.printStackTrace();
         }
 
-        mover.setText("Mover");
-        atacar.setText("Atacar");
-        pasarTurno.setText("Pasar Turno");
-        cambiarEstadoHumanoide.setText("Cambiar Estado Humanoide"); 
-        cambiarEstadoAlternativo.setText("Cambiar Estado Alternativo");        
+        mover.setText("Mover");mover.setMaxWidth(500);
+        atacar.setText("Atacar");atacar.setMaxWidth(500);
+        pasarTurno.setText("Pasar Turno");pasarTurno.setMaxWidth(500);
+        cambiarEstadoHumanoide.setText("Cambiar Estado Humanoide"); cambiarEstadoAlternativo.setMaxWidth(500);
+        cambiarEstadoAlternativo.setText("Cambiar Estado Alternativo");cambiarEstadoHumanoide.setMaxWidth(500);
         vida.setText("Vida:....");
         ataque.setText("Ataque:....");
         estado.setText("Estado: Humanoide");

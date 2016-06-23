@@ -29,6 +29,8 @@ public class BarraDeMenu extends MenuBar {
         MenuItem opcionInstructivo = new MenuItem("Instructivo");
         MenuItem opcionNuevo= new MenuItem("Juego Nuevo");
 
+
+
         ControladorOpcionSalirEventHandler opcionSalirHandler = new ControladorOpcionSalirEventHandler();
         opcionSalir.setOnAction(opcionSalirHandler);
 
