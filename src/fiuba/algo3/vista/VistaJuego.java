@@ -7,15 +7,18 @@ import fiuba.algo3.controlador.BotonFormer;
 import fiuba.algo3.controlador.ControladorOpcionAtacarEventHandler;
 import fiuba.algo3.controlador.ControladorOpcionCambiarEstadoAlternativoEventHandler;
 import fiuba.algo3.controlador.ControladorDeMovimientos;
+import fiuba.algo3.controlador.ControladorOpcionAceptarEventHandler;
 import fiuba.algo3.controlador.ControladorOpcionMoverEventHandler;
 import fiuba.algo3.controlador.ControladorOpcionSalirEventHandler;
 import fiuba.algo3.controlador.ControladorOpcionPasarTurnoEventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
+import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ButtonBase;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
@@ -23,8 +26,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -73,7 +79,7 @@ public class VistaJuego extends BorderPane {
 
         this.mapa=new Tablero(11);
         this.armarJuego();
-        this.barra=new BarraDeMenu(stage,this);
+        this.barra=new BarraDeMenu(stage);
         this.barra.setOpcionNuevoJuego(this);
         this.movimiento=new ControladorDeMovimientos();
         this.setTop(barra);
@@ -142,22 +148,13 @@ public class VistaJuego extends BorderPane {
     }
 
     private void panelCentral() {
-        //BotonCasillero botonCasillero=new BotonCasillero(this.mapa.obtenerCasillero(0,0));
-        //Casillero casi=this.mapa.obtenerCasillero(0,4);
-        //Optimus optimus=new Optimus(casi);
-        //this.setVistaBotonCasillero(botonCasillero);
-
-
-
         VBox panelCentral=new VBox();
-
         for(int i=0;i<11;i++){
             HBox fila=new HBox();
             for(int j=0;j<11;j++)
             {
             	SuperficiesEnum superficieEnum = ((Superficie) this.mapa.obtenerCasillero(i,j).getSuperficie()).getSuperficie();
                 BotonCasillero boton=new BotonCasillero(this.mapa.obtenerCasillero(i,j),this.movimiento);
-
                 this.setVistaBotonCasillero(boton,superficieEnum);
                 fila.getChildren().add(boton);
             }
@@ -167,21 +164,62 @@ public class VistaJuego extends BorderPane {
         panelCentral.setAlignment(Pos.CENTER);
         this.setCenter(panelCentral);
     }
-    public void actualizarVistaAlMoverFormer(){
+    public void actualizarVista(){
        for(int i=0;i<listaDeFormers.size();i++) {
            if (listaDeFormers.get(i) == null || listaDeFormers.get(i).estaMuerto()){
                listaDeFormers.get(i).getPosicion().desocupar();
                this.desablitarBotonFormer(listaDeFormers.get(i));
                listaDeFormers.remove(i);
-               
            }
        }
-
-
-
+       try { 
+    	   this.juego.hayGanador();
+    	} catch(RuntimeException JugadorGanoException) { 
+    	    this.mostrarMensajeAlGanador();
+    	}
+        this.ocultarEstadisticas();
     	this.panelCentral();
     }
-    private void desablitarBotonFormer(AlgoFormer formerMuerto) {
+    private void ocultarEstadisticas() {
+    	this.cambiarEstadoHumanoide.setVisible(false);
+    	this.cambiarEstadoAlternativo.setVisible(false);
+    	this.mover.setVisible(false);
+    	this.atacar.setVisible(false);
+    	this.nombre.setVisible(false);
+    	this.vida.setVisible(false);
+    	this.estado.setVisible(false);
+    	this.velocidad.setVisible(false);
+    	this.ataque.setVisible(false);
+    	bonus.setVisible(false);
+		
+	}
+
+	private void mostrarMensajeAlGanador() {
+		Stage ventanaGanador = new Stage();
+		ventanaGanador.setTitle("Ganaron los "+ juego.getGanador()+"!!");
+		ventanaGanador.getIcons().add(new Image(getClass().getResourceAsStream("/iconos/optimus.png")));
+		VBox modeloVentanaGanador = new VBox();
+		Label texto = new Label ();
+		Button aceptar = new Button();
+		aceptar.setText("Aceptar");
+		texto.setText("El equipo ganador: " + juego.getGanador());
+		texto.setAlignment(Pos.TOP_CENTER);
+		aceptar.setAlignment(Pos.CENTER);
+		modeloVentanaGanador.getChildren().add(texto);
+		modeloVentanaGanador.getChildren().add(aceptar);
+		modeloVentanaGanador.setAlignment(Pos.CENTER);
+        Scene ventanaDisenio=new Scene(modeloVentanaGanador,240,120,Color.SNOW );
+        ventanaGanador.setScene(ventanaDisenio);
+        ventanaGanador.initStyle(StageStyle.UNDECORATED);
+        ventanaGanador.setFullScreen(false);
+        ventanaGanador.show();
+        aceptar.setOnAction(new ControladorOpcionAceptarEventHandler(this.vista));
+
+	}
+
+
+
+	private void desablitarBotonFormer(AlgoFormer formerMuerto) {
     	switch (formerMuerto.getNombre()){
     	case "Optimus": botonOptimus.setDisable(true);
     	break;
@@ -201,7 +239,6 @@ public class VistaJuego extends BorderPane {
 
 	private void setVistaBotonCasillero(BotonCasillero botonCasillero, SuperficiesEnum superficie){
         botonCasillero.setPrefSize(50,50);
-        botonCasillero.setStyle("-fx-base: lightblue;");
         this.asignarColorAlCasillero(botonCasillero , superficie);
         this.asignarEstrellaAlBonus(botonCasillero);
         if(botonCasillero.getCasillero().estaOcupado()){
@@ -247,17 +284,17 @@ public class VistaJuego extends BorderPane {
 	private void asignarColorAlCasillero(BotonCasillero botonCasillero, SuperficiesEnum superficie) {
     	
     	switch (superficie){
-    	case ROCA: botonCasillero.setStyle("-fx-base: brown");
+    	case ROCA: botonCasillero.setStyle("-fx-background-color: grey;");
     	break;
-    	case PANTANO: botonCasillero.setStyle("-fx-base: green;");
+    	case PANTANO: botonCasillero.setStyle("-fx-background-color: green;");
     	break;
-    	case ESPINAS: botonCasillero.setStyle("-fx-base: limegreen;");
+    	case ESPINAS: botonCasillero.setStyle("-fx-background-color: limegreen;");
     	break;
-    	case NUBE: botonCasillero.setStyle("-fx-base: cyan;");
+    	case NUBE: botonCasillero.setStyle("-fx-background-color: cyan;");
     	break;
-    	case NEBULOSAANDROMEDA: botonCasillero.setStyle("-fx-base: violet;");
+    	case NEBULOSAANDROMEDA: botonCasillero.setStyle("-fx-background-color: violet;");
     	break;
-    	case TORMENTAPSIONICA: botonCasillero.setStyle("-fx-base: darkviolet;");
+    	case TORMENTAPSIONICA: botonCasillero.setStyle("-fx-background-color: darkviolet;");
     	break;
     	}
 	}
@@ -384,10 +421,7 @@ public class VistaJuego extends BorderPane {
 		return this.cambiarEstadoAlternativo;
 	}
 
-    public void setStopSonido(){
-        this.mediaPlayer.stop();
-    }
+
+
 
 }
-
-

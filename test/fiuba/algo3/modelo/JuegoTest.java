@@ -111,26 +111,6 @@ public class JuegoTest {
         game.comenzarJuego();
         megatron.atacar(autobot);
     }
-    @Test (expected = JugadorGanoException.class)
-    public void jugadorGano(){
-        Juego game=new Juego(tablero);
-        game.addAutobots(optimus,bumblebee,ratchet);
-        game.addDecepticons(megatron,bonecrusher,frenzy);
-        game.comenzarJuego();
-        optimus.avanzar(tablero.obtenerCasillero(1, 5));
-        game.proximoTurno();        //decepticon estaria cediendo el turno por eso es doble turno
-        game.proximoTurno();
-        optimus.avanzar(tablero.obtenerCasillero(2, 5));
-        game.proximoTurno();
-        game.proximoTurno();
-        optimus.avanzar(tablero.obtenerCasillero(3, 5));
-        game.proximoTurno();
-        game.proximoTurno();
-        optimus.avanzar(tablero.obtenerCasillero(4, 5));
-        game.proximoTurno();
-        game.proximoTurno();
-        optimus.avanzar(tablero.obtenerCasillero(5, 5));
-    }
 
     @Test(expected=BloqueadoException.class)
     public void autobotNoSePuedeMoverDosVecesSeguidas(){
@@ -180,25 +160,4 @@ public class JuegoTest {
         megatron.avanzar(tablero.obtenerCasillero(7,5));
     }
 
-    @Test
-    public void testFormarSuperion() {
-        Juego game=new Juego(tablero);
-        game.addAutobots(new Optimus(tablero.obtenerCasillero(1,0)),new Bumblebee(tablero.obtenerCasillero(1, 1)),new Ratchet(tablero.obtenerCasillero(0, 1)));
-        game.addDecepticons(megatron,bonecrusher,frenzy);
-        game.comenzarJuego();
-
-        Superion superion = game.formarSuperion();
-        Assert.assertTrue(superion.getMovDisponibles() == -2); // bloqueado por dos turnos apenas se crea
-    }
-
-    @Test
-    public void testFormarMenasor() {
-        Juego game=new Juego(tablero);
-        game.addDecepticons(new Megatron(tablero.obtenerCasillero(1,0)),new Bonecrusher(tablero.obtenerCasillero(1, 1)),new Frenzy(tablero.obtenerCasillero(0, 1)));
-        game.addAutobots(megatron,bonecrusher,frenzy);
-        game.comenzarJuego();
-
-        Menasor menasor = game.formarMenasor();
-        Assert.assertTrue(menasor.getMovDisponibles() == -2); // bloqueado por dos turnos apenas se crea
-    }
 }

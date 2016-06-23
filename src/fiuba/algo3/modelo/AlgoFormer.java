@@ -56,9 +56,6 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
         posicion.getEquipamiento().addAlBonus(bonus);
 
         this.movDisponibles--;
-        
-        if (destino.tieneChispaSuprema()) 
-        	throw new JugadorGanoException();
     }
 
 	

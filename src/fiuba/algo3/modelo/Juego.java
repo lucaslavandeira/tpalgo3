@@ -14,7 +14,7 @@ public class Juego {
     private Tablero mapa;
     private ArrayList<AlgoFormer> autobots;
     private ArrayList<AlgoFormer> decepticons;
-    private String ganador;
+    private Equipo ganador;
     private String turnoActual;
 
 
@@ -75,10 +75,49 @@ public class Juego {
         }else{
             turnoActual = "Autobots";
         }
+
     }
 
 
-    public String getGanador(){
+public void hayGanador(){
+    if (this.equipoEstaMuerto(this.autobots)){
+    	this.ganador = this.ganador.DECEPTICONS;
+    	throw new GanaDecepticonsException();
+    }
+    if (this.equipoEstaMuerto(this.decepticons)){
+    	this.ganador = this.ganador.AUTOBOTS;
+    	throw new GanaAutobotsException();
+    }
+    if (this.equipoTieneChispaSuprema(this.autobots)){
+    	this.ganador = this.ganador.AUTOBOTS;
+    	throw new JugadorGanoException();
+    }
+    if (this.equipoTieneChispaSuprema(this.decepticons)){
+    	this.ganador = this.ganador.DECEPTICONS;
+    	throw new JugadorGanoException();
+    }
+}
+
+
+	private boolean equipoTieneChispaSuprema(ArrayList<AlgoFormer> equipo) {
+		boolean equipoGano = false;
+		if ( equipo.get(0).getPosicion().tieneChispaSuprema() || equipo.get(1).getPosicion().tieneChispaSuprema() || equipo.get(2).getPosicion().tieneChispaSuprema()){
+			equipoGano = true;
+		}
+     return equipoGano;
+	}
+
+
+	private boolean equipoEstaMuerto(ArrayList<AlgoFormer> equipo) {
+		boolean equipoMuerto = false;
+		if ( equipo.get(0).estaMuerto() & equipo.get(1).estaMuerto() & equipo.get(2).estaMuerto()){
+			equipoMuerto = true;
+		}
+     return equipoMuerto;
+	}
+
+
+	public Equipo getGanador(){
         return this.ganador;
     }
 

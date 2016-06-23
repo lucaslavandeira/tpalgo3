@@ -446,19 +446,7 @@ public class AlgoFormerTest {
         Megatron megatron=new Megatron(casillero1_1);
         megatron.avanzar(casillero2_2);
         Assert.assertTrue(megatron.estaPisionico());
-    }
-
-    
-    @Test (expected = JugadorGanoException.class)
-    public void unidadGanaLapartidaAlCaerEnCasilleroConChispa(){
-        casillero1_1.asignarSuperficie(new Roca());
-        casillero2_2.asignarSuperficie(new Roca());
-        casillero2_2.colocarChispaSuprema();
-        Megatron megatron=new Megatron(casillero1_1);
-        megatron.avanzar(casillero2_2);
-    }
-
-    
+    } 
     @Test
     public void unidadRecogeDobleCanionYDuplicaSuAtaque(){
         casillero1_1.asignarSuperficie(new Roca());

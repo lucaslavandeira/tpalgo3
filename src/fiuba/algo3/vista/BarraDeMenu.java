@@ -17,11 +17,10 @@ public class BarraDeMenu extends MenuBar {
     MenuItem opcionPantallaCompleta = new MenuItem("Pantalla completa");
     VistaJuego escenario;
 
-    public BarraDeMenu(Stage stage,VistaJuego escenario) {
+    public BarraDeMenu(Stage stage) {
         Menu menuArchivo = new Menu("Archivo");
         Menu menuVer = new Menu("Ver");
         Menu menuAyuda = new Menu("Ayuda");
-        this.escenario=escenario;
 
         MenuItem opcionSalir = new MenuItem("Salir");
         MenuItem opcionAbrir = new MenuItem("Abrir");

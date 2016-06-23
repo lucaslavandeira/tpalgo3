@@ -24,7 +24,7 @@ public class ControladorOpcionMoverEventHandler implements EventHandler<ActionEv
     @Override
     public void handle(ActionEvent actionEvent) {
         this.movimientoActual.run();
-        this.vista.actualizarVistaAlMoverFormer();
+        this.vista.actualizarVista();
 
     }
 }

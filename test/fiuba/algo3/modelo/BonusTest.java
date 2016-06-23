@@ -3,12 +3,29 @@ package fiuba.algo3.modelo;
 import static org.junit.Assert.*;
 
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 public class BonusTest {
-
+	 Tablero tablero;
 	
-	
+	@Before
+    public void setUp() {
+		tablero = new Tablero(11);
+	    Casillero casillero1_1;
+	    Casillero casillero2_2;
+	    Casillero casillero3_3;
+	    
+        casillero1_1 = tablero.obtenerCasillero(1, 1);
+        casillero2_2 = tablero.obtenerCasillero(2, 2);
+        casillero3_3 = tablero.obtenerCasillero(3, 3);
+        casillero1_1.asignarEquipamiento(new SinEquipamiento());
+        casillero2_2.asignarEquipamiento(new SinEquipamiento());
+        casillero3_3.asignarEquipamiento(new SinEquipamiento());
+        casillero1_1.asignarSuperficie(new Roca());
+        casillero2_2.asignarSuperficie(new Roca());
+        casillero3_3.asignarSuperficie(new Roca());
+    }
 
 	@Test
 	public void RealizaDobleDanioConBonusDeDobleCanion() {
@@ -53,7 +70,9 @@ public class BonusTest {
         casillero1_1 = tablero.obtenerCasillero(1, 1);
         casillero2_2 = tablero.obtenerCasillero(2, 2);
         casillero3_3 = tablero.obtenerCasillero(3, 3);
-        
+        casillero1_1.asignarEquipamiento(new SinEquipamiento());
+        casillero2_2.asignarEquipamiento(new SinEquipamiento());
+        casillero3_3.asignarEquipamiento(new SinEquipamiento());
         casillero1_1.asignarSuperficie(new Roca());
         casillero2_2.asignarSuperficie(new Roca());
         casillero3_3.asignarSuperficie(new Roca());

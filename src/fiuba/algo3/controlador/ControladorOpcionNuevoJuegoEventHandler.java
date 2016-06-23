@@ -32,11 +32,8 @@ public class ControladorOpcionNuevoJuegoEventHandler implements EventHandler<Act
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        this.escenario.setStopSonido();
-        Scene escenarioPrincipal=new Scene(new VistaJuego (stage),1280,720, Color.SNOW );
-        stage.setScene(escenarioPrincipal);
-        stage.setFullScreen(true);
-        stage.show();
+
+
 
     }
 }

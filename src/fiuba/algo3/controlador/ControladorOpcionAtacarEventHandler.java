@@ -36,7 +36,7 @@ public class ControladorOpcionAtacarEventHandler implements EventHandler<ActionE
 		if (encontrado){
 		movimientoActual.atack(this.formerAAtacar);
 		}
-		vista.actualizarVistaAlMoverFormer();
+		vista.actualizarVista();
 	}
 
 }

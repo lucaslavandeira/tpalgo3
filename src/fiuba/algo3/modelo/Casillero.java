@@ -36,7 +36,6 @@ public class Casillero {
 
     public void ocupar() {
         this.estaOcupado = true;
-        if(this.tieneChispaSuprema)throw new JugadorGanoException();
     }
 
 
@@ -77,16 +76,4 @@ public class Casillero {
     public void asignarSuperficie(Superficie superficie) {
         this.superficie = superficie;
     }
-
-
-    public int getX(){
-        return this.posicionX;
-    }
-
-
-    public int getY(){
-        return this.posicionY;
-    }
-
-
 }
