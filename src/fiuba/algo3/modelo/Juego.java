@@ -82,11 +82,11 @@ public class Juego {
 public void hayGanador(){
     if (this.equipoEstaMuerto(this.autobots)){
     	this.ganador = this.ganador.DECEPTICONS;
-    	throw new GanaDecepticonsException();
+    	throw new JugadorGanoException();
     }
     if (this.equipoEstaMuerto(this.decepticons)){
     	this.ganador = this.ganador.AUTOBOTS;
-    	throw new GanaAutobotsException();
+    	throw new JugadorGanoException();
     }
     if (this.equipoTieneChispaSuprema(this.autobots)){
     	this.ganador = this.ganador.AUTOBOTS;
