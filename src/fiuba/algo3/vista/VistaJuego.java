@@ -334,8 +334,15 @@ public class VistaJuego extends BorderPane {
 	       String nombreDeBonus =botonCasillero.getCasillero().getNombreEquipamiento();
 	       if (nombreDeBonus != " "){
 	           ImageView imagenSalir=new ImageView();
+
+               if(nombreDeBonus=="Burbuja Inmaculada")
 	           imagenSalir.setImage(new javafx.scene.image.Image(getClass().getResource("/iconos/help-and-support.png").toExternalForm()));
-	           imagenSalir.setFitHeight(34);
+               if(nombreDeBonus=="Doble Canion")
+                   imagenSalir.setImage(new javafx.scene.image.Image(getClass().getResource("/iconos/run.png").toExternalForm()));
+               if(nombreDeBonus=="Flash")
+                   imagenSalir.setImage(new javafx.scene.image.Image(getClass().getResource("/iconos/removable-driver3.png").toExternalForm()));
+
+               imagenSalir.setFitHeight(34);
 	           imagenSalir.setFitWidth(34);
 	    	   botonCasillero.setGraphic(imagenSalir);
 	       }
