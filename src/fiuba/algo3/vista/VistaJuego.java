@@ -157,6 +157,7 @@ public class VistaJuego extends BorderPane {
             {
             	SuperficiesEnum superficieEnum = ((Superficie) this.mapa.obtenerCasillero(i,j).getSuperficie()).getSuperficie();
                 BotonCasillero boton=new BotonCasillero(this.mapa.obtenerCasillero(i,j),this.movimiento);
+
                 this.setVistaBotonCasillero(boton,superficieEnum);
                 fila.getChildren().add(boton);
             }
@@ -200,6 +201,7 @@ public class VistaJuego extends BorderPane {
 
 	private void setVistaBotonCasillero(BotonCasillero botonCasillero, SuperficiesEnum superficie){
         botonCasillero.setPrefSize(50,50);
+        botonCasillero.setStyle("-fx-base: lightblue;");
         this.asignarColorAlCasillero(botonCasillero , superficie);
         this.asignarEstrellaAlBonus(botonCasillero);
         if(botonCasillero.getCasillero().estaOcupado()){
@@ -245,17 +247,17 @@ public class VistaJuego extends BorderPane {
 	private void asignarColorAlCasillero(BotonCasillero botonCasillero, SuperficiesEnum superficie) {
     	
     	switch (superficie){
-    	case ROCA: botonCasillero.setStyle("-fx-background-color: grey;");
+    	case ROCA: botonCasillero.setStyle("-fx-base: brown");
     	break;
-    	case PANTANO: botonCasillero.setStyle("-fx-background-color: green;");
+    	case PANTANO: botonCasillero.setStyle("-fx-base: green;");
     	break;
-    	case ESPINAS: botonCasillero.setStyle("-fx-background-color: limegreen;");
+    	case ESPINAS: botonCasillero.setStyle("-fx-base: limegreen;");
     	break;
-    	case NUBE: botonCasillero.setStyle("-fx-background-color: cyan;");
+    	case NUBE: botonCasillero.setStyle("-fx-base: cyan;");
     	break;
-    	case NEBULOSAANDROMEDA: botonCasillero.setStyle("-fx-background-color: violet;");
+    	case NEBULOSAANDROMEDA: botonCasillero.setStyle("-fx-base: violet;");
     	break;
-    	case TORMENTAPSIONICA: botonCasillero.setStyle("-fx-background-color: darkviolet;");
+    	case TORMENTAPSIONICA: botonCasillero.setStyle("-fx-base: darkviolet;");
     	break;
     	}
 	}
