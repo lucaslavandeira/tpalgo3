@@ -5,24 +5,20 @@ import fiuba.algo3.modelo.*;
 import fiuba.algo3.controlador.BotonCasillero;
 import fiuba.algo3.controlador.BotonFormer;
 import fiuba.algo3.controlador.ControladorOpcionAtacarEventHandler;
-import fiuba.algo3.controlador.ControladorOpcionCambiarEstadoAlternativoEventHandler;
 import fiuba.algo3.controlador.ControladorDeMovimientos;
 import fiuba.algo3.controlador.ControladorOpcionAceptarEventHandler;
 import fiuba.algo3.controlador.ControladorOpcionMoverEventHandler;
-import fiuba.algo3.controlador.ControladorOpcionSalirEventHandler;
 import fiuba.algo3.controlador.ControladorOpcionPasarTurnoEventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.ButtonBase;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.HBox;
-import javafx.scene.layout.StackPane;
 import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -85,7 +81,7 @@ public class VistaJuego extends BorderPane {
         this.setTop(barra);
         this.panelLateralIzquierdo();
         this.panelCentral();
-        this.panelInferior();
+        this.panelLateralDerecho();
        final URL resource = getClass().getResource("/sonido/playing.mp3");
         final Media media = new Media(resource.toString());
       mediaPlayer = new MediaPlayer(media);
@@ -114,7 +110,7 @@ public class VistaJuego extends BorderPane {
        
     }
 
-    private void panelInferior() {
+    private void panelLateralDerecho() {
     	botonOptimus=new BotonFormer(this.optimus,movimiento,this);
     	botonBumblebee=new BotonFormer(this.bumblebee,movimiento,this);
     	botonRatchet=new BotonFormer(this.ratchet,movimiento,this);
@@ -130,9 +126,9 @@ public class VistaJuego extends BorderPane {
         this.setImagenIcono(botonMegatron,"/imagenes/caraMegatron.jpg");
         this.setImagenIcono(botonFrenzy,"/imagenes/caraFrenzy.jpg");
         this.setImagenIcono(botonBonecrusher,"/imagenes/caraboneCrusher.jpg");
-        HBox panelInferior=new HBox();
-        HBox subpanelIzq=new HBox();
-        HBox subpanelDer=new HBox();
+        VBox panelInferior=new VBox();
+        VBox subpanelIzq=new VBox();
+        VBox subpanelDer=new VBox();
 
         subpanelIzq.getChildren().addAll(botonOptimus,botonBumblebee,botonRatchet);
         subpanelIzq.setAlignment(Pos.CENTER_LEFT);
@@ -143,7 +139,7 @@ public class VistaJuego extends BorderPane {
         panelInferior.getChildren().addAll(subpanelIzq,subpanelDer);
         panelInferior.setAlignment(Pos.CENTER);
         panelInferior.setSpacing(100);
-        this.setBottom(panelInferior);
+        this.setRight(panelInferior);
 
     }
 
@@ -243,13 +239,14 @@ public class VistaJuego extends BorderPane {
         this.asignarEstrellaAlBonus(botonCasillero);
         if(botonCasillero.getCasillero().estaOcupado()){
             ImageView imagenSalir=new ImageView();
-            imagenSalir.setImage(new javafx.scene.image.Image(getClass().getResource("/iconos/autobots.png").toExternalForm()));
-            imagenSalir.setFitHeight(34);
-            imagenSalir.setFitWidth(34);
+
+            imagenSalir.setImage(new javafx.scene.image.Image(getClass().getResource(this.obtenerDisenio(botonCasillero)).toExternalForm()));
+            imagenSalir.setFitHeight(50);
+            imagenSalir.setFitWidth(50);
 
             Button nuevo=new Button();
             botonCasillero.setGraphic(imagenSalir);
-            botonCasillero.setPrefSize(50, 50);
+            //botonCasillero.setPrefSize(50, 50);
             botonCasillero.setContentDisplay(ContentDisplay.CENTER);
             botonCasillero.setAlignment(Pos.BOTTOM_CENTER);
         }
@@ -257,16 +254,41 @@ public class VistaJuego extends BorderPane {
         if(botonCasillero.getCasillero().tieneChispaSuprema()) {
             ImageView imagenSalir=new ImageView();
             imagenSalir.setImage(new javafx.scene.image.Image(getClass().getResource("/iconos/Internet.png").toExternalForm()));
-            imagenSalir.setFitHeight(34);
-            imagenSalir.setFitWidth(34);
+            imagenSalir.setFitHeight(50);
+            imagenSalir.setFitWidth(50);
 
             Button nuevo=new Button();
             botonCasillero.setGraphic(imagenSalir);
-            botonCasillero.setPrefSize(50, 50);
+            //botonCasillero.setPrefSize(50, 50);
             botonCasillero.setContentDisplay(ContentDisplay.CENTER);
             botonCasillero.setAlignment(Pos.BOTTOM_CENTER);
         }
 
+        botonCasillero.setPrefSize(80,80);
+    }
+
+    private String obtenerDisenio(BotonCasillero botonCasillero) {
+
+        if(optimus.getPosicion()==botonCasillero.getCasillero()){
+            return("/imagenes/caraOptimus.jpg");
+        }
+        if(bumblebee.getPosicion()==botonCasillero.getCasillero()){
+            return("/imagenes/caraBumble.jpg");
+        }
+        if(ratchet.getPosicion()==botonCasillero.getCasillero()){
+            return("/imagenes/caraRatchet.jpg");
+        }
+        if(megatron.getPosicion()==botonCasillero.getCasillero()){
+            return("/imagenes/caraMegatron.jpg");
+        }
+        if(frenzy.getPosicion()==botonCasillero.getCasillero()){
+            return("/imagenes/caraFrenzy.jpg");
+        }
+        if(bonecrusher.getPosicion()==botonCasillero.getCasillero()){
+            return("/imagenes/caraboneCrusher.jpg");
+        }
+
+        return("");
     }
 
     private void asignarEstrellaAlBonus(BotonCasillero botonCasillero) {
@@ -284,17 +306,17 @@ public class VistaJuego extends BorderPane {
 	private void asignarColorAlCasillero(BotonCasillero botonCasillero, SuperficiesEnum superficie) {
     	
     	switch (superficie){
-    	case ROCA: botonCasillero.setStyle("-fx-background-color: grey;");
+    	case ROCA: botonCasillero.setStyle("-fx-base: brown;");
     	break;
-    	case PANTANO: botonCasillero.setStyle("-fx-background-color: green;");
+    	case PANTANO: botonCasillero.setStyle("-fx-base: green;");
     	break;
-    	case ESPINAS: botonCasillero.setStyle("-fx-background-color: limegreen;");
+    	case ESPINAS: botonCasillero.setStyle("-fx-base: limegreen;");
     	break;
-    	case NUBE: botonCasillero.setStyle("-fx-background-color: cyan;");
+    	case NUBE: botonCasillero.setStyle("-fx-base: cyan;");
     	break;
-    	case NEBULOSAANDROMEDA: botonCasillero.setStyle("-fx-background-color: violet;");
+    	case NEBULOSAANDROMEDA: botonCasillero.setStyle("-fx-base: violet;");
     	break;
-    	case TORMENTAPSIONICA: botonCasillero.setStyle("-fx-background-color: darkviolet;");
+    	case TORMENTAPSIONICA: botonCasillero.setStyle("-fx-base: darkviolet;");
     	break;
     	}
 	}
