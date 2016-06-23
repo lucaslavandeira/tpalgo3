@@ -17,7 +17,8 @@ public class BarraDeMenu extends MenuBar {
     MenuItem opcionPantallaCompleta = new MenuItem("Pantalla completa");
     VistaJuego escenario;
 
-    public BarraDeMenu(Stage stage) {
+    public BarraDeMenu(Stage stage,VistaJuego escenario) {
+        this.escenario=escenario;
         Menu menuArchivo = new Menu("Archivo");
         Menu menuVer = new Menu("Ver");
         Menu menuAyuda = new Menu("Ayuda");

@@ -79,7 +79,7 @@ public class VistaJuego extends BorderPane {
 
         this.mapa=new Tablero(11);
         this.armarJuego();
-        this.barra=new BarraDeMenu(stage);
+        this.barra=new BarraDeMenu(stage,this);
         this.barra.setOpcionNuevoJuego(this);
         this.movimiento=new ControladorDeMovimientos();
         this.setTop(barra);
@@ -422,6 +422,7 @@ public class VistaJuego extends BorderPane {
 	}
 
 
-
-
+    public void setStopSonido() {
+        this.mediaPlayer.stop();
+    }
 }
