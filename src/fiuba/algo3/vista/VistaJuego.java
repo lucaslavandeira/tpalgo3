@@ -30,6 +30,7 @@ import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
 
+
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -86,12 +87,12 @@ public class VistaJuego extends BorderPane {
         this.panelLateralIzquierdo();
         this.panelCentral();
         this.panelLateralDerecho();
-       final URL resource = getClass().getResource("/sonido/playing.mp3");
+        final URL resource = getClass().getResource("/sonido/playing.mp3");
         final Media media = new Media(resource.toString());
-      mediaPlayer = new MediaPlayer(media);
-      mediaPlayer.play();
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
         this.setStyle("-fx-base:black");
-      this.vista = stage;
+        this.vista = stage;
     }
 
     private void armarJuego() {
@@ -231,11 +232,15 @@ public class VistaJuego extends BorderPane {
 
 	private void mostrarMensajeAlGanador() {
 		Stage ventanaGanador = new Stage();
+        this.mediaPlayer.stop();
 		ventanaGanador.setTitle("Ganaron los "+ juego.getGanador()+"!!");
 		ventanaGanador.getIcons().add(new Image(getClass().getResourceAsStream("/iconos/optimus.png")));
 		VBox modeloVentanaGanador = new VBox();
+        modeloVentanaGanador.setStyle("-fx-base:black");
 		Label texto = new Label ();
 		Button aceptar = new Button();
+        this.addEfecto(aceptar);
+        this.setStyle("-fx-base:black");
 		aceptar.setText("Aceptar");
 		texto.setText("El equipo ganador: " + juego.getGanador());
 		texto.setAlignment(Pos.TOP_CENTER);
@@ -373,6 +378,8 @@ public class VistaJuego extends BorderPane {
         mover=new Button();
         atacar=new Button();
         pasarTurno=new Button();
+
+
         nombre=new Label();
         vida=new Label();
         ataque=new Label();
@@ -380,6 +387,12 @@ public class VistaJuego extends BorderPane {
         velocidad = new Label();
         turno = new Label();
         bonus = new Label();
+
+
+
+        //Dividir paneles para ordenar
+
+
         panelIzquierdo = new VBox();
         try {
             mover= FXMLLoader.load(getClass().getResource("sample.fxml"));
@@ -400,7 +413,7 @@ public class VistaJuego extends BorderPane {
         ataque.setText("Ataque:....");
         estado.setText("Estado: Humanoide");
         velocidad.setText("Velocidad:....");
-        turno.setFont(new Font(25));
+        turno.setFont(new Font(20));
         turno.setText("Turno:");
         bonus.setText("Bonus: ");
         panelIzquierdo.getChildren().add(turno);
