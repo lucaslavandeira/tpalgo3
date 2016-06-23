@@ -13,7 +13,7 @@ public class Tablero {
 
     public Tablero(int tamanio){
         this.casilleros = new Casillero[tamanio][tamanio];
-
+		this.tamanio=tamanio;
         for (int i=0; i < tamanio; i++){
             for (int j=0; j < tamanio; j++) {
                 this.casilleros[i][j] = new Casillero(i, j);
@@ -26,6 +26,10 @@ public class Tablero {
 
         this.tamanio = tamanio;
     }
+
+	public int tamanio(){
+		return this.tamanio;
+	}
 
  public void asignarEfectosAleatorios(){
 	 for (int i=0; i < tamanio; i++){

@@ -76,4 +76,9 @@ public class Casillero {
     public void asignarSuperficie(Superficie superficie) {
         this.superficie = superficie;
     }
+
+    public boolean tieneEquipamiento() {
+        if (this.equipamiento.getClass()==SinEquipamiento.class)return false;
+        else return true;
+    }
 }

@@ -1,10 +1,6 @@
 package fiuba.algo3.vista;
 
-import fiuba.algo3.controlador.ControladorOpcionAcercaDeEventHandler;
-import fiuba.algo3.controlador.ControladorOpcionInstructivoEventHandler;
-import fiuba.algo3.controlador.ControladorOpcionNuevoJuegoEventHandler;
-import fiuba.algo3.controlador.ControladorOpcionPantallaCompletaEventHandler;
-import fiuba.algo3.controlador.ControladorOpcionSalirEventHandler;
+import fiuba.algo3.controlador.*;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
@@ -28,7 +24,9 @@ public class BarraDeMenu extends MenuBar {
         MenuItem opcionAcercaDe = new MenuItem("Acerca de...");
         MenuItem opcionInstructivo = new MenuItem("Instructivo");
         MenuItem opcionNuevo= new MenuItem("Juego Nuevo");
+        MenuItem opcionSilenciar=new MenuItem("Sin Musica");
 
+        opcionSilenciar.setOnAction(new ControladorSilenciarMusicaEventHandler(escenario));
 
 
         ControladorOpcionSalirEventHandler opcionSalirHandler = new ControladorOpcionSalirEventHandler();
@@ -47,7 +45,7 @@ public class BarraDeMenu extends MenuBar {
 
       //  opcionPantallaCompleta.setDisable(false);
 
-        menuArchivo.getItems().addAll(opcionNuevo, new SeparatorMenuItem(), opcionSalir);
+        menuArchivo.getItems().addAll(opcionNuevo, new SeparatorMenuItem(),opcionSilenciar,new SeparatorMenuItem(), opcionSalir);
         menuAyuda.getItems().addAll(opcionInstructivo);
         menuAyuda.getItems().addAll(opcionAcercaDe);
         menuVer.getItems().addAll(opcionPantallaCompleta);
