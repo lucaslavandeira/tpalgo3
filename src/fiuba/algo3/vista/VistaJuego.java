@@ -78,6 +78,7 @@ public class VistaJuego extends BorderPane {
     public VistaJuego(Stage stage) {
 
         this.mapa=new Tablero(11);
+        this.mapa.asignarEfectosAleatorios();
         this.armarJuego();
         this.barra=new BarraDeMenu(stage,this);
         barra.setStyle("-fx-base:black");

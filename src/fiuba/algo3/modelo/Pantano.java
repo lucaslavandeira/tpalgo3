@@ -10,11 +10,11 @@ public class Pantano implements Superficie {
 	}
 	
 	public void aplicarEfectohumanoideAereoEn(AlgoFormer former){
-		
+		throw  new ImposibleAtravesarPantanoException();
 	}
 	
 	public void aplicarEfectoHumanoideTerrestreEn(AlgoFormer former){
-		
+		throw new ImposibleAtravesarPantanoException();
 	}
 	
 	public void aplicarEfectoAlternativoAereoEn(AlgoFormer former){
