@@ -59,10 +59,13 @@ public class Casillero {
         this.equipamiento=new SinEquipamiento();
         return aux;
     }
+    
+    
     public String getNombreEquipamiento(){
     	return this.equipamiento.getNombreDeBonus();
     }
 
+    
     public void calcularDistancia(Casillero otroCasillero,int limite) {
         int distanciaX = Math.abs(this.posicionX - otroCasillero.posicionX);
         int distanciaY = Math.abs(this.posicionY - otroCasillero.posicionY);
@@ -77,6 +80,7 @@ public class Casillero {
         this.superficie = superficie;
     }
 
+    
     public boolean tieneEquipamiento() {
         if (this.equipamiento.getClass()==SinEquipamiento.class)return false;
         else return true;

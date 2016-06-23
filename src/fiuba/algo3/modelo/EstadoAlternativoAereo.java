@@ -9,13 +9,11 @@ public class EstadoAlternativoAereo implements Estado{
 	private int rangoAtaque;
 	
 	
-	public EstadoAlternativoAereo()
-	{
+	public EstadoAlternativoAereo(){
 		
 	}
 	
-	public void aplicarEfecto(AlgoFormer former,Superficie superficie)
-	{
+	public void aplicarEfecto(AlgoFormer former,Superficie superficie){
 		superficie.aplicarEfectoAlternativoAereoEn(former);
 	}
 	
@@ -32,4 +30,6 @@ public class EstadoAlternativoAereo implements Estado{
 	public void reducirDanio(int porcentage){
 		this.ataque-=this.ataque*porcentage/100;
 	}
+	
+	
 }

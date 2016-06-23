@@ -25,43 +25,55 @@ public class Bonus implements  ObjetoDependienteDeTurno{
     public Bonus (){
 
     }
+    
+    
     public boolean tengoBonusInmortal(){
     	return (this.duracionInmortal>0); 
     }
+    
+    
     public boolean tengoDobleCanion(){
     	return (this.duracionDobleCanion>0); 
     }
+    
+    
     public boolean tengoTriplicaVelocidad(){
     	return (this.duracionTriplicaVelocidad>0); 
     }
+    
+    
     public int aplicarBonusAtaque(int ataque){
         if (duracionDobleCanion > 0)ataque=ataque*2;
         return ataque;
     }
+    
+    
     public int aplicarBonusVelocidad(int velocidad){
         if(duracionTriplicaVelocidad > 0)velocidad=velocidad*3;
         return velocidad;
 
     }
 
+    
     public int aplicarBonusInmortal(int danio){
         if(duracionInmortal > 0)danio=0;
         return danio;
     }
 
+    
     public void agregarDobleCanion(){
     	//Al pasar turno descuenta por lo tanto tengo agregarlo 3 veces para que por lo menos lo use 1 turno
         this.duracionDobleCanion+=3;
     }
 
+    
     public void agregarInmortalidad(){
         this.duracionInmortal+=3;
     }
 
+    
     public void agregarVelocidad(){
         this.duracionTriplicaVelocidad+=3;
     }
-
-
 
 }

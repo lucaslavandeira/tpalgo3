@@ -5,6 +5,8 @@ package fiuba.algo3.modelo;
  */
 public class Roca implements Superficie {
 	private SuperficiesEnum superficie ;
+	
+	
 	public void aplicarEfectoAlternativoTerrestreEn(AlgoFormer former){
 		
 	}
@@ -23,4 +25,6 @@ public class Roca implements Superficie {
 	public SuperficiesEnum getSuperficie() {
 		return superficie.ROCA;
 	}
+	
+	
 }

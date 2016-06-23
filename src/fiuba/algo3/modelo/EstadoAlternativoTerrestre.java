@@ -8,13 +8,10 @@ public class EstadoAlternativoTerrestre implements Estado {
 	private int velocidad;
 	private int rangoAtaque;
 	
-	public EstadoAlternativoTerrestre()
-	{
-		
+	public EstadoAlternativoTerrestre()	{
 	}
 	
-	public void aplicarEfecto(AlgoFormer former,Superficie superficie)
-	{
+	public void aplicarEfecto(AlgoFormer former,Superficie superficie){
 		superficie.aplicarEfectoAlternativoTerrestreEn(former);
 	}
 	
@@ -31,4 +28,6 @@ public class EstadoAlternativoTerrestre implements Estado {
 	public void reducirDanio(int porcentage){
 		this.ataque-=this.ataque*porcentage/100;
 	}
+	
+	
 }

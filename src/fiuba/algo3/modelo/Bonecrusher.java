@@ -4,7 +4,9 @@ package fiuba.algo3.modelo;
  * Created by Diego on 03/06/2016.
  */
 public class Bonecrusher extends AlgoFormer {
-private String nombre = "Bonecrusher";
+	private String nombre = "Bonecrusher";
+	
+	
     public Bonecrusher(Casillero unCasillero){
         super(unCasillero);
         this.vida=200;
@@ -18,11 +20,10 @@ private String nombre = "Bonecrusher";
         this.estadoActual.modificarStatsFormer(this);
         this.estadoString = "Humanoide";
     }
+    
+    
 	public String getNombre() {
 		return nombre;
 	}
-
-
-
 
 }

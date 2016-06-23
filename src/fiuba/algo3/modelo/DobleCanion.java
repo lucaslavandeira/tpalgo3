@@ -5,15 +5,21 @@ package fiuba.algo3.modelo;
  */
 public class DobleCanion implements Equipamiento {
     private String dobleCanion;
+    
+    
     public DobleCanion(){
          dobleCanion = "Doble Canion";
     }
 
+    
     public void addAlBonus(Bonus bonus){
         bonus.agregarDobleCanion();
-
     }
+    
+    
     public String getNombreDeBonus(){
     	return dobleCanion;
     }
+    
+    
 }

@@ -5,7 +5,9 @@ package fiuba.algo3.modelo;
  * Created by Diego on 03/06/2016.
  */
 public class Optimus extends AlgoFormer {
- private String nombre = "Optimus";
+	private String nombre = "Optimus";
+	
+	
     public Optimus(Casillero unCasillero){
         super(unCasillero);
         this.vida=500;
@@ -19,8 +21,9 @@ public class Optimus extends AlgoFormer {
         this.estadoActual.modificarStatsFormer(this);
         this.estadoString = "Humanoide";
     }
+    
+    
 	public String getNombre() {
-		
 		return nombre;
 	}
 

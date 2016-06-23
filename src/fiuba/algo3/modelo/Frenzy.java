@@ -6,7 +6,9 @@ package fiuba.algo3.modelo;
  * Created by Diego on 03/06/2016.
  */
 public class Frenzy extends AlgoFormer {
-private String nombre = "Frenzy";
+	private String nombre = "Frenzy";
+
+
     public Frenzy(Casillero unCasillero){
         super(unCasillero);
         this.vida = 400;
@@ -20,8 +22,9 @@ private String nombre = "Frenzy";
         this.estadoActual.modificarStatsFormer(this);
         this.estadoString = "Humanoide";
     }
-	public String getNombre() {
-		
+    
+    
+	public String getNombre() {	
 		return nombre;
 	}
 

@@ -7,8 +7,4 @@ public interface Equipamiento {
 
         public void addAlBonus(Bonus bonus);
         public String getNombreDeBonus();
-
-
-
-
 }

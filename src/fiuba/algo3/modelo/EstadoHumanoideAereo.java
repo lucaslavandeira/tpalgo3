@@ -9,13 +9,11 @@ public class EstadoHumanoideAereo implements Estado{
 	private int velocidad;
 	private int rangoAtaque;
 	
-	public EstadoHumanoideAereo()
-	{
+	public EstadoHumanoideAereo(){
 		
 	}
 	
-	public void aplicarEfecto(AlgoFormer former,Superficie superficie)
-	{
+	public void aplicarEfecto(AlgoFormer former,Superficie superficie){
 		superficie.aplicarEfectohumanoideAereoEn(former);
 	}
 	
@@ -32,4 +30,6 @@ public class EstadoHumanoideAereo implements Estado{
 	public void reducirDanio(int porcentage){
 		this.ataque-=this.ataque*porcentage/100;
 	}
+	
+	
 }

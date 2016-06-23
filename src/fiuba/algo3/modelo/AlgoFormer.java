@@ -199,6 +199,8 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
 	public String getEstado() {
 		return this.estadoString;
 	}
+	
+	
     public void destruir() {
 		  this.posicion.desocupar();
 		  this.movDisponibles = 0;
