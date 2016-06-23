@@ -75,6 +75,8 @@ public class VistaJuego extends BorderPane {
 	private Button cambiarEstadoHumanoide;
 	private Button cambiarEstadoAlternativo;
 	private Label bonus;
+    private MediaPlayer sonidoGanador;
+
     public VistaJuego(Stage stage) {
 
         this.mapa=new Tablero(11);
@@ -88,7 +90,7 @@ public class VistaJuego extends BorderPane {
         this.panelLateralIzquierdo();
         this.panelCentral();
         this.panelLateralDerecho();
-        final URL resource = getClass().getResource("/sonido/playing.mp3");
+        final URL resource = getClass().getResource("/sonido/actionSound.m4a");
         final Media media = new Media(resource.toString());
         mediaPlayer = new MediaPlayer(media);
         mediaPlayer.play();
@@ -244,24 +246,33 @@ public class VistaJuego extends BorderPane {
         this.mediaPlayer.stop();
 		ventanaGanador.setTitle("Ganaron los "+ juego.getGanador()+"!!");
 		ventanaGanador.getIcons().add(new Image(getClass().getResourceAsStream("/iconos/optimus.png")));
-		VBox modeloVentanaGanador = new VBox();
+
+        VBox modeloVentanaGanador = new VBox();
         modeloVentanaGanador.setStyle("-fx-base:black");
 		Label texto = new Label ();
 		Button aceptar = new Button();
         this.addEfecto(aceptar);
         this.setStyle("-fx-base:black");
 		aceptar.setText("Aceptar");
-		texto.setText("El equipo ganador: " + juego.getGanador());
+
+        texto.setText("El equipo ganador: " + juego.getGanador());
 		texto.setAlignment(Pos.TOP_CENTER);
-		aceptar.setAlignment(Pos.CENTER);
-		modeloVentanaGanador.getChildren().add(texto);
+
+        aceptar.setAlignment(Pos.CENTER);
+
+        modeloVentanaGanador.getChildren().add(texto);
 		modeloVentanaGanador.getChildren().add(aceptar);
 		modeloVentanaGanador.setAlignment(Pos.CENTER);
+
         Scene ventanaDisenio=new Scene(modeloVentanaGanador,240,120,Color.SNOW );
         ventanaGanador.setScene(ventanaDisenio);
         ventanaGanador.initStyle(StageStyle.UNDECORATED);
         ventanaGanador.setFullScreen(false);
         ventanaGanador.show();
+        URL resource = getClass().getResource("/sonido/drums.mp3");
+        Media sound = new Media(resource.toString());
+        sonidoGanador = new MediaPlayer(sound);
+        sonidoGanador.play();
         aceptar.setOnAction(new ControladorOpcionAceptarEventHandler(this.vista));
 
 	}
