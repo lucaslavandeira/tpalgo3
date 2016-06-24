@@ -205,7 +205,7 @@
 	</target>
 
 	<target name="ejecutar.aplicacion" depends="empaquetar">
-		<java classname="fiuba.algo3.ejemplo1.Foo" fork="true">
+		<java classname="fiuba.algo3.vista.Vista" fork="true">
 			<classpath refid="classpath" />
 			<classpath location="${build}/dist/algo3.jar" />
 		</java>
