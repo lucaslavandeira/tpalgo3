@@ -24,6 +24,7 @@ public class Tablero {
             }
         }
 
+
         this.tamanio = tamanio;
     }
 
@@ -32,11 +33,18 @@ public class Tablero {
 	}
 
  public void asignarEfectosAleatorios(){
-	 for (int i=0; i < tamanio; i++){
-		 for (int j=0; j < tamanio; j++) {
+	 for (int i=0; i < (tamanio); i++){
+		 for (int j=0; j < (tamanio); j++) {
 			 this.casilleros[i][j].asignarSuperficie(this.superficieAleatoria());
 			 this.casilleros[i][j].asignarEquipamiento(this.bonusAleatorio());
 		 }
+	 }
+	 for (int i=0; i < (tamanio); i++){
+			 this.casilleros[0][i].asignarSuperficie(new Roca());
+			 this.casilleros[(0)][i].asignarEquipamiento(new SinEquipamiento());
+			 this.casilleros[(tamanio-1)][i].asignarSuperficie(new Roca());
+			 this.casilleros[(tamanio-1)][i].asignarEquipamiento(new SinEquipamiento());
+		 
 	 }
  }
     private Equipamiento bonusAleatorio() {
