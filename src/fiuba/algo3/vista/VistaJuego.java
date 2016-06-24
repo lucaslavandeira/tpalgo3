@@ -16,6 +16,7 @@ import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.ContentDisplay;
 import javafx.scene.control.Label;
+import javafx.scene.control.Separator;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -26,6 +27,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Sphere;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -243,6 +245,7 @@ public class VistaJuego extends BorderPane {
 
 	private void mostrarMensajeAlGanador() {
 		Stage ventanaGanador = new Stage();
+
         this.mediaPlayer.stop();
 		ventanaGanador.setTitle("Ganaron los "+ juego.getGanador()+"!!");
 		ventanaGanador.getIcons().add(new Image(getClass().getResourceAsStream("/iconos/optimus.png")));
@@ -408,6 +411,18 @@ public class VistaJuego extends BorderPane {
         turno = new Label();
         bonus = new Label();
 
+       String stilo="-fx-font-family:Transformers;-fx-font-size: 20px; -fx-font-weight: bold; -fx-text-fill:#333333; -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 )";
+        String stilo2="-fx-font-family:Transformers;-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: white; -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 )";
+        String stilo3="-fx-font-family:Transformers;-fx-font-size: 15px; -fx-font-weight: bold; -fx-text-fill: #dc143c ; -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 )";
+        nombre.setStyle(stilo);
+        vida.setStyle(stilo2);
+        ataque.setStyle(stilo2);
+        velocidad.setStyle(stilo2);
+        estado.setStyle(stilo2);
+        bonus.setStyle(stilo3);
+        turno.setStyle(stilo);
+
+
 
 
         //Dividir paneles para ordenar
@@ -475,7 +490,7 @@ public class VistaJuego extends BorderPane {
     	this.atacar.setVisible(true);
     	this.nombre.setFont(new Font(20));
     	this.nombre.setVisible(true);
-    	this.nombre.setText("Nombre: "+former.getNombre());
+    	this.nombre.setText(former.getNombre());
     	this.vida.setVisible(true);
     	int vidaEnInt = former.getVida();
     	String vidaEnString = String.valueOf(vidaEnInt);
@@ -494,17 +509,18 @@ public class VistaJuego extends BorderPane {
     	
     }
     private String bonusDisponibles(AlgoFormer former) {
-    String bonus = " ";  
+
+
     if (former.getBonus().tengoBonusInmortal()){
-        bonus += " Burbuja Inmaculada,";
+        return " Burbuja Inmaculada; ";
     }
 	if (former.getBonus().tengoDobleCanion()){
-        bonus += " Doble Canion,";
+        return " Doble Canion; ";
  	}
     if (former.getBonus().tengoTriplicaVelocidad()){
-        bonus += " Flash,";
+        return " Flash; ";
 	}  
-		return bonus;
+		return " ";
 	}
 
 	private void setImagenIcono(Button boton,String recurso){

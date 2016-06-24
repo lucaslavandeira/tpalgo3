@@ -90,8 +90,8 @@
     -fx-text-fill: linear-gradient(black, #d0d0d0);
     -fx-font-size: 12px;
     -fx-padding: 10 20 10 20;
-    -fx-width:250px;
-
+    -fx-width:300px;
+        -fx-font-family:Transformers;
 
 
 }

@@ -5,6 +5,7 @@ import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.MenuItem;
 import javafx.scene.control.SeparatorMenuItem;
+import javafx.scene.effect.Reflection;
 import javafx.stage.Stage;
 
 
@@ -18,6 +19,11 @@ public class BarraDeMenu extends MenuBar {
         Menu menuArchivo = new Menu("Archivo");
         Menu menuVer = new Menu("Ver");
         Menu menuAyuda = new Menu("Ayuda");
+
+        String stilo="-fx-font-family:Transformers;-fx-font-size: 10px; -fx-font-weight: bold; -fx-text-fill:#f5f5dc ; -fx-effect: dropshadow( gaussian , rgba(255,255,255,0.5) , 0,0,0,1 )";
+        menuArchivo.setStyle(stilo);
+        menuVer.setStyle(stilo);
+        menuAyuda.setStyle(stilo);
 
         MenuItem opcionSalir = new MenuItem("Salir");
         MenuItem opcionAbrir = new MenuItem("Abrir");
@@ -51,6 +57,7 @@ public class BarraDeMenu extends MenuBar {
         menuVer.getItems().addAll(opcionPantallaCompleta);
 
         this.getMenus().addAll(menuArchivo, menuVer, menuAyuda);
+        this.setEffect(new Reflection());
     }
 
     public void aplicacionMaximizada() {
