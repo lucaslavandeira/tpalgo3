@@ -197,14 +197,44 @@
 	</target>
 
 
-		<target name="empaquetar.con.imagenes" depends="compilar.paquete">
-			<copydir src="src/gui/imagess"
-				dest="${build}/classes/gui/imagess"
-				includes="**/*.png"/>
+	<target name="empaquetar.con.imagenes" depends="compilar.paquete">
+		<copydir src="src/imagenes"
+				 dest="${build}/classes/imagenes"
+				 includes="**/*.jpg"/>
 		<jar destfile="${build}/dist/algo3.jar" basedir="${build}/classes"/>
 	</target>
 
-	<target name="ejecutar.aplicacion" depends="empaquetar">
+
+	<target name="empaquetar.con.iconos" depends="empaquetar.con.imagenes">
+		<copydir src="src/iconos"
+				 dest="${build}/classes/iconos"
+				 includes="**/*.png"/>
+		<jar destfile="${build}/dist/algo3.jar" basedir="${build}/classes"/>
+	</target>
+
+	<target name="empaquetar.con.sonido" depends="empaquetar.con.iconos">
+		<copydir src="src/sonido"
+				 dest="${build}/classes/sonido"
+				 includes="**/*.*"/>
+		<jar destfile="${build}/dist/algo3.jar" basedir="${build}/classes"/>
+	</target>
+
+	<target name="empaquetar.con.fxml" depends="empaquetar.con.sonido">
+		<copydir src="src/fiuba/algo3/vista"
+				 dest="${build}/classes/fiuba/algo3/vista"
+				 includes="**/*.fxml"/>
+		<jar destfile="${build}/dist/algo3.jar" basedir="${build}/classes"/>
+	</target>
+
+	<target name="empaquetar.con.css" depends="empaquetar.con.fxml">
+		<copydir src="src/fiuba/algo3/vista"
+				 dest="${build}/classes/fiuba/algo3/vista"
+				 includes="**/*.css"/>
+		<jar destfile="${build}/dist/algo3.jar" basedir="${build}/classes"/>
+	</target>
+
+
+	<target name="ejecutar.aplicacion" depends="empaquetar.con.css">
 		<java classname="fiuba.algo3.vista.Vista" fork="true">
 			<classpath refid="classpath" />
 			<classpath location="${build}/dist/algo3.jar" />
