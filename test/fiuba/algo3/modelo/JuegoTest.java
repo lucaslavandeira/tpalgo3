@@ -165,8 +165,18 @@ public class JuegoTest {
     }
     
     
+    @Test
+    public void noHayGanadorAlComenzarElJuego(){
+        Juego game=new Juego(tablero);
+        game.addAutobots(optimus,bumblebee,ratchet);
+        game.addDecepticons(megatron,bonecrusher,frenzy);
+        game.comenzarJuego();
+        game.hayGanador();
+    }
+    
+    
     @Test(expected=JugadorGanoException.class)
-    public void ganaJugadorQueTengaElTurno(){
+    public void gananAutobotsAlObtenerLaChispa(){
         Juego game=new Juego(tablero);
         game.addAutobots(optimus,bumblebee,ratchet);
         game.addDecepticons(megatron,bonecrusher,frenzy);
@@ -178,6 +188,21 @@ public class JuegoTest {
         game.proximoTurno();
         game.proximoTurno();
         optimus.avanzar(tablero.obtenerCasillero(5, 5));
+        game.hayGanador();
+    }
+    
+    
+    @Test(expected=JugadorGanoException.class)
+    public void gananDecepticonssAlObtenerLaChispa(){
+        Juego game=new Juego(tablero);
+        game.addAutobots(optimus,bumblebee,ratchet);
+        game.addDecepticons(megatron,bonecrusher,frenzy);
+        game.comenzarJuego();
+        game.proximoTurno();
+        bonecrusher.cambiarEstadoAlternativo();
+        game.proximoTurno();
+        game.proximoTurno();
+        bonecrusher.avanzar(tablero.obtenerCasillero(5, 5));
         game.hayGanador();
     }
     
