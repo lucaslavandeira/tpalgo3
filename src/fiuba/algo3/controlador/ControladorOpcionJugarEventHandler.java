@@ -33,8 +33,8 @@ public class ControladorOpcionJugarEventHandler implements EventHandler<ActionEv
 		this.menu.setStopSonido();
 		URL resource = getClass().getResource("/sonido/chispa.mp3");
 		Media sound = new Media(resource.toString());
-		sonidoClick = new MediaPlayer(sound);
-		sonidoClick.play();
+//		sonidoClick = new MediaPlayer(sound);
+//		sonidoClick.play();
         Scene escenarioPrincipal=new Scene(new VistaJuego (stage),1280,720, Color.SNOW );
         stage.setScene(escenarioPrincipal);
         stage.setFullScreen(true);

@@ -18,7 +18,7 @@ public class ControladorOpcionCasilleroEventHandler implements EventHandler<Acti
 
     private Casillero posicion;
     private ControladorDeMovimientos mov;
-    private MediaPlayer sonidoMover;
+//    private MediaPlayer sonidoMover;
 
 
     public ControladorOpcionCasilleroEventHandler(Casillero casillero, ControladorDeMovimientos mov){
@@ -36,9 +36,9 @@ public class ControladorOpcionCasilleroEventHandler implements EventHandler<Acti
          * Se podria poner en un costado el former y el casillero que se esta seleccionando
          */
         URL resource = getClass().getResource("/sonido/click.mp3");
-        Media sound = new Media(resource.toString());
-        sonidoMover = new MediaPlayer(sound);
-        sonidoMover.play();
+//        Media sound = new Media(resource.toString());
+//        sonidoMover = new MediaPlayer(sound);
+//        sonidoMover.play();
         
 
 

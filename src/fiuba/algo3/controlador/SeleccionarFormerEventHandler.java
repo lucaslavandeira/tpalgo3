@@ -55,9 +55,9 @@ public class SeleccionarFormerEventHandler implements EventHandler<ActionEvent>{
     public void handle(ActionEvent actionEvent) {
     	movimientoActual.setFormer(this.former);
         URL resource = getClass().getResource("/sonido/click.mp3");
-        Media sound = new Media(resource.toString());
-        sonidoMover = new MediaPlayer(sound);
-        sonidoMover.play();
+//        Media sound = new Media(resource.toString());
+//        sonidoMover = new MediaPlayer(sound);
+//        sonidoMover.play();
         vistaAnterior.obtenerBotonCambiarEstadoHumanoide().setOnAction(new ControladorOpcionCambiarEstadoHumanoideEventHandler(this.former,vistaAnterior));
         vistaAnterior.obtenerBotonCambiarEstadoAlternativo().setOnAction(new ControladorOpcionCambiarEstadoAlternativoEventHandler(this.former,vistaAnterior));
         vistaAnterior.actualizarVistaAlSeleccionFormer(this.former);

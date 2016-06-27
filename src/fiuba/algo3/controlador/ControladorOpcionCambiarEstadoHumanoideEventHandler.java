@@ -12,7 +12,7 @@ import java.net.URL;
 public class ControladorOpcionCambiarEstadoHumanoideEventHandler implements EventHandler<ActionEvent> {
     private AlgoFormer former;
     private VistaJuego vistaActualizada;
-	private MediaPlayer player;
+//	private MediaPlayer player;
 	public ControladorOpcionCambiarEstadoHumanoideEventHandler(AlgoFormer unFormer, VistaJuego vista) {
 		this.former = unFormer;
 		this.vistaActualizada = vista;
@@ -23,8 +23,8 @@ public class ControladorOpcionCambiarEstadoHumanoideEventHandler implements Even
 		this.former.cambiarEstadoHumanoide();
 		final URL resource = getClass().getResource("/sonido/transformando.m4a");
 		final Media media = new Media(resource.toString());
-		player = new MediaPlayer(media);
-		player.play();
+//		player = new MediaPlayer(media);
+//		player.play();
 		this.vistaActualizada.actualizarVistaAlSeleccionFormer(this.former);
 		
 	}

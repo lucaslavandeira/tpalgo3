@@ -94,8 +94,8 @@ public class VistaJuego extends BorderPane {
         this.panelLateralDerecho();
         final URL resource = getClass().getResource("/sonido/actionSound.m4a");
         final Media media = new Media(resource.toString());
-        mediaPlayer = new MediaPlayer(media);
-        mediaPlayer.play();
+//        mediaPlayer = new MediaPlayer(media);
+//        mediaPlayer.play();
         this.setStyle("-fx-base:black");
         this.vista = stage;
     }
@@ -211,8 +211,8 @@ public class VistaJuego extends BorderPane {
 
                final URL resource = getClass().getResource("/sonido/muerte.mp3");
                final Media media = new Media(resource.toString());
-               MediaPlayer sound=new MediaPlayer(media);
-               sound.play();
+//               MediaPlayer sound=new MediaPlayer(media);
+//               sound.play();
 
 
                listaDeFormers.get(i).getPosicion().desocupar();
@@ -246,7 +246,7 @@ public class VistaJuego extends BorderPane {
 	private void mostrarMensajeAlGanador() {
 		Stage ventanaGanador = new Stage();
 
-        this.mediaPlayer.stop();
+//        this.mediaPlayer.stop();
 		ventanaGanador.setTitle("Ganaron los "+ juego.getGanador()+"!!");
 		ventanaGanador.getIcons().add(new Image(getClass().getResourceAsStream("/iconos/optimus.png")));
 
@@ -274,8 +274,8 @@ public class VistaJuego extends BorderPane {
         ventanaGanador.show();
         URL resource = getClass().getResource("/sonido/drums.mp3");
         Media sound = new Media(resource.toString());
-        sonidoGanador = new MediaPlayer(sound);
-        sonidoGanador.play();
+//        sonidoGanador = new MediaPlayer(sound);
+//        sonidoGanador.play();
         aceptar.setOnAction(new ControladorOpcionAceptarEventHandler(this.vista));
 
 	}
@@ -540,6 +540,6 @@ public class VistaJuego extends BorderPane {
 
 
     public void setStopSonido() {
-        this.mediaPlayer.stop();
+        //this.mediaPlayer.stop();
     }
 }
