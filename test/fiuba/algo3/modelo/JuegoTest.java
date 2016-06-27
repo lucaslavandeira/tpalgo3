@@ -31,10 +31,9 @@ public class JuegoTest {
         bonecrusher=new Bonecrusher(tablero.obtenerCasillero(9,5));
         frenzy=new Frenzy(tablero.obtenerCasillero(9,6));
 
-
-
     }
 
+    
     @Test(expected=BloqueadoException.class)
     public void ningunAutobotMueveSinComenzarElJuego(){
         game.addAutobots(optimus,bumblebee,ratchet);
@@ -42,6 +41,7 @@ public class JuegoTest {
         optimus.avanzar(tablero.obtenerCasillero(1,4));
     }
 
+    
     @Test(expected=BloqueadoException.class)
     public void ningunDecepticonMueveSinComenzarElJuego(){
         game.addAutobots(optimus,bumblebee,ratchet);
@@ -49,6 +49,7 @@ public class JuegoTest {
         megatron.avanzar(tablero.obtenerCasillero(1,4));
     }
 
+    
     @Test
     public void alCrearJuegoAutobotsComienza(){
         game.addAutobots(optimus,bumblebee,ratchet);
@@ -59,6 +60,7 @@ public class JuegoTest {
 
     }
 
+    
     @Test
     public void alCrearJuegoAutobotsAtacaAlComienzo(){
         game.addAutobots(optimus,bumblebee,ratchet);
@@ -69,6 +71,7 @@ public class JuegoTest {
         Assert.assertTrue(this.optimus.getPosicion()     ==   tablero.obtenerCasillero(0,4));
     }
 
+    
     @Test
     public void alCrearJuegoAutobotsCambiaModoAlternoAlComienzo(){      //modificar test para realizar movimiento
         game.addAutobots(optimus,bumblebee,ratchet);
@@ -90,16 +93,14 @@ public class JuegoTest {
     }
 
 
-
     @Test(expected = BloqueadoException.class)
     public void alCrearJuegoDesepticonNoPuedeAvanzarAlComienzo(){
         Juego game=new Juego(tablero);
         game.addAutobots(optimus,bumblebee,ratchet);
         game.addDecepticons(megatron,bonecrusher,frenzy);
-       game.comenzarJuego();
+        game.comenzarJuego();
         megatron.avanzar(tablero.obtenerCasillero(9,5));
     }
-
 
 
     @Test(expected = BloqueadoException.class)
@@ -112,6 +113,7 @@ public class JuegoTest {
         megatron.atacar(autobot);
     }
 
+    
     @Test(expected=BloqueadoException.class)
     public void autobotNoSePuedeMoverDosVecesSeguidas(){
         Juego game=new Juego(tablero);
@@ -136,6 +138,7 @@ public class JuegoTest {
 
     }
 
+    
     @Test(expected=BloqueadoException.class)
     public void autobotNoSePuedeMoverDosVecesSeguidasEntreTurnos(){
         Juego game=new Juego(tablero);
@@ -147,6 +150,7 @@ public class JuegoTest {
         optimus.avanzar(tablero.obtenerCasillero(2,5));
     }
 
+    
     @Test(expected=BloqueadoException.class)
     public void decepticonNoSePuedeMoverDosVecesSeguidasEntreTurnos(){
         Juego game=new Juego(tablero);
@@ -158,6 +162,49 @@ public class JuegoTest {
         megatron.avanzar(tablero.obtenerCasillero(8,5));
         game.proximoTurno();
         megatron.avanzar(tablero.obtenerCasillero(7,5));
+    }
+    
+    
+    @Test(expected=JugadorGanoException.class)
+    public void ganaJugadorQueTengaElTurno(){
+        Juego game=new Juego(tablero);
+        game.addAutobots(optimus,bumblebee,ratchet);
+        game.addDecepticons(megatron,bonecrusher,frenzy);
+        game.comenzarJuego();
+        optimus.avanzar(tablero.obtenerCasillero(1, 5));
+        game.proximoTurno();
+        game.proximoTurno();
+        optimus.avanzar(tablero.obtenerCasillero(3, 5));
+        game.proximoTurno();
+        game.proximoTurno();
+        optimus.avanzar(tablero.obtenerCasillero(5, 5));
+        game.hayGanador();
+    }
+    
+    
+    @Test
+    public void primerTurnoEsAutobot(){
+        Juego game=new Juego(tablero);
+        game.addAutobots(optimus,bumblebee,ratchet);
+        game.addDecepticons(megatron,bonecrusher,frenzy);
+        game.comenzarJuego();
+        Assert.assertTrue(game.obtenerTurnoActual() == "Autobots");
+        optimus.avanzar(tablero.obtenerCasillero(1, 5));
+    }
+    
+    
+    @Test
+    public void cambioDeTurnos(){
+        Juego game=new Juego(tablero);
+        game.addAutobots(optimus,bumblebee,ratchet);
+        game.addDecepticons(megatron,bonecrusher,frenzy);
+        game.comenzarJuego();
+        Assert.assertTrue(game.obtenerTurnoActual() == "Autobots");
+        optimus.avanzar(tablero.obtenerCasillero(1, 5));
+        game.proximoTurno();
+        Assert.assertTrue(game.obtenerTurnoActual() == "Decepticons");
+        game.proximoTurno();
+        Assert.assertTrue(game.obtenerTurnoActual() == "Autobots");
     }
 
 }
