@@ -18,6 +18,7 @@ public class AlgoFormerTest {
     Casillero casillero3_3;
     Casillero casillero4_4;
     Casillero casillero5_5;
+    Casillero casillero6_6;
 
     @Before
     public void setUp() {
@@ -27,6 +28,7 @@ public class AlgoFormerTest {
         casillero3_3 = tablero.obtenerCasillero(3, 3);
         casillero4_4 = tablero.obtenerCasillero(4, 4);
         casillero5_5 = tablero.obtenerCasillero(5, 5);
+        casillero6_6 = tablero.obtenerCasillero(6, 6);
     }
 
     
@@ -34,6 +36,24 @@ public class AlgoFormerTest {
     public void crearUnAlgoFormer() {
         optimus = new Optimus(casillero1_1);
         Assert.assertTrue(optimus.getPosicion() == casillero1_1);
+    }
+    
+    
+    @Test
+    public void obtenerNombresDeAlgoFormers() {
+    	AlgoFormer optimus = new Optimus(casillero1_1);
+    	AlgoFormer bonecrusher = new Bonecrusher(casillero2_2);
+    	AlgoFormer bumblebee = new Bumblebee(casillero3_3);
+    	AlgoFormer frenzy = new Frenzy(casillero4_4);
+    	AlgoFormer megatron = new Megatron(casillero5_5);
+    	AlgoFormer ratchet = new Ratchet(casillero6_6);
+    	
+    	Assert.assertTrue(optimus.getNombre()     == "Optimus");
+    	Assert.assertTrue(bonecrusher.getNombre() == "Bonecrusher");
+    	Assert.assertTrue(bumblebee.getNombre()   == "Bumblebee");
+    	Assert.assertTrue(frenzy.getNombre()      == "Frenzy");
+    	Assert.assertTrue(megatron.getNombre()    == "Megatron");
+    	Assert.assertTrue(ratchet.getNombre()     == "Ratchet");
     }
 
     
