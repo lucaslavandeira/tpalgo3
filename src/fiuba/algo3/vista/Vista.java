@@ -33,7 +33,7 @@ public class Vista extends Application {
         launch(args);
     }
 
-//hola
+
     @Override
     public void start(final Stage stage) throws Exception{
         stage.setTitle("TRANSFORMERS");
