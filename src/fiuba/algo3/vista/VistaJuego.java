@@ -122,13 +122,13 @@ public class VistaJuego extends BorderPane {
     }
 
     private void panelLateralDerecho() {
-    	botonOptimus=new BotonFormer(this.optimus,movimiento,this);
-    	botonBumblebee=new BotonFormer(this.bumblebee,movimiento,this);
-    	botonRatchet=new BotonFormer(this.ratchet,movimiento,this);
+    	botonOptimus=new BotonFormer(this.optimus,movimiento,juego,this);
+    	botonBumblebee=new BotonFormer(this.bumblebee,movimiento,juego,this);
+    	botonRatchet=new BotonFormer(this.ratchet,movimiento,juego,this);
 
-    	botonMegatron=new BotonFormer(this.megatron,movimiento,this);
-    	botonFrenzy=new BotonFormer(this.frenzy,movimiento,this);
-    	botonBonecrusher=new BotonFormer(this.bonecrusher,movimiento,this);
+    	botonMegatron=new BotonFormer(this.megatron,movimiento,juego,this);
+    	botonFrenzy=new BotonFormer(this.frenzy,movimiento,juego,this);
+    	botonBonecrusher=new BotonFormer(this.bonecrusher,movimiento,juego,this);
 
 
         this.addEfecto(botonOptimus);

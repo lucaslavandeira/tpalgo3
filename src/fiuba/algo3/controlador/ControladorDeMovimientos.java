@@ -1,7 +1,6 @@
 package fiuba.algo3.controlador;
 
-import fiuba.algo3.modelo.AlgoFormer;
-import fiuba.algo3.modelo.Casillero;
+import fiuba.algo3.modelo.*;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
@@ -14,14 +13,17 @@ import java.net.URL;
 public class ControladorDeMovimientos {
     private AlgoFormer former;
     private Casillero casillero;
-//    private MediaPlayer sonidoAtack;
+    private Juego juego;
+    //    private MediaPlayer sonidoAtack;
 //    private MediaPlayer sonidoMover;
 //    private MediaPlayer sonidoEquipo;
 
     public ControladorDeMovimientos(){
     }
 
-    public void setFormer(AlgoFormer former){
+    public void setFormer(AlgoFormer former, Juego juego){
+        this.juego = juego;
+        
         this.former=former;
     }
     public AlgoFormer getFormer(){
@@ -37,14 +39,27 @@ public class ControladorDeMovimientos {
 
     public void run(){
         try {
-            if(this.casillero.tieneEquipamiento()){
-               this.producirSonidoEquipamiento();
+            if (this.casillero.tieneEquipamiento()) {
+                this.producirSonidoEquipamiento();
             }
 
 
             this.former.avanzar(this.casillero);
+            if (this.former.getEquipo() == Equipo.AUTOBOTS) {
+                try {
+                    juego.formarSuperion();
+                    System.out.println("SUPERION FORMADO");
+                } catch (SobrepasaRangosException e) {}
+
+            } else {
+                try {
+                    juego.formarMenasor();
+                    System.out.println("MENASOR FORMADO");
+                } catch (SobrepasaRangosException e) {}
+            }
+
              URL resource = getClass().getResource("/sonido/movimiento.mp3");
-             Media sound = new Media(resource.toString());
+             //Media sound = new Media(resource.toString());
 //            sonidoMover = new MediaPlayer(sound);
 //            sonidoMover.play();
 //

@@ -5,6 +5,7 @@ import java.io.IOException;
 
 import fiuba.algo3.controlador.ControladorOpcionAtacarEventHandler;
 import fiuba.algo3.controlador.ControladorDeMovimientos;
+import fiuba.algo3.modelo.Juego;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
 import javafx.scene.control.Button;
@@ -33,6 +34,7 @@ import javafx.event.EventHandler;
 
 public class SeleccionarFormerEventHandler implements EventHandler<ActionEvent>{
 
+    private final Juego juego;
     private Button mover;
     private Button atacar;
     private AlgoFormer former;
@@ -42,8 +44,9 @@ public class SeleccionarFormerEventHandler implements EventHandler<ActionEvent>{
     private VistaJuego vistaAnterior;
     private MediaPlayer sonidoMover;
 
-    public SeleccionarFormerEventHandler(AlgoFormer former, ControladorDeMovimientos movimiento,VistaJuego vista)
+    public SeleccionarFormerEventHandler(AlgoFormer former, Juego juego, ControladorDeMovimientos movimiento, VistaJuego vista)
     {
+        this.juego = juego;
         this.former=former;
         this.movimientoActual=movimiento;
         vistaAnterior = vista;
@@ -53,7 +56,7 @@ public class SeleccionarFormerEventHandler implements EventHandler<ActionEvent>{
 
 	@Override
     public void handle(ActionEvent actionEvent) {
-    	movimientoActual.setFormer(this.former);
+    	movimientoActual.setFormer(this.former, juego);
         URL resource = getClass().getResource("/sonido/click.mp3");
 //        Media sound = new Media(resource.toString());
 //        sonidoMover = new MediaPlayer(sound);

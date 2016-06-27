@@ -1,6 +1,7 @@
 package fiuba.algo3.controlador;
 
 import fiuba.algo3.modelo.AlgoFormer;
+import fiuba.algo3.modelo.Juego;
 import fiuba.algo3.modelo.Optimus;
 import fiuba.algo3.vista.VistaJuego;
 import javafx.scene.control.Button;
@@ -14,9 +15,9 @@ public class BotonFormer extends Button {
     private AlgoFormer former;
 
 
-    public BotonFormer(AlgoFormer unFormer ,ControladorDeMovimientos movimiento,VistaJuego vista){
+    public BotonFormer(AlgoFormer unFormer, ControladorDeMovimientos movimiento, Juego juego, VistaJuego vista){
         this.former=unFormer;
-        SeleccionarFormerEventHandler seleccion=new SeleccionarFormerEventHandler(this.former,movimiento,vista);
+        SeleccionarFormerEventHandler seleccion=new SeleccionarFormerEventHandler(this.former,juego,movimiento,vista);
         this.setOnAction(seleccion);
     }
 
@@ -24,3 +25,4 @@ public class BotonFormer extends Button {
         return this.former;
     }
 }
+
