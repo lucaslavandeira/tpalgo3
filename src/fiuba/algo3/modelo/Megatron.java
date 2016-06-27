@@ -4,11 +4,10 @@ package fiuba.algo3.modelo;
  * Created by Diego on 03/06/2016.
  */
 public class Megatron extends AlgoFormer {
-	private String nombre = "Megatron";
-
 
     public Megatron(Casillero unCasillero){
         super(unCasillero);
+        this.nombre = "Megatron";
         this.vida=550;
         this.equipo=Equipo.DECEPTICONS;
         this.estadoAlternativo=new EstadoAlternativoAereo();
