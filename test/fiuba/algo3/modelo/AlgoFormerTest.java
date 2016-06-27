@@ -18,6 +18,7 @@ public class AlgoFormerTest {
     Casillero casillero3_3;
     Casillero casillero4_4;
     Casillero casillero5_5;
+    Casillero casillero6_6;
 
     @Before
     public void setUp() {
@@ -27,6 +28,7 @@ public class AlgoFormerTest {
         casillero3_3 = tablero.obtenerCasillero(3, 3);
         casillero4_4 = tablero.obtenerCasillero(4, 4);
         casillero5_5 = tablero.obtenerCasillero(5, 5);
+        casillero6_6 = tablero.obtenerCasillero(6, 6);
     }
 
     
@@ -34,7 +36,24 @@ public class AlgoFormerTest {
     public void crearUnAlgoFormer() {
         optimus = new Optimus(casillero1_1);
         Assert.assertTrue(optimus.getPosicion() == casillero1_1);
-
+    }
+    
+    
+    @Test
+    public void obtenerNombresDeAlgoFormers() {
+    	AlgoFormer optimus = new Optimus(casillero1_1);
+    	AlgoFormer bonecrusher = new Bonecrusher(casillero2_2);
+    	AlgoFormer bumblebee = new Bumblebee(casillero3_3);
+    	AlgoFormer frenzy = new Frenzy(casillero4_4);
+    	AlgoFormer megatron = new Megatron(casillero5_5);
+    	AlgoFormer ratchet = new Ratchet(casillero6_6);
+    	
+    	Assert.assertTrue(optimus.getNombre()     == "Optimus");
+    	Assert.assertTrue(bonecrusher.getNombre() == "Bonecrusher");
+    	Assert.assertTrue(bumblebee.getNombre()   == "Bumblebee");
+    	Assert.assertTrue(frenzy.getNombre()      == "Frenzy");
+    	Assert.assertTrue(megatron.getNombre()    == "Megatron");
+    	Assert.assertTrue(ratchet.getNombre()     == "Ratchet");
     }
 
     
@@ -183,14 +202,14 @@ public class AlgoFormerTest {
     }
 
     
-    /*@Test (expected = ImposibleAtravesarPantanoException.class)
+    @Test (expected = ImposibleAtravesarPantanoException.class)
     public void noSePuedeAtravesarPantanoEnModoHumanoide(){
         casillero1_1.asignarSuperficie(new Roca());
         casillero2_2.asignarSuperficie(new Pantano());
         Optimus optimus=new Optimus(casillero1_1);
         optimus.avanzar(casillero2_2);
 
-    }*/
+    }
 
     
     @Test(expected = SobrepasaRangosException.class)
@@ -299,12 +318,14 @@ public class AlgoFormerTest {
     }
 
 	
-   /* @Test(expected = ImposibleAtravesarNebulosaAndromedaException.class)
+    /*@Test(expected = ImposibleAtravesarNebulosaAndromedaException.class)
     public void unidadHumanoideTerrestreNoAtraviesaNebulosaAndromeda(){
         casillero1_1.asignarSuperficie(new Roca());
         casillero2_2.asignarSuperficie(new NebulosaAndromeda());
         Optimus optimus=new Optimus(casillero1_1);
+        optimus.cambiarEstadoAlternativo();
         optimus.avanzar(casillero2_2);
+        optimus.avanzar(casillero3_3);
     }*/
     
     
@@ -318,15 +339,14 @@ public class AlgoFormerTest {
     }*/
     
     
-   /* @Test(expected = UnidadTerrestreNoAtraviesaNubeException.class)
+    @Test(expected = UnidadTerrestreNoAtraviesaNubeException.class)
     public void unidadTerrestreNoAtraviesaNubeEnModoAlterno(){
         casillero1_1.asignarSuperficie(new Roca());
         casillero2_2.asignarSuperficie(new Nube());
         Optimus optimus=new Optimus(casillero1_1);
         optimus.cambiarEstadoAlternativo();
         optimus.avanzar(casillero2_2);
-        Assert.assertTrue(casillero2_2==optimus.getPosicion());
-    }*/
+    }
     
     
     @Test
@@ -340,31 +360,31 @@ public class AlgoFormerTest {
     }
 
     
-    /*@Test (expected = UnidadAereaDebeEstarEnModoAlternoException.class)
+    @Test (expected = UnidadAereaDebeEstarEnModoAlternoException.class)
     public void unidadAereaNoAtraviesaNubeEnModoHumanoide(){
         casillero1_1.asignarSuperficie(new Roca());
         casillero2_2.asignarSuperficie(new Nube());
         Megatron megatron=new Megatron(casillero1_1);
         megatron.avanzar(casillero2_2);
-    }*/
+    }
     
     
-    /*@Test (expected = ImposibleAtravesarPantanoException.class)
+    @Test (expected = ImposibleAtravesarPantanoException.class)
     public void unidadAereaNoAtraviesaPantanoEnModoHumanoide(){
         casillero1_1.asignarSuperficie(new Roca());
         casillero2_2.asignarSuperficie(new Pantano());
         Megatron megatron=new Megatron(casillero1_1);
         megatron.avanzar(casillero2_2);
-    }*/
+    }
     
     
-   /* @Test (expected = UnidadTerrestreNoAtraviesaNubeException.class)
+    @Test (expected = UnidadTerrestreNoAtraviesaNubeException.class)
     public void unidadTerrestreNoPuedeAtravesarNubeEnModoHumanoide(){
         casillero1_1.asignarSuperficie(new Roca());
         casillero2_2.asignarSuperficie(new Nube());
         Optimus optimus=new Optimus(casillero1_1);
         optimus.avanzar(casillero2_2);
-    }*/
+    }
     
     
     @Test 
@@ -377,23 +397,23 @@ public class AlgoFormerTest {
     }
     
     
-  /*  @Test(expected = ImposibleAtravesarTormentaPsionicaException.class)
+    @Test(expected = ImposibleAtravesarTormentaPsionicaException.class)
     public void unidadHumanoideTerrestreNoAtraviesaTormentaPsionica(){
         casillero1_1.asignarSuperficie(new Roca());
         casillero2_2.asignarSuperficie(new TormentaPsionica());
         Optimus optimus=new Optimus(casillero1_1);
         optimus.avanzar(casillero2_2);
-    }*/
+    }
     
     
-   /* @Test(expected = ImposibleAtravesarTormentaPsionicaException.class)
+    @Test(expected = ImposibleAtravesarTormentaPsionicaException.class)
     public void unidadAlternativoTerrestreNoAtraviesaTormentaPsionica(){
         casillero1_1.asignarSuperficie(new Roca());
         casillero2_2.asignarSuperficie(new TormentaPsionica());
         Frenzy frenzy=new Frenzy(casillero1_1);
         frenzy.cambiarEstadoAlternativo();
         frenzy.avanzar(casillero2_2);
-    }*/
+    }
     
     
     @Test
@@ -403,9 +423,6 @@ public class AlgoFormerTest {
     	 Assert.assertTrue(megatron.estaMuerto());
     }
 
-
-
-    //estos tests seran modificados cuando se implemente la logica de turnos
 
     @Test
     public void unidadAereaBloqueadaEnNebulosaEnModoHumanoide(){
@@ -422,8 +439,8 @@ public class AlgoFormerTest {
         casillero1_1.asignarSuperficie(new Roca());
         casillero2_2.asignarSuperficie(new NebulosaAndromeda());
         Megatron megatron=new Megatron(casillero1_1);
-        megatron.cambiarEstadoAlternativo();            //1° mov
-        megatron.avanzar(casillero2_2);                 //2° mov -3 turnos bloqueados
+        megatron.cambiarEstadoAlternativo();            
+        megatron.avanzar(casillero2_2);                 
         Assert.assertTrue(megatron.getMovDisponibles()==95);
     }
 
@@ -447,6 +464,8 @@ public class AlgoFormerTest {
         megatron.avanzar(casillero2_2);
         Assert.assertTrue(megatron.estaPisionico());
     } 
+    
+    
     @Test
     public void unidadRecogeDobleCanionYDuplicaSuAtaque(){
         casillero1_1.asignarSuperficie(new Roca());
@@ -469,4 +488,6 @@ public class AlgoFormerTest {
         optimus.destruir();
         Assert.assertTrue(casillero1_1.estaOcupado() == false);
     }
+    
+    
 }

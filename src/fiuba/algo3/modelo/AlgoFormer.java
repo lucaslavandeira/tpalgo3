@@ -7,6 +7,7 @@ package fiuba.algo3.modelo;
 public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
 	
     protected Casillero posicion;
+    protected String nombre;
 	protected int vida;
     protected int ataque;
     protected int velocidad;
@@ -148,7 +149,9 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
     }
 
 
-    public void reducirVida(int porcentage){this.vida-= (float)(porcentage*this.vida)/100;}
+    public void reducirVida(int porcentage){
+    	this.vida-= (float)(porcentage*this.vida)/100;
+   	}
 
 
     public void bloquearTurnos(int cantidad) {
@@ -192,7 +195,7 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
 
 
 	public String getNombre() {
-		return "former";
+		return this.nombre;
 	}
 
 

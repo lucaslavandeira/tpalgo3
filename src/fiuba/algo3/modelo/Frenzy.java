@@ -6,11 +6,10 @@ package fiuba.algo3.modelo;
  * Created by Diego on 03/06/2016.
  */
 public class Frenzy extends AlgoFormer {
-	private String nombre = "Frenzy";
-
 
     public Frenzy(Casillero unCasillero){
         super(unCasillero);
+        this.nombre = "Frenzy";
         this.vida = 400;
         this.equipo=Equipo.DECEPTICONS;
         this.estadoAlternativo=new EstadoAlternativoTerrestre();
