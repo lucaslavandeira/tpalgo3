@@ -35,7 +35,7 @@ public class ControladorOpcionCasilleroEventHandler implements EventHandler<Acti
          * mejor que clickee en former y luego clickee en un casillero valido para mover
          * Se podria poner en un costado el former y el casillero que se esta seleccionando
          */
-        URL resource = getClass().getResource("/sonido/click.mp3");
+        //URL resource = getClass().getResource("/sonido/click.mp3");
 //        Media sound = new Media(resource.toString());
 //        sonidoMover = new MediaPlayer(sound);
 //        sonidoMover.play();

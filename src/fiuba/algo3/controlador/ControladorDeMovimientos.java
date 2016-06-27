@@ -40,7 +40,7 @@ public class ControladorDeMovimientos {
     public void run(){
         try {
             if (this.casillero.tieneEquipamiento()) {
-                this.producirSonidoEquipamiento();
+                //this.producirSonidoEquipamiento();
             }
 
 
@@ -58,7 +58,7 @@ public class ControladorDeMovimientos {
                 } catch (SobrepasaRangosException e) {}
             }
 
-             URL resource = getClass().getResource("/sonido/movimiento.mp3");
+             //URL resource = getClass().getResource("/sonido/movimiento.mp3");
              //Media sound = new Media(resource.toString());
 //            sonidoMover = new MediaPlayer(sound);
 //            sonidoMover.play();
@@ -72,19 +72,19 @@ public class ControladorDeMovimientos {
         
     }
 
-    private void producirSonidoEquipamiento() {
+    /*private void producirSonidoEquipamiento() {
         URL resource2 = getClass().getResource("/sonido/equipamiento.mp3");
         Media sound2 = new Media(resource2.toString());
-//        sonidoEquipo = new MediaPlayer(sound2);
-//        sonidoEquipo.play();
-    }
+        sonidoEquipo = new MediaPlayer(sound2);
+            sonidoEquipo.play();
+    }*/
 
     public void atack(AlgoFormer formerAAtacar){
         try {
            this.former.atacar(formerAAtacar);
 
-            final URL resource = getClass().getResource("/sonido/explode.mp3");
-            final Media media = new Media(resource.toString());
+            //final URL resource = getClass().getResource("/sonido/explode.mp3");
+            //final Media media = new Media(resource.toString());
 //            sonidoAtack = new MediaPlayer(media);
 //            sonidoAtack.play();
 

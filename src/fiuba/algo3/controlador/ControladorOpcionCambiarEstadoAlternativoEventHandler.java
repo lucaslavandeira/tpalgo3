@@ -22,8 +22,8 @@ public class ControladorOpcionCambiarEstadoAlternativoEventHandler implements Ev
 	@Override
 	public void handle(ActionEvent arg0) {
 		this.former.cambiarEstadoAlternativo();
-		final URL resource = getClass().getResource("/sonido/electronica.mp3");
-		final Media media = new Media(resource.toString());
+		//final URL resource = getClass().getResource("/sonido/electronica.mp3");
+		//final Media media = new Media(resource.toString());
 //		player = new MediaPlayer(media);
 //		player.play();
 		this.vistaActualizada.actualizarVistaAlSeleccionFormer(this.former);

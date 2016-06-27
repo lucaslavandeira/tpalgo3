@@ -77,7 +77,7 @@ public class VistaJuego extends BorderPane {
 	private Button cambiarEstadoHumanoide;
 	private Button cambiarEstadoAlternativo;
 	private Label bonus;
-    private MediaPlayer sonidoGanador;
+    //private MediaPlayer sonidoGanador;
 
     public VistaJuego(Stage stage) {
 
@@ -92,8 +92,8 @@ public class VistaJuego extends BorderPane {
         this.panelLateralIzquierdo();
         this.panelCentral();
         this.panelLateralDerecho();
-        final URL resource = getClass().getResource("/sonido/actionSound.m4a");
-        final Media media = new Media(resource.toString());
+        //final URL resource = getClass().getResource("/sonido/actionSound.m4a");
+        //final Media media = new Media(resource.toString());
 //        mediaPlayer = new MediaPlayer(media);
 //        mediaPlayer.play();
         this.setStyle("-fx-base:black");
@@ -209,8 +209,8 @@ public class VistaJuego extends BorderPane {
        for(int i=0;i<listaDeFormers.size();i++) {
            if (listaDeFormers.get(i) == null || listaDeFormers.get(i).estaMuerto()){
 
-               final URL resource = getClass().getResource("/sonido/muerte.mp3");
-               final Media media = new Media(resource.toString());
+               //final URL resource = getClass().getResource("/sonido/muerte.mp3");
+               //final Media media = new Media(resource.toString());
 //               MediaPlayer sound=new MediaPlayer(media);
 //               sound.play();
 
@@ -272,8 +272,8 @@ public class VistaJuego extends BorderPane {
         ventanaGanador.initStyle(StageStyle.UNDECORATED);
         ventanaGanador.setFullScreen(false);
         ventanaGanador.show();
-        URL resource = getClass().getResource("/sonido/drums.mp3");
-        Media sound = new Media(resource.toString());
+        //URL resource = getClass().getResource("/sonido/drums.mp3");
+        //Media sound = new Media(resource.toString());
 //        sonidoGanador = new MediaPlayer(sound);
 //        sonidoGanador.play();
         aceptar.setOnAction(new ControladorOpcionAceptarEventHandler(this.vista));

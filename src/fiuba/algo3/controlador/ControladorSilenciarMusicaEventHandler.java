@@ -16,7 +16,7 @@ public class ControladorSilenciarMusicaEventHandler implements EventHandler<Acti
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        escenario.setStopSonido();
+        //escenario.setStopSonido();
 
     }
 }

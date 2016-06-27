@@ -40,7 +40,7 @@ public class VistaMenuPrincipal extends HBox {
         this.setBotonJugar();
         this.setBotonSalir();
         this.setAlignment(Pos.BOTTOM_CENTER);
-        this.setSonido();
+        //this.setSonido();
         this.setSpacing(1200);
 
     }
@@ -117,12 +117,12 @@ public class VistaMenuPrincipal extends HBox {
 
 
 
-    private void setSonido(){
+    /*private void setSonido(){
         final URL resource = getClass().getResource("/sonido/intro.mp3");
         final Media media = new Media(resource.toString());
-//        mediaPlayer = new MediaPlayer(media);
-//        mediaPlayer.play();
-    }
+        mediaPlayer = new MediaPlayer(media);
+        mediaPlayer.play();
+    }*/
 
 
 public void setStopSonido(){

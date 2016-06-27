@@ -21,8 +21,8 @@ public class ControladorOpcionCambiarEstadoHumanoideEventHandler implements Even
 	@Override
 	public void handle(ActionEvent event) {
 		this.former.cambiarEstadoHumanoide();
-		final URL resource = getClass().getResource("/sonido/transformando.m4a");
-		final Media media = new Media(resource.toString());
+		//final URL resource = getClass().getResource("/sonido/transformando.m4a");
+		//final Media media = new Media(resource.toString());
 //		player = new MediaPlayer(media);
 //		player.play();
 		this.vistaActualizada.actualizarVistaAlSeleccionFormer(this.former);
