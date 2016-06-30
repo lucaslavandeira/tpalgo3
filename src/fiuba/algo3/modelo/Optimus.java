@@ -22,8 +22,5 @@ public class Optimus extends AlgoFormer {
     }
     
     
-	public String getNombre() {
-		return nombre;
-	}
 
 }

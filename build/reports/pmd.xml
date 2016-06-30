@@ -1,0 +1,520 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<pmd version="4.3" timestamp="2016-06-29T23:09:50.582">
+<file name="fiuba\algo3\controlador\BotonCasillero.java">
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="30" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.fxml.FXMLLoader'
+</violation>
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.geometry.Pos'
+</violation>
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="43" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.control.ContentDisplay'
+</violation>
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="36" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.image.ImageView'
+</violation>
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.io.IOException'
+</violation>
+<violation beginline="17" endline="17" begincolumn="20" endcolumn="24" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fiuba.algo3.controlador" class="BotonCasillero" variable="local" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'local'.
+</violation>
+</file>
+<file name="fiuba\algo3\controlador\BotonFormer.java">
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="34" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'fiuba.algo3.modelo.Optimus'
+</violation>
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.layout.VBox'
+</violation>
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="26" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.stage.Stage'
+</violation>
+</file>
+<file name="fiuba\algo3\controlador\ControladorDeMovimientos.java">
+<violation beginline="4" endline="4" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.media.Media'
+</violation>
+<violation beginline="5" endline="5" begincolumn="1" endcolumn="38" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.media.MediaPlayer'
+</violation>
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="20" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.net.URL'
+</violation>
+<violation beginline="16" endline="16" begincolumn="19" endcolumn="23" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fiuba.algo3.controlador" class="ControladorDeMovimientos" variable="juego" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'juego'.
+</violation>
+<violation beginline="18" endline="19" begincolumn="12" endcolumn="5" rule="UnnecessaryConstructor" ruleset="Controversial Rules" package="fiuba.algo3.controlador" class="ControladorDeMovimientos" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnnecessaryConstructor" priority="3">
+Avoid unnecessary constructors - the compiler will generate these for you
+</violation>
+</file>
+<file name="fiuba\algo3\controlador\ControladorOpcionAcercaDeEventHandler.java">
+<violation beginline="2" endline="2" begincolumn="1" endcolumn="38" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.application.Application'
+</violation>
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="26" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.stage.Stage'
+</violation>
+</file>
+<file name="fiuba\algo3\controlador\ControladorOpcionCambiarEstadoAlternativoEventHandler.java">
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.media.Media'
+</violation>
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="38" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.media.MediaPlayer'
+</violation>
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="20" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.net.URL'
+</violation>
+</file>
+<file name="fiuba\algo3\controlador\ControladorOpcionCambiarEstadoHumanoideEventHandler.java">
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.media.Media'
+</violation>
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="38" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.media.MediaPlayer'
+</violation>
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="20" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.net.URL'
+</violation>
+</file>
+<file name="fiuba\algo3\controlador\ControladorOpcionCasilleroEventHandler.java">
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="35" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.control.Button'
+</violation>
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.media.Media'
+</violation>
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="38" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.media.MediaPlayer'
+</violation>
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="26" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.stage.Stage'
+</violation>
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="20" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.net.URL'
+</violation>
+</file>
+<file name="fiuba\algo3\controlador\ControladorOpcionJugarEventHandler.java">
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.media.Media'
+</violation>
+<violation beginline="15" endline="15" begincolumn="1" endcolumn="20" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.net.URL'
+</violation>
+<violation beginline="21" endline="21" begincolumn="36" endcolumn="39" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fiuba.algo3.controlador" class="ControladorOpcionJugarEventHandler" variable="menu" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'menu'.
+</violation>
+<violation beginline="22" endline="22" begincolumn="29" endcolumn="39" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fiuba.algo3.controlador" class="ControladorOpcionJugarEventHandler" variable="sonidoClick" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'sonidoClick'.
+</violation>
+</file>
+<file name="fiuba\algo3\controlador\ControladorOpcionMoverEventHandler.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="36" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'fiuba.algo3.modelo.Casillero'
+</violation>
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="35" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.control.Button'
+</violation>
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="26" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.stage.Stage'
+</violation>
+</file>
+<file name="fiuba\algo3\controlador\ControladorOpcionNuevoJuegoEventHandler.java">
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="30" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.fxml.FXMLLoader'
+</violation>
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.geometry.Pos'
+</violation>
+<violation beginline="12" endline="12" begincolumn="1" endcolumn="35" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.control.Button'
+</violation>
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.layout.VBox'
+</violation>
+<violation beginline="17" endline="17" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.io.IOException'
+</violation>
+<violation beginline="25" endline="25" begincolumn="24" endcolumn="32" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fiuba.algo3.controlador" class="ControladorOpcionNuevoJuegoEventHandler" variable="escenario" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'escenario'.
+</violation>
+</file>
+<file name="fiuba\algo3\controlador\ControladorOpcionPasarTurnoEventHandler.java">
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.media.Media'
+</violation>
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="38" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.media.MediaPlayer'
+</violation>
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="30" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.text.Font'
+</violation>
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="20" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.net.URL'
+</violation>
+</file>
+<file name="fiuba\algo3\controlador\ControladorSilenciarMusicaEventHandler.java">
+<violation beginline="11" endline="11" begincolumn="24" endcolumn="32" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fiuba.algo3.controlador" class="ControladorSilenciarMusicaEventHandler" variable="escenario" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'escenario'.
+</violation>
+</file>
+<file name="fiuba\algo3\controlador\SeleccionarFormerEventHandler.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.io.IOException'
+</violation>
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="67" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'fiuba.algo3.controlador.ControladorOpcionAtacarEventHandler'
+</violation>
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="67" rule="ImportFromSamePackage" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#ImportFromSamePackage" priority="3">
+No need to import a type that lives in the same package
+</violation>
+<violation beginline="7" endline="7" begincolumn="1" endcolumn="56" rule="ImportFromSamePackage" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#ImportFromSamePackage" priority="3">
+No need to import a type that lives in the same package
+</violation>
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="30" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.fxml.FXMLLoader'
+</violation>
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.geometry.Pos'
+</violation>
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="35" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.control.Button'
+</violation>
+<violation beginline="12" endline="12" begincolumn="1" endcolumn="34" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.control.Label'
+</violation>
+<violation beginline="13" endline="13" begincolumn="1" endcolumn="37" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.layout.StackPane'
+</violation>
+<violation beginline="14" endline="14" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.layout.VBox'
+</violation>
+<violation beginline="15" endline="15" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.media.Media'
+</violation>
+<violation beginline="16" endline="16" begincolumn="1" endcolumn="38" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.media.MediaPlayer'
+</violation>
+<violation beginline="17" endline="17" begincolumn="1" endcolumn="30" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.text.Font'
+</violation>
+<violation beginline="18" endline="18" begincolumn="1" endcolumn="26" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.stage.Stage'
+</violation>
+<violation beginline="20" endline="20" begincolumn="8" endcolumn="26" rule="DuplicateImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#DuplicateImports" priority="4">
+Avoid duplicate imports such as 'java.io.IOException'
+</violation>
+<violation beginline="21" endline="21" begincolumn="1" endcolumn="20" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.controlador" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.net.URL'
+</violation>
+</file>
+<file name="fiuba\algo3\modelo\Bonus.java">
+<violation beginline="25" endline="27" begincolumn="12" endcolumn="5" rule="UnnecessaryConstructor" ruleset="Controversial Rules" package="fiuba.algo3.modelo" class="Bonus" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnnecessaryConstructor" priority="3">
+Avoid unnecessary constructors - the compiler will generate these for you
+</violation>
+</file>
+<file name="fiuba\algo3\modelo\Casillero.java">
+<violation beginline="85" endline="86" begincolumn="9" endcolumn="25" rule="SimplifyBooleanReturns" ruleset="Design Rules" package="fiuba.algo3.modelo" class="Casillero" method="tieneEquipamiento" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#SimplifyBooleanReturns" priority="3">
+Avoid unnecessary if..then..else statements when returning a boolean
+</violation>
+</file>
+<file name="fiuba\algo3\modelo\Equipamiento.java">
+<violation beginline="8" endline="8" begincolumn="16" endcolumn="44" rule="UnusedModifier" ruleset="Controversial Rules" package="fiuba.algo3.modelo" class="Equipamiento" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="9" endline="9" begincolumn="16" endcolumn="41" rule="UnusedModifier" ruleset="Controversial Rules" package="fiuba.algo3.modelo" class="Equipamiento" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+</file>
+<file name="fiuba\algo3\modelo\Estado.java">
+<violation beginline="8" endline="8" begincolumn="16" endcolumn="75" rule="UnusedModifier" ruleset="Controversial Rules" package="fiuba.algo3.modelo" class="Estado" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="9" endline="9" begincolumn="16" endcolumn="60" rule="UnusedModifier" ruleset="Controversial Rules" package="fiuba.algo3.modelo" class="Estado" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="10" endline="10" begincolumn="16" endcolumn="83" rule="UnusedModifier" ruleset="Controversial Rules" package="fiuba.algo3.modelo" class="Estado" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="11" endline="11" begincolumn="16" endcolumn="49" rule="UnusedModifier" ruleset="Controversial Rules" package="fiuba.algo3.modelo" class="Estado" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+</file>
+<file name="fiuba\algo3\modelo\EstadoAlternativoAereo.java">
+<violation beginline="12" endline="14" begincolumn="16" endcolumn="9" rule="UnnecessaryConstructor" ruleset="Controversial Rules" package="fiuba.algo3.modelo" class="EstadoAlternativoAereo" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnnecessaryConstructor" priority="3">
+Avoid unnecessary constructors - the compiler will generate these for you
+</violation>
+</file>
+<file name="fiuba\algo3\modelo\EstadoAlternativoTerrestre.java">
+<violation beginline="11" endline="12" begincolumn="16" endcolumn="9" rule="UnnecessaryConstructor" ruleset="Controversial Rules" package="fiuba.algo3.modelo" class="EstadoAlternativoTerrestre" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnnecessaryConstructor" priority="3">
+Avoid unnecessary constructors - the compiler will generate these for you
+</violation>
+</file>
+<file name="fiuba\algo3\modelo\EstadoHumanoideAereo.java">
+<violation beginline="12" endline="14" begincolumn="16" endcolumn="9" rule="UnnecessaryConstructor" ruleset="Controversial Rules" package="fiuba.algo3.modelo" class="EstadoHumanoideAereo" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnnecessaryConstructor" priority="3">
+Avoid unnecessary constructors - the compiler will generate these for you
+</violation>
+</file>
+<file name="fiuba\algo3\modelo\EstadoHumanoideTerrestre.java">
+<violation beginline="11" endline="13" begincolumn="16" endcolumn="9" rule="UnnecessaryConstructor" ruleset="Controversial Rules" package="fiuba.algo3.modelo" class="EstadoHumanoideTerrestre" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnnecessaryConstructor" priority="3">
+Avoid unnecessary constructors - the compiler will generate these for you
+</violation>
+</file>
+<file name="fiuba\algo3\modelo\Juego.java">
+<violation beginline="2" endline="2" begincolumn="1" endcolumn="34" rule="ImportFromSamePackage" ruleset="Import Statement Rules" package="fiuba.algo3.modelo" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#ImportFromSamePackage" priority="3">
+No need to import a type that lives in the same package
+</violation>
+<violation beginline="9" endline="198" begincolumn="8" endcolumn="1" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="fiuba.algo3.modelo" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The class 'Juego' has a Cyclomatic Complexity of 3 (Highest = 9).
+</violation>
+<violation beginline="87" endline="124" begincolumn="8" endcolumn="1" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="fiuba.algo3.modelo" class="Juego" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The method 'hayGanador' has a Cyclomatic Complexity of 9.
+</violation>
+<violation beginline="104" endline="107" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="fiuba.algo3.modelo" class="Juego" method="hayGanador" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="104" endline="107" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="fiuba.algo3.modelo" class="Juego" method="hayGanador" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="118" endline="121" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="fiuba.algo3.modelo" class="Juego" method="hayGanador" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="118" endline="121" begincolumn="13" endcolumn="13" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="fiuba.algo3.modelo" class="Juego" method="hayGanador" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+</file>
+<file name="fiuba\algo3\modelo\ObjetoDependienteDeTurno.java">
+<violation beginline="8" endline="8" begincolumn="12" endcolumn="33" rule="UnusedModifier" ruleset="Controversial Rules" package="fiuba.algo3.modelo" class="ObjetoDependienteDeTurno" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+</file>
+<file name="fiuba\algo3\modelo\Superficie.java">
+<violation beginline="8" endline="8" begincolumn="16" endcolumn="75" rule="UnusedModifier" ruleset="Controversial Rules" package="fiuba.algo3.modelo" class="Superficie" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="10" endline="10" begincolumn="16" endcolumn="69" rule="UnusedModifier" ruleset="Controversial Rules" package="fiuba.algo3.modelo" class="Superficie" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="12" endline="12" begincolumn="16" endcolumn="73" rule="UnusedModifier" ruleset="Controversial Rules" package="fiuba.algo3.modelo" class="Superficie" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="14" endline="14" begincolumn="16" endcolumn="71" rule="UnusedModifier" ruleset="Controversial Rules" package="fiuba.algo3.modelo" class="Superficie" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+<violation beginline="16" endline="16" begincolumn="16" endcolumn="47" rule="UnusedModifier" ruleset="Controversial Rules" package="fiuba.algo3.modelo" class="Superficie" externalInfoUrl="http://pmd.sourceforge.net/rules/controversial.html#UnusedModifier" priority="3">
+Avoid modifiers which are implied by the context
+</violation>
+</file>
+<file name="fiuba\algo3\modelo\Tablero.java">
+<violation beginline="8" endline="97" begincolumn="8" endcolumn="1" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="fiuba.algo3.modelo" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The class 'Tablero' has a Cyclomatic Complexity of 5 (Highest = 12).
+</violation>
+<violation beginline="50" endline="68" begincolumn="13" endcolumn="9" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="fiuba.algo3.modelo" class="Tablero" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The method 'bonusAleatorio' has a Cyclomatic Complexity of 12.
+</violation>
+<violation beginline="71" endline="83" begincolumn="17" endcolumn="9" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="fiuba.algo3.modelo" class="Tablero" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The method 'superficieAleatoria' has a Cyclomatic Complexity of 6.
+</violation>
+<violation beginline="85" endline="91" begincolumn="16" endcolumn="5" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="fiuba.algo3.modelo" class="Tablero" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The method 'obtenerCasillero' has a Cyclomatic Complexity of 5.
+</violation>
+</file>
+<file name="fiuba\algo3\vista\BarraDeMenu.java">
+<violation beginline="29" endline="29" begincolumn="18" endcolumn="28" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="fiuba.algo3.vista" class="BarraDeMenu" variable="opcionAbrir" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'opcionAbrir'.
+</violation>
+</file>
+<file name="fiuba\algo3\vista\Vista.java">
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.Parent'
+</violation>
+<violation beginline="8" endline="8" begincolumn="1" endcolumn="38" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.layout.BorderPane'
+</violation>
+<violation beginline="9" endline="9" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.layout.VBox'
+</violation>
+<violation beginline="11" endline="11" begincolumn="1" endcolumn="30" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.geometry.Insets'
+</violation>
+<violation beginline="12" endline="12" begincolumn="1" endcolumn="27" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.geometry.Pos'
+</violation>
+<violation beginline="13" endline="13" begincolumn="8" endcolumn="25" rule="DuplicateImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#DuplicateImports" priority="4">
+Avoid duplicate imports such as 'javafx.scene.Scene'
+</violation>
+<violation beginline="14" endline="14" begincolumn="1" endcolumn="35" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.control.Button'
+</violation>
+<violation beginline="15" endline="15" begincolumn="1" endcolumn="34" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.control.Label'
+</violation>
+<violation beginline="17" endline="17" begincolumn="1" endcolumn="38" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.layout.Background'
+</violation>
+<violation beginline="18" endline="18" begincolumn="1" endcolumn="43" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.layout.BackgroundImage'
+</violation>
+<violation beginline="19" endline="19" begincolumn="1" endcolumn="46" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.layout.BackgroundPosition'
+</violation>
+<violation beginline="20" endline="20" begincolumn="1" endcolumn="44" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.layout.BackgroundRepeat'
+</violation>
+<violation beginline="21" endline="21" begincolumn="1" endcolumn="42" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.layout.BackgroundSize'
+</violation>
+<violation beginline="22" endline="22" begincolumn="1" endcolumn="36" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.image.ImageView'
+</violation>
+<violation beginline="23" endline="23" begincolumn="8" endcolumn="31" rule="DuplicateImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#DuplicateImports" priority="4">
+Avoid duplicate imports such as 'javafx.scene.layout.VBox'
+</violation>
+<violation beginline="25" endline="25" begincolumn="1" endcolumn="30" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.text.Font'
+</violation>
+<violation beginline="26" endline="26" begincolumn="1" endcolumn="36" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.text.FontWeight'
+</violation>
+<violation beginline="27" endline="27" begincolumn="8" endcolumn="25" rule="DuplicateImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#DuplicateImports" priority="4">
+Avoid duplicate imports such as 'javafx.stage.Stage'
+</violation>
+</file>
+<file name="fiuba\algo3\vista\VistaJuego.java">
+<violation beginline="20" endline="20" begincolumn="1" endcolumn="38" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.control.Separator'
+</violation>
+<violation beginline="28" endline="28" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.media.Media'
+</violation>
+<violation beginline="29" endline="29" begincolumn="1" endcolumn="38" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.media.MediaPlayer'
+</violation>
+<violation beginline="31" endline="31" begincolumn="1" endcolumn="33" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.shape.Sphere'
+</violation>
+<violation beginline="38" endline="38" begincolumn="1" endcolumn="20" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.net.URL'
+</violation>
+<violation beginline="46" endline="593" begincolumn="8" endcolumn="1" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The class 'VistaJuego' has a Cyclomatic Complexity of 3 (Highest = 11).
+</violation>
+<violation beginline="68" endline="68" begincolumn="23" endcolumn="26" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fiuba.algo3.vista" class="VistaJuego" variable="Vida" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'Vida'.
+</violation>
+<violation beginline="213" endline="244" begincolumn="12" endcolumn="5" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="fiuba.algo3.vista" class="VistaJuego" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The method 'actualizarVista' has a Cyclomatic Complexity of 7.
+</violation>
+<violation beginline="221" endline="221" begincolumn="15" endcolumn="51" rule="EmptyCatchBlock" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="actualizarVista" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="221" endline="221" begincolumn="15" endcolumn="51" rule="EmptyCatchBlock" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="actualizarVista" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="228" endline="228" begincolumn="15" endcolumn="51" rule="EmptyCatchBlock" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="actualizarVista" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="228" endline="228" begincolumn="15" endcolumn="51" rule="EmptyCatchBlock" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="actualizarVista" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#EmptyCatchBlock" priority="3">
+Avoid empty catch blocks
+</violation>
+<violation beginline="322" endline="342" begincolumn="17" endcolumn="9" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="fiuba.algo3.vista" class="VistaJuego" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The method 'desabilitarBotonFormer' has a Cyclomatic Complexity of 9.
+</violation>
+<violation beginline="323" endline="340" begincolumn="9" endcolumn="9" rule="SwitchStmtsShouldHaveDefault" ruleset="Design Rules" package="fiuba.algo3.vista" class="VistaJuego" method="desabilitarBotonFormer" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#SwitchStmtsShouldHaveDefault" priority="3">
+Switch statements should have a default label
+</violation>
+<violation beginline="350" endline="350" begincolumn="38" endcolumn="61" rule="AvoidThreadGroup" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="setVistaBotonCasillero" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="350" endline="350" begincolumn="38" endcolumn="61" rule="AvoidThreadGroup" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="setVistaBotonCasillero" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="354" endline="354" begincolumn="20" endcolumn="24" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="fiuba.algo3.vista" class="VistaJuego" method="setVistaBotonCasillero" variable="nuevo" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'nuevo'.
+</violation>
+<violation beginline="363" endline="363" begincolumn="38" endcolumn="61" rule="AvoidThreadGroup" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="setVistaBotonCasillero" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="363" endline="363" begincolumn="38" endcolumn="61" rule="AvoidThreadGroup" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="setVistaBotonCasillero" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="367" endline="367" begincolumn="20" endcolumn="24" rule="UnusedLocalVariable" ruleset="Unused Code Rules" package="fiuba.algo3.vista" class="VistaJuego" method="setVistaBotonCasillero" variable="nuevo" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedLocalVariable" priority="3">
+Avoid unused local variables such as 'nuevo'.
+</violation>
+<violation beginline="377" endline="408" begincolumn="13" endcolumn="5" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="fiuba.algo3.vista" class="VistaJuego" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The method 'obtenerDisenio' has a Cyclomatic Complexity of 11.
+</violation>
+<violation beginline="398" endline="400" begincolumn="12" endcolumn="12" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="obtenerDisenio" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="398" endline="400" begincolumn="12" endcolumn="12" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="obtenerDisenio" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="403" endline="405" begincolumn="12" endcolumn="12" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="obtenerDisenio" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="403" endline="405" begincolumn="12" endcolumn="12" rule="CollapsibleIfStatements" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="obtenerDisenio" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#CollapsibleIfStatements" priority="3">
+These nested if statements could be combined
+</violation>
+<violation beginline="410" endline="427" begincolumn="13" endcolumn="9" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="fiuba.algo3.vista" class="VistaJuego" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The method 'asignarEstrellaAlBonus' has a Cyclomatic Complexity of 5.
+</violation>
+<violation beginline="416" endline="416" begincolumn="45" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="asignarEstrellaAlBonus" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="416" endline="416" begincolumn="45" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="asignarEstrellaAlBonus" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="418" endline="418" begincolumn="45" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="asignarEstrellaAlBonus" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="418" endline="418" begincolumn="45" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="asignarEstrellaAlBonus" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="420" endline="420" begincolumn="45" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="asignarEstrellaAlBonus" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="420" endline="420" begincolumn="45" endcolumn="68" rule="AvoidThreadGroup" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="asignarEstrellaAlBonus" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="429" endline="445" begincolumn="17" endcolumn="9" rule="CyclomaticComplexity" ruleset="Code Size Rules" package="fiuba.algo3.vista" class="VistaJuego" externalInfoUrl="http://pmd.sourceforge.net/rules/codesize.html#CyclomaticComplexity" priority="3">
+The method 'asignarColorAlCasillero' has a Cyclomatic Complexity of 7.
+</violation>
+<violation beginline="431" endline="444" begincolumn="9" endcolumn="9" rule="SwitchStmtsShouldHaveDefault" ruleset="Design Rules" package="fiuba.algo3.vista" class="VistaJuego" method="asignarColorAlCasillero" externalInfoUrl="http://pmd.sourceforge.net/rules/design.html#SwitchStmtsShouldHaveDefault" priority="3">
+Switch statements should have a default label
+</violation>
+<violation beginline="581" endline="581" begincolumn="29" endcolumn="52" rule="AvoidThreadGroup" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="setImagenIcono" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+<violation beginline="581" endline="581" begincolumn="29" endcolumn="52" rule="AvoidThreadGroup" ruleset="Basic Rules" package="fiuba.algo3.vista" class="VistaJuego" method="setImagenIcono" externalInfoUrl="http://pmd.sourceforge.net/rules/basic.html#AvoidThreadGroup" priority="3">
+Avoid using java.lang.ThreadGroup; it is not thread safe
+</violation>
+</file>
+<file name="fiuba\algo3\vista\VistaMenuPrincipal.java">
+<violation beginline="3" endline="3" begincolumn="1" endcolumn="52" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'com.sun.javafx.scene.control.skin.ButtonSkin'
+</violation>
+<violation beginline="6" endline="6" begincolumn="1" endcolumn="66" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'fiuba.algo3.controlador.ControladorOpcionMoverEventHandler'
+</violation>
+<violation beginline="10" endline="10" begincolumn="1" endcolumn="26" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.Scene'
+</violation>
+<violation beginline="17" endline="17" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.media.Media'
+</violation>
+<violation beginline="18" endline="18" begincolumn="1" endcolumn="32" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.scene.paint.Color'
+</violation>
+<violation beginline="20" endline="20" begincolumn="1" endcolumn="31" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'javafx.stage.StageStyle'
+</violation>
+<violation beginline="23" endline="23" begincolumn="1" endcolumn="20" rule="UnusedImports" ruleset="Import Statement Rules" package="fiuba.algo3.vista" externalInfoUrl="http://pmd.sourceforge.net/rules/imports.html#UnusedImports" priority="4">
+Avoid unused imports such as 'java.net.URL'
+</violation>
+<violation beginline="31" endline="31" begincolumn="25" endcolumn="35" rule="UnusedPrivateField" ruleset="Unused Code Rules" package="fiuba.algo3.vista" class="VistaMenuPrincipal" variable="mediaPlayer" externalInfoUrl="http://pmd.sourceforge.net/rules/unusedcode.html#UnusedPrivateField" priority="3">
+Avoid unused private fields such as 'mediaPlayer'.
+</violation>
+</file>
+</pmd>

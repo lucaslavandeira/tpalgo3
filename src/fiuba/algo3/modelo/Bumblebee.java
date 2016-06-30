@@ -21,8 +21,6 @@ public class Bumblebee extends AlgoFormer{
     }
     
     
-	public String getNombre() {
-		return nombre;
-	}
+
 
 }

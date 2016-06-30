@@ -22,9 +22,7 @@ public class Ratchet extends AlgoFormer{
     }
     
     
-	public String getNombre() {
-		return nombre;
-	}
+
 
 }
 

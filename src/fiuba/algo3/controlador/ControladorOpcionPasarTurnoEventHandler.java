@@ -14,7 +14,6 @@ public class ControladorOpcionPasarTurnoEventHandler implements EventHandler<Act
 
 	private Juego juegoAPasarTurno;
 	private Label actualizarTurno;
-	//private MediaPlayer sonidoMover;
 
 	public ControladorOpcionPasarTurnoEventHandler(Juego juego, Label turno) {
 		juegoAPasarTurno = juego;
@@ -24,10 +23,6 @@ public class ControladorOpcionPasarTurnoEventHandler implements EventHandler<Act
 	@Override
 	public void handle(ActionEvent arg0) {
         juegoAPasarTurno.proximoTurno();
-		//URL resource = getClass().getResource("/sonido/click.mp3");
-//		Media sound = new Media(resource.toString());
-//		sonidoMover = new MediaPlayer(sound);
-//		sonidoMover.play();
         actualizarTurno.setText("Turno: "+ juegoAPasarTurno.obtenerTurnoActual());
 	}
 

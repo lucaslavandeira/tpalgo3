@@ -1,10 +1,7 @@
 package fiuba.algo3.modelo;
-
 import fiuba.algo3.modelo.Tablero;
-
-import java.lang.reflect.Array;
 import java.util.ArrayList;
-import java.util.HashMap;
+
 
 /**
  * Created by usuario on 16/06/2016.
@@ -16,6 +13,10 @@ public class Juego {
     private ArrayList<AlgoFormer> decepticons;
     private Equipo ganador;
     private String turnoActual;
+	private Superion superion;
+	private Menasor menasor;
+
+
 
 
     public Juego(Tablero tablero){
@@ -23,6 +24,8 @@ public class Juego {
         mapa.obtenerCentroDeTablero().colocarChispaSuprema();
         this.autobots=new ArrayList<AlgoFormer>();
         this.decepticons=new ArrayList<AlgoFormer>();
+        this.superion = new Superion();
+        this.menasor = new Menasor();
     }
 
 
@@ -65,11 +68,13 @@ public class Juego {
         this.decepticons.get(0).siguienteTurno();
         this.decepticons.get(1).siguienteTurno();
         this.decepticons.get(2).siguienteTurno();
-
         this.autobots.get(0).siguienteTurno();
         this.autobots.get(1).siguienteTurno();
         this.autobots.get(2).siguienteTurno();
-
+        menasor.siguienteTurno();
+        menasor.siguienteTurno();
+        superion.siguienteTurno();
+        superion.siguienteTurno();
         if (turnoActual == "Autobots") {
         	turnoActual = "Decepticons"; 
         }else{
@@ -80,21 +85,41 @@ public class Juego {
 
 
 public void hayGanador(){
-    if (this.equipoEstaMuerto(this.autobots)){
-    	this.ganador = this.ganador.DECEPTICONS;
-    	throw new JugadorGanoException();
+    if (this.equipoEstaMuerto(this.autobots) & this.superion.estaMuerto() ){
+       this.ganador = this.ganador.DECEPTICONS;
+       throw new JugadorGanoException();
     }
-    if (this.equipoEstaMuerto(this.decepticons)){
-    	this.ganador = this.ganador.AUTOBOTS;
-    	throw new JugadorGanoException();
+    if (this.equipoEstaMuerto(this.decepticons) & this.menasor.estaMuerto() ){
+        this.ganador = this.ganador.AUTOBOTS;
+        throw new JugadorGanoException();
     }
+  
     if (this.equipoTieneChispaSuprema(this.autobots)){
     	this.ganador = this.ganador.AUTOBOTS;
     	throw new JugadorGanoException();
     }
+    else 
+    {
+    	if (!this.superion.estaMuerto()){
+    	    if (this.superion.getPosicion().tieneChispaSuprema()){
+    	    	this.ganador = this.ganador.AUTOBOTS;
+    	    	throw new JugadorGanoException();
+    	    }
+    	}
+    }
+    
     if (this.equipoTieneChispaSuprema(this.decepticons)){
     	this.ganador = this.ganador.DECEPTICONS;
     	throw new JugadorGanoException();
+    }
+    else 
+    {
+    	if (!this.menasor.estaMuerto()){
+    	    if (this.menasor.getPosicion().tieneChispaSuprema()){
+    	    	this.ganador = this.ganador.DECEPTICONS;
+    	    	throw new JugadorGanoException();
+    	    }
+    	}
     }
 }
 
@@ -129,17 +154,16 @@ public void hayGanador(){
                 unRobot.getPosicion().calcularDistancia(otroRobot.getPosicion(), 1);
             }
         }
-
-        Casillero posicion = autobots.get(0).getPosicion();
+        Casillero posicion = mapa.obtenerCasillero(0, 0);
+        superion = new Superion(posicion);
+        this.superion.setVida(sumarVidaDelEquipo(this.autobots));
         for (AlgoFormer a : autobots) {
             a.destruir();
-            // autobots.remove(a);
         }
-        Superion superion = new Superion(posicion);
+        
         autobots.add(superion);
-        superion.bloquearTurnos(102);
-
-        return superion;
+        superion.siguienteTurno();
+        return superion;    
     }
 
     public Menasor formarMenasor() {
@@ -151,16 +175,24 @@ public void hayGanador(){
             }
         }
 
-        Casillero posicion = decepticons.get(0).getPosicion();
-        for (AlgoFormer a : decepticons) {
+        Casillero posicion = mapa.obtenerCasillero(10, 10);
+        this.menasor = new Menasor(posicion);
+        this.menasor.setVida(sumarVidaDelEquipo(this.decepticons));
+        for (AlgoFormer a : this.decepticons) {
             a.destruir();
-            // autobots.remove(a);
         }
-        Menasor menasor = new Menasor(posicion);
-        autobots.add(menasor);
-        menasor.bloquearTurnos(102);
-
-        return menasor;
+        this.decepticons.add(menasor);
+        menasor.siguienteTurno();
+        return this.menasor;    
     }
+
+
+	private int sumarVidaDelEquipo(ArrayList<AlgoFormer> equipo) {
+		int vidaTotal =0;
+		for(int i = 0; i < equipo.size(); i++) {
+			vidaTotal += equipo.get(i).getVida();
+		}
+		return vidaTotal;
+	}
 
 }

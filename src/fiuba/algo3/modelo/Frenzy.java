@@ -23,8 +23,6 @@ public class Frenzy extends AlgoFormer {
     }
     
     
-	public String getNombre() {	
-		return nombre;
-	}
+
 
 }

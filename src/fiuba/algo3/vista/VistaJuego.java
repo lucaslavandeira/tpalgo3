@@ -9,6 +9,7 @@ import fiuba.algo3.controlador.ControladorDeMovimientos;
 import fiuba.algo3.controlador.ControladorOpcionAceptarEventHandler;
 import fiuba.algo3.controlador.ControladorOpcionMoverEventHandler;
 import fiuba.algo3.controlador.ControladorOpcionPasarTurnoEventHandler;
+import fiuba.algo3.controlador.SeleccionarFormerEventHandler;
 import javafx.event.EventHandler;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Pos;
@@ -45,7 +46,6 @@ import java.util.ArrayList;
 public class VistaJuego extends BorderPane {
 
     private BarraDeMenu barra;
-    private MediaPlayer mediaPlayer;
     private Tablero mapa;
     private Button mover;
     private Button atacar;
@@ -77,10 +77,18 @@ public class VistaJuego extends BorderPane {
 	private Button cambiarEstadoHumanoide;
 	private Button cambiarEstadoAlternativo;
 	private Label bonus;
-    //private MediaPlayer sonidoGanador;
+	private BotonFormer botonSuperion;
+	private Superion superion;
+	private VBox subpanelSuperior;
+	private Menasor menasor;
+	private BotonFormer botonMenasor;
+	private VBox subpanelInferior;
 
     public VistaJuego(Stage stage) {
-
+        this.menasor = new Menasor();
+        this.botonMenasor = new BotonFormer(menasor, movimiento, juego, this);
+        this.botonSuperion = new BotonFormer(superion, movimiento, juego, this);
+        this.superion = new Superion();
         this.mapa=new Tablero(11);
         this.mapa.asignarEfectosAleatorios();
         this.armarJuego();
@@ -92,10 +100,6 @@ public class VistaJuego extends BorderPane {
         this.panelLateralIzquierdo();
         this.panelCentral();
         this.panelLateralDerecho();
-        //final URL resource = getClass().getResource("/sonido/actionSound.m4a");
-        //final Media media = new Media(resource.toString());
-//        mediaPlayer = new MediaPlayer(media);
-//        mediaPlayer.play();
         this.setStyle("-fx-base:black");
         this.vista = stage;
     }
@@ -118,7 +122,6 @@ public class VistaJuego extends BorderPane {
         listaDeFormers.add(megatron);
         listaDeFormers.add(frenzy);
         listaDeFormers.add(bonecrusher);
-       
     }
 
     private void panelLateralDerecho() {
@@ -146,8 +149,8 @@ public class VistaJuego extends BorderPane {
         this.setImagenIcono(botonFrenzy,"/imagenes/caraFrenzy.jpg");
         this.setImagenIcono(botonBonecrusher,"/imagenes/caraboneCrusher.jpg");
         VBox panelLateralDerecho=new VBox();
-        VBox subpanelSuperior=new VBox();
-        VBox subpanelInferior=new VBox();
+        subpanelSuperior=new VBox();
+        subpanelInferior=new VBox();
 
         subpanelSuperior.getChildren().addAll(botonOptimus,botonBumblebee,botonRatchet);
         subpanelSuperior.setAlignment(Pos.CENTER_LEFT);
@@ -205,19 +208,29 @@ public class VistaJuego extends BorderPane {
         panelCentral.setAlignment(Pos.CENTER);
         this.setCenter(panelCentral);
     }
+
+    
     public void actualizarVista(){
+            try {
+                superion = juego.formarSuperion();
+                this.ocultarAutobots();
+                this.crearSuperionEnMapa();
+                listaDeFormers.add(superion);
+                
+                
+            } catch (SobrepasaRangosException e) {}
+
+            try {
+                menasor = juego.formarMenasor();
+                this.ocultarDecepticons();
+                this.crearMenasorEnMapa();
+                listaDeFormers.add(menasor);
+            } catch (SobrepasaRangosException e) {}
+        
        for(int i=0;i<listaDeFormers.size();i++) {
            if (listaDeFormers.get(i) == null || listaDeFormers.get(i).estaMuerto()){
-
-               //final URL resource = getClass().getResource("/sonido/muerte.mp3");
-               //final Media media = new Media(resource.toString());
-//               MediaPlayer sound=new MediaPlayer(media);
-//               sound.play();
-
-
                listaDeFormers.get(i).getPosicion().desocupar();
                this.desabilitarBotonFormer(listaDeFormers.get(i));
-               listaDeFormers.remove(i);
            }
        }
 
@@ -229,7 +242,36 @@ public class VistaJuego extends BorderPane {
         this.ocultarEstadisticas();
     	this.panelCentral();
     }
-    private void ocultarEstadisticas() {
+    private void crearMenasorEnMapa() {
+    	this.botonMenasor = new BotonFormer(this.menasor, movimiento, juego, this);
+        this.botonMenasor.setOnAction(new SeleccionarFormerEventHandler(menasor, juego, movimiento, this));
+		this.addEfecto(this.botonMenasor);
+        this.setImagenIcono(this.botonMenasor,"/imagenes/menasor.jpg");
+        this.subpanelInferior.getChildren().add(this.botonMenasor);
+    }
+
+	private void ocultarDecepticons() {
+		this.botonMegatron.setVisible(false);
+		this.botonBonecrusher.setVisible(false);
+		this.botonFrenzy.setVisible(false);
+	}
+
+	private void crearSuperionEnMapa() {
+		this.botonSuperion = new BotonFormer(this.superion, movimiento, juego, this);
+        this.botonSuperion.setOnAction(new SeleccionarFormerEventHandler(superion, juego, movimiento, this));
+		this.addEfecto(this.botonSuperion);
+        this.setImagenIcono(this.botonSuperion,"/imagenes/superion.jpg");
+        this.subpanelSuperior.getChildren().add(this.botonSuperion);
+		
+	}
+
+	private void ocultarAutobots() {
+		this.botonOptimus.setVisible(false);
+		this.botonBumblebee.setVisible(false);
+		this.botonRatchet.setVisible(false);
+	}
+
+	private void ocultarEstadisticas() {
     	this.cambiarEstadoHumanoide.setVisible(false);
     	this.cambiarEstadoAlternativo.setVisible(false);
     	this.mover.setVisible(false);
@@ -246,7 +288,6 @@ public class VistaJuego extends BorderPane {
 	private void mostrarMensajeAlGanador() {
 		Stage ventanaGanador = new Stage();
 
-//        this.mediaPlayer.stop();
 		ventanaGanador.setTitle("Ganaron los "+ juego.getGanador()+"!!");
 		ventanaGanador.getIcons().add(new Image(getClass().getResourceAsStream("/iconos/optimus.png")));
 
@@ -272,10 +313,6 @@ public class VistaJuego extends BorderPane {
         ventanaGanador.initStyle(StageStyle.UNDECORATED);
         ventanaGanador.setFullScreen(false);
         ventanaGanador.show();
-        //URL resource = getClass().getResource("/sonido/drums.mp3");
-        //Media sound = new Media(resource.toString());
-//        sonidoGanador = new MediaPlayer(sound);
-//        sonidoGanador.play();
         aceptar.setOnAction(new ControladorOpcionAceptarEventHandler(this.vista));
 
 	}
@@ -296,12 +333,15 @@ public class VistaJuego extends BorderPane {
     	break;
     	case "Frenzy": botonFrenzy.setDisable(true);
     	break;
+    	case "Superion": botonSuperion.setDisable(true);
+    	break;
+    	case "Menasor": botonMenasor.setDisable(true);
+    	break;
     	}
 		
 	}
 
 	private void setVistaBotonCasillero(BotonCasillero botonCasillero, SuperficiesEnum superficie){
-        botonCasillero.setPrefSize(50,50);
         this.asignarColorAlCasillero(botonCasillero , superficie);
         this.asignarEstrellaAlBonus(botonCasillero);
         if(botonCasillero.getCasillero().estaOcupado()){
@@ -354,7 +394,16 @@ public class VistaJuego extends BorderPane {
         if(bonecrusher.getPosicion()==botonCasillero.getCasillero()){
             return("/imagenes/caraboneCrusher.jpg");
         }
-
+        if (!superion.estaMuerto()){
+           if(superion.getPosicion()==botonCasillero.getCasillero()){
+              return("/imagenes/superion.jpg");
+           }
+        }
+        if (!menasor.estaMuerto()){
+           if(menasor.getPosicion()==botonCasillero.getCasillero()){
+              return("/imagenes/menasor.jpg");
+           }
+        }
         return("");
     }
 
@@ -484,8 +533,8 @@ public class VistaJuego extends BorderPane {
     }
     public void actualizarVistaAlSeleccionFormer(AlgoFormer former){
     	estado.setText("Estado: "+former.getEstado());
-    	this.cambiarEstadoHumanoide.setVisible(true);
-    	this.cambiarEstadoAlternativo.setVisible(true);
+   	    this.cambiarEstadoHumanoide.setVisible(true);
+   	    this.cambiarEstadoAlternativo.setVisible(true);    	
     	this.mover.setVisible(true);
     	this.atacar.setVisible(true);
     	this.nombre.setFont(new Font(20));
@@ -506,6 +555,10 @@ public class VistaJuego extends BorderPane {
     	this.ataque.setText("Ataque: " + ataqueEnString);
     	bonus.setVisible(true);
     	bonus.setText("Bonus:"+this.bonusDisponibles(former));
+    	if (former.getNombre() == "Menasor" || former.getNombre() == "Superion"){
+    	    this.cambiarEstadoHumanoide.setVisible(false);
+    	    this.cambiarEstadoAlternativo.setVisible(false);
+    	}
     	
     }
     private String bonusDisponibles(AlgoFormer former) {
@@ -526,8 +579,8 @@ public class VistaJuego extends BorderPane {
 	private void setImagenIcono(Button boton,String recurso){
         ImageView imagen=new ImageView();
         imagen.setImage(new javafx.scene.image.Image(getClass().getResource(recurso).toExternalForm()));
-        imagen.setFitHeight(80);
-        imagen.setFitWidth(80);
+        imagen.setFitHeight(50);
+        imagen.setFitWidth(50);
         boton.setGraphic(imagen);
         boton.setContentDisplay(ContentDisplay.CENTER);
     }
@@ -537,9 +590,4 @@ public class VistaJuego extends BorderPane {
 	public Button obtenerBotonCambiarEstadoAlternativo() {
 		return this.cambiarEstadoAlternativo;
 	}
-
-
-    public void setStopSonido() {
-        //this.mediaPlayer.stop();
-    }
 }

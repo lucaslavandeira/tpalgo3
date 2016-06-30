@@ -20,9 +20,5 @@ public class Bonecrusher extends AlgoFormer {
         this.estadoString = "Humanoide";
     }
     
-    
-	public String getNombre() {
-		return nombre;
-	}
 
 }

@@ -22,7 +22,7 @@ public class JuegoTest {
 
     @Before
     public void setUp() {
-        tablero = new Tablero(10);
+        tablero = new Tablero(11);
         game=new Juego(tablero);
         optimus=new Optimus(tablero.obtenerCasillero(0,4));
         bumblebee=new Bumblebee(tablero.obtenerCasillero(0,5));
@@ -230,6 +230,46 @@ public class JuegoTest {
         Assert.assertTrue(game.obtenerTurnoActual() == "Decepticons");
         game.proximoTurno();
         Assert.assertTrue(game.obtenerTurnoActual() == "Autobots");
+    }
+    @Test 
+    public void crearSuperion(){
+        Juego game=new Juego(tablero);
+        game.addAutobots(optimus,bumblebee,ratchet);
+        game.addDecepticons(megatron,bonecrusher,frenzy);
+        game.comenzarJuego();
+        //junto los autobots
+        optimus.avanzar(tablero.obtenerCasillero(1, 5));
+        ratchet.avanzar(tablero.obtenerCasillero(1, 6));
+        Superion superion = game.formarSuperion();
+        Assert.assertTrue(superion.getPosicion()==tablero.obtenerCasillero(0,0));
+    }
+    @Test
+    public void crearMenasor(){
+        Juego game=new Juego(tablero);
+        game.addAutobots(optimus,bumblebee,ratchet);
+        game.addDecepticons(megatron,bonecrusher,frenzy);
+        game.comenzarJuego();
+        //junto los autobots
+        game.proximoTurno();
+        megatron.avanzar(tablero.obtenerCasillero(8,5 ));
+        Menasor menasor = game.formarMenasor();
+        Assert.assertTrue(menasor.getPosicion()==tablero.obtenerCasillero(10,10));
+    }
+    @Test(expected=SobrepasaRangosException.class)
+    public void noPuedeCrearMenasor(){
+        Juego game=new Juego(tablero);
+        game.addAutobots(optimus,bumblebee,ratchet);
+        game.addDecepticons(megatron,bonecrusher,frenzy);
+        game.comenzarJuego();
+        Menasor menasor = game.formarMenasor();
+    }
+    @Test(expected=SobrepasaRangosException.class)
+    public void noPuedeCrearSuperion(){
+        Juego game=new Juego(tablero);
+        game.addAutobots(optimus,bumblebee,ratchet);
+        game.addDecepticons(megatron,bonecrusher,frenzy);
+        game.comenzarJuego();
+        Superion superion = game.formarSuperion();
     }
 
 }

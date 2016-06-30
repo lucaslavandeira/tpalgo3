@@ -36,6 +36,12 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
 
         unCasillero.ocupar();
 	}
+    public AlgoFormer(){
+        this.bonus=new Bonus();
+        this.bloqueado=false;
+        this.movDisponibles =0;
+        this.pisionico=false;
+    }
 
 
     public void avanzar(Casillero destino) {
@@ -205,6 +211,7 @@ public abstract class AlgoFormer implements ObjetoDependienteDeTurno{
 	
 	
     public void destruir() {
+    	this.vida = 0;
 		  this.posicion.desocupar();
 		  this.movDisponibles = 0;
 	 }

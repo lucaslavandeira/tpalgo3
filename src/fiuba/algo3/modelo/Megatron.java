@@ -21,8 +21,6 @@ public class Megatron extends AlgoFormer {
     }
     
     
-	public String getNombre() {
-		return nombre;
-	}
+
 
 }
